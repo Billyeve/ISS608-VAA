@@ -20,7 +20,7 @@ website:
 
 format:
   html:
-    theme: morph
+    theme: flatly
     css: styles.css
     toc: true
 
