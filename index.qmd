@@ -1,10 +1,12 @@
 ---
-title: "ISS608-VAA"
+title: "ISS608 - VAA"
 ---
 
-This is a Quarto website.
+Hello there,
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+This is my Quarto/Netify Page, documenting my academic studies in the course **ISSS608 - Visual Analytics and Applications**.
+
+This is a work in progress, keep track of the updates.
 
 ```{r}
 1 + 1
