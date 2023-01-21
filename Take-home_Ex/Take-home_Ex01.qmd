@@ -1,12 +1,14 @@
 ---
-title: "Data Visualization Makeover 01: Age-Sex Pyramid"
-title-block-banner: true
+title: "Data Visualization Makeover 01"
+subtitle: "An Exploration on Singapores 2022 Population through Age-Sex Pyramid"
 author: "Bryant Philippe Lee"
 date: "January 22, 2022"
 ---
 
-1.  **OBJECTIVE**
+# Objective
 
-The objective is to create **Age-Sex Pyramid Analytical Visualization** to accurately describe the demographic of Singapore. It is a common visual representation to contrast and subsect the population based on different classifiers, commonly by gender and age. To further illustrate the visualization, multiple Age-Sex Pyramids will be plotted by planning area using the trellis display. 
+The objective is to create **Age-Sex Pyramid Analytic Visualization** to accurately describe the demographic of Singapore. It is a common visual representation to contrast and sub sect the population based on different classifiers, commonly by gender and age. To further illustrate the visualization, multiple Age-Sex Pyramids will be plotted by planning area using the trellis display. 
 
-The visualization is created using the ***Singapore Residents by Planning Area / Subzone, Age Group, Sex and Type of Dwelling, June 2022 (Singstat).***
+The visualization is created using the ***Singapore Residents by Planning Area / Sub-zone, Age Group, Sex and Type of Dwelling, June 2022 (Singstat).***
+
+# Data Cleaning and Preparation 
