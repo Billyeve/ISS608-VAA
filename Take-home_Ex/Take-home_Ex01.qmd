@@ -1,7 +1,8 @@
 ---
 title: "Data Visualization Makeover 01: Age-Sex Pyramid"
+title-block-banner: true
 author: "Bryant Philippe Lee"
-date: "'r Sys.Date()'"
+date: "January 22, 2022"
 ---
 
 #OBJECTIVE
