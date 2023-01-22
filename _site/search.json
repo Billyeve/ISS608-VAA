@@ -40,5 +40,33 @@
     "title": "Data Visualization Makeover 01",
     "section": "Interactive",
     "text": "Interactive\nThere is an opportunity to create filters to limit and focus the dashboard to a select Area, Subzone and Dwelling Type. This opportunity can allow for a more interactive and dynamic analysis."
+  },
+  {
+    "objectID": "Take-home_Ex/Take-home_Ex01.html#clarity-1",
+    "href": "Take-home_Ex/Take-home_Ex01.html#clarity-1",
+    "title": "Data Visualization Makeover 01",
+    "section": "Clarity",
+    "text": "Clarity\n\na. Proper Titles and Headers\nThe Age-Sex Pyramid Trellis Chart is titled correctly, indicating as 2022 Singapore Age-Sex Pyramid per Area. Furthermore, each Age-Sex Pyramid is labeled per Planning Area at the bottom right-hand corner of each plane. These labels ensure that users can properly read and identify the overall message of the chart and category of each individual pyramid. \nIt may be recommended to add value labels per bar to textually visualize the amount each chart, yet this step can be avoid as the chart allows for pop out labels and values to appear when hovering over the chart. Furthermore, on the design aspect, value labels will clutter the chart and cause it to be overly noisy. \n\n\nb. Differentiated Color Labels\nMale-Female bar colors are identified with different shades with the lighter colors indicating male and darker as female. This ensures visual differentiation between genders with ensuring some similarity within planning area."
+  },
+  {
+    "objectID": "Take-home_Ex/Take-home_Ex01.html#aesthetic-1",
+    "href": "Take-home_Ex/Take-home_Ex01.html#aesthetic-1",
+    "title": "Data Visualization Makeover 01",
+    "section": "Aesthetic",
+    "text": "Aesthetic\n\nc. 3 Column Tabular Trellis Chart\nThe Trellis Chart is organized to 3 columns to ensure that the pyramids are visually maximized both in terms of the number of pyramid charts in one viewing and the max value of the y-axis for the bars to be visually district.\n\n\nd. Differentiating Color per Area\nColors per Planning Area is colored differently to ensure distinct differentiation per pyramid. \n\n\ne. Simplified Age Groups\n19 age groups are reduced to 10 age groups to visually maximize the space of the plane without oversimplifying the data points."
+  },
+  {
+    "objectID": "Take-home_Ex/Take-home_Ex01.html#interactive-1",
+    "href": "Take-home_Ex/Take-home_Ex01.html#interactive-1",
+    "title": "Data Visualization Makeover 01",
+    "section": "Interactive",
+    "text": "Interactive\nThe Trellis Chart can be filtered per Planning Area, Subzone and Type of Dwelling. This ensures interactive use of the chart and allow for more drilled down analysis of the data. Though there is a limitation as this chart cannot compare Subzones within the same Planning Area as can be an improvement for future developments."
+  },
+  {
+    "objectID": "Take-home_Ex/Take-home_Ex01.html#major-findings",
+    "href": "Take-home_Ex/Take-home_Ex01.html#major-findings",
+    "title": "Data Visualization Makeover 01",
+    "section": "Major Findings",
+    "text": "Major Findings\n\nOverall, Singapore has more females than males by est. 500,000 heavily contributed by the adult (25 and above) age group. Male population is 11 million while Female is 11.5 million. This is a stark contrast from previous years as there are more males in Singapore than females, average ratio at 53% male and 47% female. The shift in population shares maybe due to migration and the impact of COVID lockdown as male manpower migrating to the city state decreased during COVID and has not recovered since. \nMale and Female distribution per Planning Area and age group are almost equal except for the senior population. The close distribution maybe due to the equal economic opportunity for both genders in Singapore. Furthermore, top areas that are heavily populated by males are populated by females as well. \nThe data may be incomplete as 26 out of 55 (48%) of Total Planning Area have either no data or negligible data. This is evident that some area's population data is missing and is not only limited to far east and far west areas such as Tuas, but high population city center such as Orchard has no data recorded as well. \n\nDashboard Link:"
   }
 ]

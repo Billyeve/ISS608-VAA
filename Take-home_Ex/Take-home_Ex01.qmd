@@ -155,4 +155,4 @@ Besides the Trellis Chart, additional charts are created as well to build a bett
 
 -   **The data may be incomplete as 26 out of 55 (48%) of Total Planning Area have either no data or negligible data.** This is evident that some area\'s population data is missing and is not only limited to far east and far west areas such as Tuas, but high population city center such as Orchard has no data recorded as well. 
 
-Dashboard Link:
+Dashboard Link: https://public.tableau.com/views/DataVizMakeover01_16743910439700/TotalSingapore?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link
