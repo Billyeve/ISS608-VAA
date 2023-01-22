@@ -15,7 +15,9 @@ The visualization is created using the ***Singapore Residents by Planning Area /
 
 To ensure that the data is properly loaded and read, the following actions will be done in the raw excel file and tableau. 
 
-+:--------------------------------------------------------------------------------------------+:--------------------------------------------:+
++---------------------------------------------------------------------------------------------+----------------------------------------------+
+| **ACTION**                                                                                  | **IMAGE**                                    |
++---------------------------------------------------------------------------------------------+----------------------------------------------+
 | From the raw excel file, remove the unnecessary rows as not to confuse the tableau reading  | ![](images/image-582415093.png)              |
 +---------------------------------------------------------------------------------------------+----------------------------------------------+
 | Link the three sheets with the following identifiers:                                       | ![](images/image-2087431466.png)             |
@@ -38,3 +40,35 @@ Trellis Display is a visualization framework aimed at easily presenting visual d
 ![](images/image-2015924300.png){width="511"}
 
 Though the original visualization is a trellis display, there are some issues on the clarity, aesthetics, and interactive design of the original data visualization to be explained at the next section. 
+
+# Visualization Critique
+
+The issues of the original visualization are as follows: 
+
+## Clarity 
+
+###      a. Lack of Header and Titles
+
+There is no title to explain the context of the visual. Users would not know the message of the visual at first glance. While an age sex pyramid is a common visual tool to indicate a split in gender population, it is not clear which population is being discussed unless the user is aware of the Planning Areas. Furthermore, though indicated as 2022 at the x-axis, it would have been clearer if it is included in the header or title. A simple title such as 2022 Singapore Age -- Sex Pyramid would be enough to communicate the topic of the visual.
+
+###      b. Lack of Color Labels
+
+The color of the back-to-back horizontal bar chart is the same between male and female values. This may confuse users as it may give the wrong impression that both bars may belong to a single elongated bar. It is proposed that color for both male and female to be separate and distinct, even if in the terms of different shade. 
+
+## Aesthetic
+
+###      c. Poor Layout
+
+The Trellis chart is organized horizontally and side by side and as such is visually difficult to read as there is an estimated 55 Planning Areas to scroll from. This difficult extends also to comparing multiple charts as there is only so much that can be shown per plane. It is recommended to create a table like trellis chart with rows and columns as to ease visualization and maximize space. 
+
+###      d. Lack of differentiating color per Area
+
+Similar to the back to back horizontal bar, the color between planning areas are also the same. To improve aesthetic, it is recommended that Planning Areas will have the same color while male to female bars with share the same color but of different shades.
+
+###      e. Too many Age Groups
+
+The is an overall 19 age gaps that extends the chart and limits the number of planes that can be shown per window. It is recommended to group together the different age groups from 5 years to 10 years thus reducing the y axis by half and increase the number of charts that can be seen in one viewing. 
+
+## Interactive
+
+There is an opportunity to create filters to limit and focus the dashboard to a select Area, Subzone and Dwelling Type. This opportunity can allow for a more interactive and dynamic analysis. 

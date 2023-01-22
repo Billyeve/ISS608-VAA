@@ -18,6 +18,27 @@
     "href": "Take-home_Ex/Take-home_Ex01.html",
     "title": "Data Visualization Makeover 01",
     "section": "",
-    "text": "Objective\nThe objective is to create Age-Sex Pyramid Analytic Visualization to accurately describe the demographic of Singapore. It is a common visual representation to contrast and sub sect the population based on different classifiers, commonly by gender and age. To further illustrate the visualization, multiple Age-Sex Pyramids will be plotted by planning area using the trellis display. \nThe visualization is created using the Singapore Residents by Planning Area / Sub-zone, Age Group, Sex and Type of Dwelling, June 2022 (Singstat).\n\n\nData Cleaning and Preparation\nTo ensure that the data is properly loaded and read, the following actions will be done in the raw excel file and tableau. \n\n\n\n\n\n\n\nFrom the raw excel file, remove the unnecessary rows as not to confuse the tableau reading\n\n\n\nLink the three sheets with the following identifiers:\n\nPlanning Area\nSubzone\nAge Group\nType of Dwelling\n\nRename 2022 as population (either total, male, female)"
+    "text": "The objective is to create Age-Sex Pyramid Analytic Visualization to accurately describe the demographic of Singapore. It is a common visual representation to contrast and sub sect the population based on different classifiers, commonly by gender and age. To further illustrate the visualization, multiple Age-Sex Pyramids will be plotted by planning area using the trellis display. \nThe visualization is created using the Singapore Residents by Planning Area / Sub-zone, Age Group, Sex and Type of Dwelling, June 2022 (Singstat)."
+  },
+  {
+    "objectID": "Take-home_Ex/Take-home_Ex01.html#clarity",
+    "href": "Take-home_Ex/Take-home_Ex01.html#clarity",
+    "title": "Data Visualization Makeover 01",
+    "section": "Clarity",
+    "text": "Clarity\n\na. Lack of Header and Titles\nThere is no title to explain the context of the visual. Users would not know the message of the visual at first glance. While an age sex pyramid is a common visual tool to indicate a split in gender population, it is not clear which population is being discussed unless the user is aware of the Planning Areas. Furthermore, though indicated as 2022 at the x-axis, it would have been clearer if it is included in the header or title. A simple title such as 2022 Singapore Age – Sex Pyramid would be enough to communicate the topic of the visual.\n\n\nb. Lack of Color Labels\nThe color of the back-to-back horizontal bar chart is the same between male and female values. This may confuse users as it may give the wrong impression that both bars may belong to a single elongated bar. It is proposed that color for both male and female to be separate and distinct, even if in the terms of different shade."
+  },
+  {
+    "objectID": "Take-home_Ex/Take-home_Ex01.html#aesthetic",
+    "href": "Take-home_Ex/Take-home_Ex01.html#aesthetic",
+    "title": "Data Visualization Makeover 01",
+    "section": "Aesthetic",
+    "text": "Aesthetic\n\nc. Poor Layout\nThe Trellis chart is organized horizontally and side by side and as such is visually difficult to read as there is an estimated 55 Planning Areas to scroll from. This difficult extends also to comparing multiple charts as there is only so much that can be shown per plane. It is recommended to create a table like trellis chart with rows and columns as to ease visualization and maximize space. \n\n\nd. Lack of differentiating color per Area\nSimilar to the back to back horizontal bar, the color between planning areas are also the same. To improve aesthetic, it is recommended that Planning Areas will have the same color while male to female bars with share the same color but of different shades.\n\n\ne. Too many Age Groups\nThe is an overall 19 age gaps that extends the chart and limits the number of planes that can be shown per window. It is recommended to group together the different age groups from 5 years to 10 years thus reducing the y axis by half and increase the number of charts that can be seen in one viewing."
+  },
+  {
+    "objectID": "Take-home_Ex/Take-home_Ex01.html#interactive",
+    "href": "Take-home_Ex/Take-home_Ex01.html#interactive",
+    "title": "Data Visualization Makeover 01",
+    "section": "Interactive",
+    "text": "Interactive\nThere is an opportunity to create filters to limit and focus the dashboard to a select Area, Subzone and Dwelling Type. This opportunity can allow for a more interactive and dynamic analysis."
   }
 ]
