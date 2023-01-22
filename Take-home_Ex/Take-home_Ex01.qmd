@@ -15,18 +15,18 @@ The visualization is created using the ***Singapore Residents by Planning Area /
 
 To ensure that the data is properly loaded and read, the following actions will be done in the raw excel file and tableau. 
 
-+:--------------------------------------------------------------------------------------------+:--------------------------------:+
-| From the raw excel file, remove the unnecessary rows as not to confuse the tableau reading  | ![](images/image-582415093.png)  |
-+---------------------------------------------------------------------------------------------+----------------------------------+
-| Link the three sheets with the following identifiers:                                       | ![](images/image-2087431466.png) |
-|                                                                                             |                                  |
-| -   Planning Area                                                                           |                                  |
-|                                                                                             |                                  |
-| -   Subzone                                                                                 |                                  |
-|                                                                                             |                                  |
-| -   Age Group                                                                               |                                  |
-|                                                                                             |                                  |
-| -   Type of Dwelling                                                                        |                                  |
-|                                                                                             |                                  |
-| Rename 2022 as population (either total, male, female)                                      |                                  |
-+---------------------------------------------------------------------------------------------+----------------------------------+
++:--------------------------------------------------------------------------------------------+:--------------------------------------------:+
+| From the raw excel file, remove the unnecessary rows as not to confuse the tableau reading  | ![](images/image-582415093.png)              |
++---------------------------------------------------------------------------------------------+----------------------------------------------+
+| Link the three sheets with the following identifiers:                                       | ![](images/image-2087431466.png)             |
+|                                                                                             |                                              |
+| -   Planning Area                                                                           |                                              |
+|                                                                                             |                                              |
+| -   Subzone                                                                                 |                                              |
+|                                                                                             |                                              |
+| -   Age Group                                                                               |                                              |
+|                                                                                             |                                              |
+| -   Type of Dwelling                                                                        |                                              |
+|                                                                                             |                                              |
+| Rename 2022 as population (either total, male, female)                                      |                                              |
++---------------------------------------------------------------------------------------------+----------------------------------------------+
