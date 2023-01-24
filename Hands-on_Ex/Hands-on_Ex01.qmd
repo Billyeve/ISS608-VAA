@@ -1,4 +1,99 @@
 ---
-title: "Hands-on_Ex01 Programming Elegant DataVis with ggplot2"
+title: "Hands-on_Ex01" 
+subtitle: "Programming Elegant DataVis with ggplot2"
 author: "Bryant Philippe Lee"
 ---
+
+# Introducing Tidyverse
+
+[**tidyverse**](https://www.tidyverse.org/) is an opinionated collection of R packages designed for data science. All packages share an underlying design philosophy, grammar, and data structures.
+
+![](images/image-808903437.png)
+
+## Core Tidyverse Packages
+
+-   [**dplyr**](https://dplyr.tidyverse.org/) is a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges.
+
+-   [**tidyr**](https://tidyr.tidyverse.org/) helps R users to create tidy data.
+
+-   [**stringr**](https://stringr.tidyverse.org/) provides a cohesive set of functions designed to make working with strings as easy as possible.
+
+-   [**forcats**](https://forcats.tidyverse.org/) provides a suite of tools that solve common problems with factors, including changing the order of levels or the values.
+
+```{=html}
+<!-- -->
+```
+-   [**readr**](https://readr.tidyverse.org/) provides a fast and friendly way to read rectangular data (like csv, tsv, and fwf).
+
+-   [**tibble**](https://tibble.tidyverse.org/) is a modern reimagining of the data.frame, keeping what time has proven to be effective, and throwing out what is not.
+
+-   [**ggplot2**](https://ggplot2.tidyverse.org/) is a system for declaratively creating graphics, based on The Grammar of Graphics.
+
+-   [**purrr**](https://purrr.tidyverse.org/) enhances R\'s functional programming (FP) toolkit by providing a complete and consistent set of tools for working with functions and vectors.
+
+## Data Science Workflow with Tidyverse
+
+![](images/image-1137089709.png)
+
+Reference: [Introduction to the Tidyverse: How to be a tidy data scientist](https://oliviergimenez.github.io/intro_tidyverse/#1).
+
+## Getting Started
+
+### Installing and loading the required libraries 
+
+Before we get started, it is important for us to ensure that the required R packages have been installed. If yes, we will load the R packages. If they have yet to be installed, we will install the R packages and load them onto R environment.
+
+```{r}
+pacman::p_load(tidyverse)
+```
+
+::: callout-note
+The code chunk on the right assumes that you already have [**pacman**](https://cran.r-project.org/web/packages/pacman/index.html) package installed. If not, please go ahead install pacman first.
+:::
+
+### Importing Data
+
+-   The code chunk below imports *exam_data.csv* into R environment by using [*read_csv()*](https://readr.tidyverse.org/reference/read_delim.html) function of [**readr**](https://readr.tidyverse.org/) package.
+
+-   **readr** is one of the tidyverse package.
+
+```{r}
+exam_data <- read_csv("data/Exam_data.csv")
+```
+
+-   Year end examination grades of a cohort of primary 3 students from a local school.
+
+-   There are a total of seven attributes. Four of them are categorical data type and the other three are in continuous data type.
+
+    -   The categorical attributes are: ID, CLASS, GENDER and RACE.
+
+    -   The continuous attributes are: MATHS, ENGLISH and SCIENCE.
+
+# Introducing ggplot
+
+-   An R package for **declaratively** creating **data-driven** graphics based on ***The Grammar of Graphics***
+
+-   It is part of the tidyverse family specially designed for visual exploration and communication.
+
+-   For more detail, visit [ggplot2 link](https://ggplot2.tidyverse.org/index.html).
+
+![](images/image-302954947.png){width="302"}
+
+## R Graphics VS ggplot
+
+#### R Graphics
+
+```{r}
+hist(exam_data$MATHS)
+```
+
+#### ggplot2
+
+```{r}
+ggplot(data=exam_data, aes(x = MATHS)) +
+  geom_histogram(bins=10, 
+                 boundary = 100,
+                 color="black", 
+                 fill="grey") +
+  ggtitle("Distribution of Maths scores")
+```
