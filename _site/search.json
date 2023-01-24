@@ -1,5 +1,19 @@
 [
   {
+    "objectID": "Hands-on_Ex/Hands-on_Ex01.html",
+    "href": "Hands-on_Ex/Hands-on_Ex01.html",
+    "title": "Hands-on_Ex01",
+    "section": "",
+    "text": "tidyverse is an opinionated collection of R packages designed for data science. All packages share an underlying design philosophy, grammar, and data structures.\n\n\n\n\ndplyr is a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges.\ntidyr helps R users to create tidy data.\nstringr provides a cohesive set of functions designed to make working with strings as easy as possible.\nforcats provides a suite of tools that solve common problems with factors, including changing the order of levels or the values.\n\n\n\nreadr provides a fast and friendly way to read rectangular data (like csv, tsv, and fwf).\ntibble is a modern reimagining of the data.frame, keeping what time has proven to be effective, and throwing out what is not.\nggplot2 is a system for declaratively creating graphics, based on The Grammar of Graphics.\npurrr enhances R's functional programming (FP) toolkit by providing a complete and consistent set of tools for working with functions and vectors.\n\n\n\n\n\nReference: Introduction to the Tidyverse: How to be a tidy data scientist.\n\n\n\n\n\nBefore we get started, it is important for us to ensure that the required R packages have been installed. If yes, we will load the R packages. If they have yet to be installed, we will install the R packages and load them onto R environment.\n\npacman::p_load(tidyverse)\n\n\n\n\n\n\n\nNote\n\n\n\nThe code chunk on the right assumes that you already have pacman package installed. If not, please go ahead install pacman first.\n\n\n\n\n\n\nThe code chunk below imports exam_data.csv into R environment by using read_csv() function of readr package.\nreadr is one of the tidyverse package.\n\n\nexam_data <- read_csv(\"data/Exam_data.csv\")\n\nRows: 322 Columns: 7\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (4): ID, CLASS, GENDER, RACE\ndbl (3): ENGLISH, MATHS, SCIENCE\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\n\nYear end examination grades of a cohort of primary 3 students from a local school.\nThere are a total of seven attributes. Four of them are categorical data type and the other three are in continuous data type.\n\nThe categorical attributes are: ID, CLASS, GENDER and RACE.\nThe continuous attributes are: MATHS, ENGLISH and SCIENCE."
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex01.html#r-graphics-vs-ggplot",
+    "href": "Hands-on_Ex/Hands-on_Ex01.html#r-graphics-vs-ggplot",
+    "title": "Hands-on_Ex01",
+    "section": "R Graphics VS ggplot",
+    "text": "R Graphics VS ggplot\n\nR Graphics\n\nhist(exam_data$MATHS)\n\n\n\n\n\n\nggplot2\n\nggplot(data=exam_data, aes(x = MATHS)) +\n  geom_histogram(bins=10, \n                 boundary = 100,\n                 color=\"black\", \n                 fill=\"grey\") +\n  ggtitle(\"Distribution of Maths scores\")"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "ISSS608 - VAA",
@@ -68,19 +82,5 @@
     "title": "Data Visualization Makeover 01",
     "section": "Major Findings",
     "text": "Major Findings\n\nOverall, Singapore has more females than males by est. 500,000 heavily contributed by the adult (25 and above) age group. Male population is 11 million while Female is 11.5 million. This is a stark contrast from previous years as there are more males in Singapore than females, average ratio at 53% male and 47% female. The shift in population shares maybe due to migration and the impact of COVID lockdown as male manpower migrating to the city state decreased during COVID and has not recovered since. \nMale and Female distribution per Planning Area and age group are almost equal except for the senior population. The close distribution maybe due to the equal economic opportunity for both genders in Singapore. Furthermore, top areas that are heavily populated by males are populated by females as well. \nThe data may be incomplete as 26 out of 55 (48%) of Total Planning Area have either no data or negligible data. This is evident that some area’s population data is missing and is not only limited to far east and far west areas such as Tuas, but high population city center such as Orchard has no data recorded as well. \n\nDashboard Link: https://public.tableau.com/views/DataVizMakeover01_16743910439700/TotalSingapore?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link"
-  },
-  {
-    "objectID": "Hands-on_Ex/Hands-on_Ex01.html",
-    "href": "Hands-on_Ex/Hands-on_Ex01.html",
-    "title": "Hands-on_Ex01",
-    "section": "",
-    "text": "tidyverse is an opinionated collection of R packages designed for data science. All packages share an underlying design philosophy, grammar, and data structures.\n\n\n\n\ndplyr is a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges.\ntidyr helps R users to create tidy data.\nstringr provides a cohesive set of functions designed to make working with strings as easy as possible.\nforcats provides a suite of tools that solve common problems with factors, including changing the order of levels or the values.\n\n\n\nreadr provides a fast and friendly way to read rectangular data (like csv, tsv, and fwf).\ntibble is a modern reimagining of the data.frame, keeping what time has proven to be effective, and throwing out what is not.\nggplot2 is a system for declaratively creating graphics, based on The Grammar of Graphics.\npurrr enhances R's functional programming (FP) toolkit by providing a complete and consistent set of tools for working with functions and vectors.\n\n\n\n\n\nReference: Introduction to the Tidyverse: How to be a tidy data scientist.\n\n\n\n\n\nBefore we get started, it is important for us to ensure that the required R packages have been installed. If yes, we will load the R packages. If they have yet to be installed, we will install the R packages and load them onto R environment.\n\npacman::p_load(tidyverse)\n\n\n\n\n\n\n\nNote\n\n\n\nThe code chunk on the right assumes that you already have pacman package installed. If not, please go ahead install pacman first.\n\n\n\n\n\n\nThe code chunk below imports exam_data.csv into R environment by using read_csv() function of readr package.\nreadr is one of the tidyverse package.\n\n\nexam_data <- read_csv(\"data/Exam_data.csv\")\n\nRows: 322 Columns: 7\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (4): ID, CLASS, GENDER, RACE\ndbl (3): ENGLISH, MATHS, SCIENCE\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\n\nYear end examination grades of a cohort of primary 3 students from a local school.\nThere are a total of seven attributes. Four of them are categorical data type and the other three are in continuous data type.\n\nThe categorical attributes are: ID, CLASS, GENDER and RACE.\nThe continuous attributes are: MATHS, ENGLISH and SCIENCE."
-  },
-  {
-    "objectID": "Hands-on_Ex/Hands-on_Ex01.html#r-graphics-vs-ggplot",
-    "href": "Hands-on_Ex/Hands-on_Ex01.html#r-graphics-vs-ggplot",
-    "title": "Hands-on_Ex01",
-    "section": "R Graphics VS ggplot",
-    "text": "R Graphics VS ggplot\n\nR Graphics\n\nhist(exam_data$MATHS)\n\n\n\n\n\n\nggplot2\n\nggplot(data=exam_data, aes(x = MATHS)) +\n  geom_histogram(bins=10, \n                 boundary = 100,\n                 color=\"black\", \n                 fill=\"grey\") +\n  ggtitle(\"Distribution of Maths scores\")"
   }
 ]
