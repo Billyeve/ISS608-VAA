@@ -11,29 +11,29 @@ The objective is to create **Age-Sex Pyramid Analytic Visualization** to accurat
 
 The visualization is created using the ***Singapore Residents by Planning Area / Sub-zone, Age Group, Sex and Type of Dwelling, June 2022 (Singstat).***
 
-# Data Cleaning and Preparation 
+# Data Cleaning and Preparation
 
 To ensure that the data is properly loaded and read, the following actions will be done in the raw excel file and tableau. 
 
-+---------------------------------------------------------------------------------------------+----------------------------------------------+
-| **ACTION**                                                                                  | **IMAGE**                                    |
-+---------------------------------------------------------------------------------------------+----------------------------------------------+
-| From the raw excel file, remove the unnecessary rows as not to confuse the tableau reading  | ![](images/image-582415093.png)              |
-+---------------------------------------------------------------------------------------------+----------------------------------------------+
-| Link the three sheets with the following identifiers:                                       | ![](images/image-2087431466.png)             |
-|                                                                                             |                                              |
-| -   Planning Area                                                                           |                                              |
-|                                                                                             |                                              |
-| -   Subzone                                                                                 |                                              |
-|                                                                                             |                                              |
-| -   Age Group                                                                               |                                              |
-|                                                                                             |                                              |
-| -   Type of Dwelling                                                                        |                                              |
-|                                                                                             |                                              |
-| Rename 2022 as population (either total, male, female)                                      |                                              |
-+---------------------------------------------------------------------------------------------+----------------------------------------------+
++--------------------------------------------------------------------------------------------+----------------------------------+
+| **ACTION**                                                                                 | **IMAGE**                        |
++--------------------------------------------------------------------------------------------+----------------------------------+
+| From the raw excel file, remove the unnecessary rows as not to confuse the tableau reading | ![](images/image-582415093.png)  |
++--------------------------------------------------------------------------------------------+----------------------------------+
+| Link the three sheets with the following identifiers:                                      | ![](images/image-2087431466.png) |
+|                                                                                            |                                  |
+| -   Planning Area                                                                          |                                  |
+|                                                                                            |                                  |
+| -   Subzone                                                                                |                                  |
+|                                                                                            |                                  |
+| -   Age Group                                                                              |                                  |
+|                                                                                            |                                  |
+| -   Type of Dwelling                                                                       |                                  |
+|                                                                                            |                                  |
+| Rename 2022 as population (either total, male, female)                                     |                                  |
++--------------------------------------------------------------------------------------------+----------------------------------+
 
-# Original Visualization 
+# Original Visualization
 
 Trellis Display is a visualization framework aimed at easily presenting visual data in tables and box subdivided by category. The aim is to be able to compare and contrast the data based on the category in one window. 
 
@@ -45,27 +45,27 @@ Though the original visualization is a trellis display, there are some issues on
 
 The issues of the original visualization are as follows: 
 
-## Clarity 
+## Clarity
 
-###      a. Lack of Header and Titles
+### a. Lack of Header and Titles
 
 There is no title to explain the context of the visual. Users would not know the message of the visual at first glance. While an age sex pyramid is a common visual tool to indicate a split in gender population, it is not clear which population is being discussed unless the user is aware of the Planning Areas. Furthermore, though indicated as 2022 at the x-axis, it would have been clearer if it is included in the header or title. A simple title such as 2022 Singapore Age -- Sex Pyramid would be enough to communicate the topic of the visual.
 
-###      b. Lack of Color Labels
+### b. Lack of Color Labels
 
 The color of the back-to-back horizontal bar chart is the same between male and female values. This may confuse users as it may give the wrong impression that both bars may belong to a single elongated bar. It is proposed that color for both male and female to be separate and distinct, even if in the terms of different shade. 
 
 ## Aesthetic
 
-###      c. Poor Layout
+### c. Poor Layout
 
 The Trellis chart is organized horizontally and side by side and as such is visually difficult to read as there is an estimated 55 Planning Areas to scroll from. This difficult extends also to comparing multiple charts as there is only so much that can be shown per plane. It is recommended to create a table like trellis chart with rows and columns as to ease visualization and maximize space. 
 
-###      d. Lack of differentiating color per Area
+### d. Lack of differentiating color per Area
 
 Similar to the back to back horizontal bar, the color between planning areas are also the same. To improve aesthetic, it is recommended that Planning Areas will have the same color while male to female bars with share the same color but of different shades.
 
-###      e. Too many Age Groups
+### e. Too many Age Groups
 
 The is an overall 19 age gaps that extends the chart and limits the number of planes that can be shown per window. It is recommended to group together the different age groups from 5 years to 10 years thus reducing the y axis by half and increase the number of charts that can be seen in one viewing. 
 
@@ -77,29 +77,29 @@ There is an opportunity to create filters to limit and focus the dashboard to a 
 
 ![](images/image-1999623995.png){width="510"}
 
-## Clarity 
+## Clarity
 
-###      a. Proper Titles and Headers
+### a. Proper Titles and Headers
 
 The Age-Sex Pyramid Trellis Chart is titled correctly, indicating as **2022 Singapore Age-Sex Pyramid per Area**. Furthermore, each Age-Sex Pyramid is labeled per Planning Area at the bottom right-hand corner of each plane. These labels ensure that users can properly read and identify the overall message of the chart and category of each individual pyramid. 
 
 It may be recommended to add value labels per bar to textually visualize the amount each chart, yet this step can be avoid as the chart allows for pop out labels and values to appear when hovering over the chart. Furthermore, on the design aspect, value labels will clutter the chart and cause it to be overly noisy. 
 
-###      b. Differentiated Color Labels
+### b. Differentiated Color Labels
 
 Male-Female bar colors are identified with different shades with the lighter colors indicating male and darker as female. This ensures visual differentiation between genders with ensuring some similarity within planning area.
 
 ## Aesthetic
 
-###      c. 3 Column Tabular Trellis Chart
+### c. 3 Column Tabular Trellis Chart
 
 The Trellis Chart is organized to 3 columns to ensure that the pyramids are visually maximized both in terms of the number of pyramid charts in one viewing and the max value of the y-axis for the bars to be visually district.
 
-###      d. Differentiating Color per Area
+### d. Differentiating Color per Area
 
 Colors per Planning Area is colored differently to ensure distinct differentiation per pyramid. 
 
-###      e. Simplified Age Groups
+### e. Simplified Age Groups
 
 19 age groups are reduced to 10 age groups to visually maximize the space of the plane without oversimplifying the data points. 
 
@@ -107,37 +107,37 @@ Colors per Planning Area is colored differently to ensure distinct differentiati
 
 The Trellis Chart can be filtered per Planning Area, Subzone and Type of Dwelling. This ensures interactive use of the chart and allow for more drilled down analysis of the data. Though there is a *limitation as this chart cannot compare Subzones within the same Planning Area as can be an improvement for future developments.* 
 
-# Process and Development 
+# Process and Development
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+
-| ACTION                                                                                                                                                                                                     | IMAGE                            |
-+============================================================================================================================================================================================================+==================================+
-| To create the Trellis Chart, the table must be created first determining the number of columns, indicated in the parameter - **\# of Col**                                                                 | ![](images/image-1064192840.png) |
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+
-| Next is to define the rows and columns field with the following formula:                                                                                                                                   | ![](images/image-1046358763.png) |
-|                                                                                                                                                                                                            |                                  |
-| -   Index -- Index ()                                                                                                                                                                                      |                                  |
-|                                                                                                                                                                                                            |                                  |
-| -   Column -- \[Index\]%\[# of Col\]                                                                                                                                                                       |                                  |
-|                                                                                                                                                                                                            |                                  |
-| -   Rows -- int((\[Index\]-1)/\[# of Col\])                                                                                                                                                                |                                  |
-|                                                                                                                                                                                                            |                                  |
-| Then place the calculated values at the column and row fields                                                                                                                                              |                                  |
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+
-| To ensure that the values are not inflated due to the addition of the **Total** category, recreate the set of the following dimensions by excluding the **Total** and **HDB Total** (for Type of Dwelling) | ![](images/image-1614902722.png) |
-|                                                                                                                                                                                                            |                                  |
-| -   Planning Area                                                                                                                                                                                          |                                  |
-|                                                                                                                                                                                                            |                                  |
-| -   Subzone                                                                                                                                                                                                |                                  |
-|                                                                                                                                                                                                            |                                  |
-| -   Type of Dwelling                                                                                                                                                                                       |                                  |
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+
-| Build the Trellis Chart with multiple Age-Sex Pyramid with the correct filters                                                                                                                             | ![](images/image-322762394.png)  |
-|                                                                                                                                                                                                            |                                  |
-| *\*remember to set the colors base on the gender and planning area*                                                                                                                                        |                                  |
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+
-| Create a **0 mark** parameter to as a line with Planning Area as the label. Set the **0 mark** as a dual axis and make the line transparent to set the Planning Area label                                 | ![](images/image-350269135.png)  |
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------+
+| ACTION                                                                                                                                                                                                     | IMAGE                                                           |
++============================================================================================================================================================================================================+=================================================================+
+| To create the Trellis Chart, the table must be created first determining the number of columns, indicated in the parameter - **\# of Col**                                                                 | ![](images/image-1064192840.png)                                |
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------+
+| Next is to define the rows and columns field with the following formula:                                                                                                                                   | ![](images/image-1046358763.png)                                |
+|                                                                                                                                                                                                            |                                                                 |
+| -   Index -- Index ()                                                                                                                                                                                      |                                                                 |
+|                                                                                                                                                                                                            |                                                                 |
+| -   Column -- \[Index\]%\[# of Col\]                                                                                                                                                                       |                                                                 |
+|                                                                                                                                                                                                            |                                                                 |
+| -   Rows -- int((\[Index\]-1)/\[# of Col\])                                                                                                                                                                |                                                                 |
+|                                                                                                                                                                                                            |                                                                 |
+| Then place the calculated values at the column and row fields                                                                                                                                              |                                                                 |
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------+
+| To ensure that the values are not inflated due to the addition of the **Total** category, recreate the set of the following dimensions by excluding the **Total** and **HDB Total** (for Type of Dwelling) | ![](images/image-1614902722.png)                                |
+|                                                                                                                                                                                                            |                                                                 |
+| -   Planning Area                                                                                                                                                                                          |                                                                 |
+|                                                                                                                                                                                                            |                                                                 |
+| -   Subzone                                                                                                                                                                                                |                                                                 |
+|                                                                                                                                                                                                            |                                                                 |
+| -   Type of Dwelling                                                                                                                                                                                       |                                                                 |
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------+
+| Build the Trellis Chart with multiple Age-Sex Pyramid with the correct filters                                                                                                                             | ![](images/image-322762394.png)                                 |
+|                                                                                                                                                                                                            |                                                                 |
+| *\*remember to set the colors base on the gender and planning area*                                                                                                                                        |                                                                 |
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------+
+| Create a **0 mark** parameter to as a line with Planning Area as the label. Set the **0 mark** as a dual axis and make the line transparent to set the Planning Area label                                 | ![](images/image-350269135.png)                                 |
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------+
 
 # Dashboard Overview
 
@@ -147,12 +147,12 @@ Besides the Trellis Chart, additional charts are created as well to build a bett
 |:--------------------------------:|:-------------------------------:|
 | ![](images/image-1046360946.png) | ![](images/image-103319897.png) |
 
-## Major Findings 
+## Major Findings
 
 -   **Overall, Singapore has more females than males by est. 500,000 heavily contributed by the adult (25 and above) age group.** Male population is 11 million while Female is 11.5 million. This is a stark contrast from previous years as there are more males in Singapore than females, average ratio at 53% male and 47% female. The shift in population shares maybe due to migration and the impact of COVID lockdown as male manpower migrating to the city state decreased during COVID and has not recovered since. 
 
 -   **Male and Female distribution per Planning Area and age group are almost equal except for the senior population.** The close distribution maybe due to the equal economic opportunity for both genders in Singapore. Furthermore, top areas that are heavily populated by males are populated by females as well. 
 
--   **The data may be incomplete as 26 out of 55 (48%) of Total Planning Area have either no data or negligible data.** This is evident that some area\'s population data is missing and is not only limited to far east and far west areas such as Tuas, but high population city center such as Orchard has no data recorded as well. 
+-   **The data may be incomplete as 26 out of 55 (48%) of Total Planning Area have either no data or negligible data.** This is evident that some area's population data is missing and is not only limited to far east and far west areas such as Tuas, but high population city center such as Orchard has no data recorded as well. 
 
 Dashboard Link: https://public.tableau.com/views/DataVizMakeover01_16743910439700/TotalSingapore?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link
