@@ -54,19 +54,7 @@ This code chunk is to import the data from AgeSex_SG2022_1.1.xlsx file to the Qu
 -   2022(Female) - shows only the female population per category in 2022
 
 ```{r}
-male_data <- read_excel("data/AgeSex_SG2022_1.1.xlsx", sheet = '2022(Male)', 
-                       col_types = c("text", "text", "text","text", "numeric"))
-male_data
+pop_data <- read_csv("data/respopagesextod2022.csv")
 ```
-
-```{r}
-female_data <- read_excel("data/AgeSex_SG2022_1.1.xlsx", sheet = '2022(Female)', 
-                       col_types = c("text", "text", "text","text", "numeric"))
-female_data
-```
-
-::: callout-note
-Ensure that the "2022" column is converted to numerical value instead of character
-:::
 
 ## Data Exploration and Cleaning 
