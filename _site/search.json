@@ -151,6 +151,13 @@
     "href": "In-Class_Ex/In-Class_Ex03.html",
     "title": "In-Class Exercise 03",
     "section": "",
-    "text": "Installing and Loading R Packages\nTwo packages will be installed and loaded. They are tidyverse and ggiraph.\n\npacman::p_load(ggiraph, tidyverse)\n\n\n\nImporting Data\nThis code chunk is to import the data from Exam_data.csv file to the Quarto/R page.\n\nexam_data <- read_csv(\"data/Exam_data.csv\")"
+    "text": "Two packages will be installed and loaded. They are tidyverse and ggiraph.\n\npacman::p_load(ggiraph, tidyverse)"
+  },
+  {
+    "objectID": "In-Class_Ex/In-Class_Ex03.html#graphs-and-visualization-through-ggplot2-and-ggiraph",
+    "href": "In-Class_Ex/In-Class_Ex03.html#graphs-and-visualization-through-ggplot2-and-ggiraph",
+    "title": "In-Class Exercise 03",
+    "section": "Graphs and Visualization through ggplot2 and ggiraph",
+    "text": "Graphs and Visualization through ggplot2 and ggiraph\n\nggplot(data=exam_data,\n       aes(x = MATHS)) +\n  geom_dotplot(dotsize = 0.5)\n\n\n\n\n\np <- ggplot(data=exam_data, \n       aes(x = MATHS)) +\n  geom_dotplot_interactive(\n    aes(tooltip = ID),\n    stackgroups = TRUE, \n    binwidth = 1, \n    method = \"histodot\") +\n  scale_y_continuous(NULL, \n                     breaks = NULL)\ngirafe(\n  ggobj = p,\n  width_svg = 6,\n  height_svg = 6*0.618\n)"
   }
 ]
