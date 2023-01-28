@@ -49,6 +49,17 @@ This code chunk is to import the data from Exam_data.csv file to the Quarto/R pa
 
 ```{r}
 pop_data <- read_excel("data/AgeSex_SG2022_1.1.xlsx", sheet = '2022(Total)')
-male_data <- read_excel("data/AgeSex_SG2022_1.1.xlsx", sheet = '2022(Male)')
-female_data <- read_excel("data/AgeSex_SG2022_1.1.xlsx", sheet = '2022(Female)')
+pop_data
 ```
+
+```{r}
+male_data <- read_excel("data/AgeSex_SG2022_1.1.xlsx", sheet = '2022(Male)')
+male_data
+```
+
+```{r}
+female_data <- read_excel("data/AgeSex_SG2022_1.1.xlsx", sheet = '2022(Female)')
+female_data
+```
+
+## Data Exploration and Cleaning 
