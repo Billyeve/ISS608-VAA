@@ -2,5 +2,12 @@
 title: "In-Class Exercise 03"
 author: "Bryant Philippe Lee"
 date: January 28, 2023
-date-modified: "'r Sys.Date()'"
+date-modified: "`r Sys.Date()`"
+fontsize: smaller
+execute: 
+  echo: true
+  eval: false
+  warning: false
+format: html
+editor: visual
 ---
