@@ -10,3 +10,21 @@ date: "January 29, 2022"
 The objective of this exercise is to critique and improve an **Age-Sex Pyramid Analytic Visualization** of Singapore of the year 2022. The output is to recreate a Trellis Chart Age-Sex Pyramid through R-Studios.
 
 The visualization is created using the ***Singapore Residents by Planning Area / Sub-zone, Age Group, Sex and Type of Dwelling, June 2022 (Singstat).***
+
+# Original Visualization and Critique
+
+The Original Visualization Source: https://public.tableau.com/app/profile/joseph.zexeong.tan/viz/SingaporePopulationPyramindJun2022v1_3/trel3x3_d?publish=yes
+
+![](images/image-2072046901.png)
+
+## Clarity
+
+-   **The Original Visualization shows 2 separate Age-Pyramid Trellis Chart that shows the same message.** Two sets of visualization normally indicate that they visualize two different messages may it be separate or connected. The issue with the dashboard is that both sets indicate the same message just in a different format.
+
+-   **3x3 Trellis Chart limits the visualization to only 9 Age-Sex Pyramids.** Limited and focused visualizations are normally selected under a criteria. This criteria may be in terms of highest population cumulative or selective. The original visualization shows no indication of the criteria chosen to only visualize 9 areas and may only be concluded as a random selection.
+
+-   
+
+## Aesthetic 
+
+-   
