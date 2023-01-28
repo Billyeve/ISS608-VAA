@@ -7,7 +7,7 @@ date: January 29, 2022
 
 # Objective
 
-The objective of this exercise is to critique and improve an **Age-Sex Pyramid Analytic Visualization** of Singapore of the year 2022. The output is to recreate a Trellis Chart Age-Sex Pyramid through R-Studios.
+The objective of this exercise is to critique and improve an **Age-Sex Pyramid Analytic Visualization** of Singapore of the year 2022. The output is to recreate a Trellis Chart Age-Sex Pyramid through R-Studios by using ggplot2, ggplot2 extensions and tidyverse packages.
 
 The visualization is created using the ***Singapore Residents by Planning Area / Sub-zone, Age Group, Sex and Type of Dwelling, June 2022 (Singstat).***
 
@@ -19,12 +19,36 @@ The Original Visualization Source: https://public.tableau.com/app/profile/joseph
 
 ## Clarity
 
--   **The Original Visualization shows 2 separate Age-Pyramid Trellis Chart that shows the same message.** Two sets of visualization normally indicate that they visualize two different messages may it be separate or connected. The issue with the dashboard is that both sets indicate the same message just in a different format.
+-   **The Original Visualization shows 2 separate Age-Pyramid Trellis Chart that shows the same message.** Two sets of visualization normally indicate that they visualize two different messages that may it be independent of each other or connected. The issue with the dashboard is that both sets indicate the same message just in a different format. This raises either confusion to the reader and a form of redundancy that can be best allocated to something else.
 
 -   **3x3 Trellis Chart limits the visualization to only 9 Age-Sex Pyramids.** Limited and focused visualizations are normally selected under a criteria. This criteria may be in terms of highest population cumulative or selective. The original visualization shows no indication of the criteria chosen to only visualize 9 areas and may only be concluded as a random selection.
 
--   
+-   **3x3 Trellis Chart lacks y-axis labels.** Taking to consideration that the Trellis Charts is a stand alone visualization, the lack of y-axis label reduces the clarity of the y-axis values. Furthermore, both Trellis Charts lack x-axis values and labels but make up for it through text values per bar. In terms of clarity, one can argue that the lack of x-axis may confuse the reader due to the text values having no reference while others say the taxt vales are enough to compensate the lack of x-axis.
 
-## Aesthetic 
+## Aesthetic
 
--   
+-   **Text Values center bar alignment makes reading the values difficult.** Due to the mismatched alignment of the text values brought abut by the central alignment placement in the bar chart makes reading the values difficult as the reader cannot simply scroll down and read the values, not mention creates unnecessary confusion in the graph.
+
+-   **Text Values on each Bar Chart overwhelms the visualization.** More than the mismatch alignment, the number of the text values in the chart saturates the charts and makes it "noisy". The text values fill the dashboard with a lot of numbers that is makes the labels and visuals difficult to look at and interpret.
+
+-   **Horizontally arranged Trellis Chart limits and squeezes the Age-Sex Pyramids.** This visualization arrangement artificially contorts the bar length due to the lack of width space. The squeeze minimizes the visual differentiation between bar charts as such creates an illusion that some bars are of the same size.
+
+# Getting Started - Data Loading and Processing
+
+## Installing and loading the required libraries
+
+Before we get started, it is important for us to ensure that the required R packages have been installed.
+
+```{r}
+pacman::p_load(tidyverse,ggplot2,ggiraph,readxl)
+```
+
+## Importing Data
+
+This code chunk is to import the data from Exam_data.csv file to the Quarto/R page.
+
+```{r}
+pop_data <- read_excel("data/AgeSex_SG2022_1.1.xlsx", sheet = '2022(Total)')
+male_data <- read_excel("data/AgeSex_SG2022_1.1.xlsx", sheet = '2022(Male)')
+female_data <- read_excel("data/AgeSex_SG2022_1.1.xlsx", sheet = '2022(Female)')
+```
