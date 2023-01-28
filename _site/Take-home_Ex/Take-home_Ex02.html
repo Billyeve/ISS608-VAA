@@ -216,6 +216,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul class="collapse">
   <li><a href="#installing-and-loading-the-required-libraries" id="toc-installing-and-loading-the-required-libraries" class="nav-link" data-scroll-target="#installing-and-loading-the-required-libraries">Installing and loading the required libraries</a></li>
   <li><a href="#importing-data" id="toc-importing-data" class="nav-link" data-scroll-target="#importing-data">Importing Data</a></li>
+  <li><a href="#data-exploration-and-cleaning" id="toc-data-exploration-and-cleaning" class="nav-link" data-scroll-target="#data-exploration-and-cleaning">Data Exploration and Cleaning</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -293,9 +294,67 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>This code chunk is to import the data from Exam_data.csv file to the Quarto/R page.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pop_data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/AgeSex_SG2022_1.1.xlsx"</span>, <span class="at">sheet =</span> <span class="st">'2022(Total)'</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>male_data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/AgeSex_SG2022_1.1.xlsx"</span>, <span class="at">sheet =</span> <span class="st">'2022(Male)'</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>female_data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/AgeSex_SG2022_1.1.xlsx"</span>, <span class="at">sheet =</span> <span class="st">'2022(Female)'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>pop_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 69,840 × 5
+   `Planning Area` Subzone `Age Group` `Type of Dwelling`                `2022` 
+   &lt;chr&gt;           &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt;                             &lt;chr&gt;  
+ 1 Total           Total   Total       Total                             4073240
+ 2 Total           Total   Total       Total HDB^                        A      
+ 3 Total           Total   Total       1- and 2-Room Flats*              183860 
+ 4 Total           Total   Total       3-Room Flats                      559250 
+ 5 Total           Total   Total       4-Room Flats                      1332240
+ 6 Total           Total   Total       5-Room and Executive Flats        1059340
+ 7 Total           Total   Total       Condominiums and Other Apartments 655520 
+ 8 Total           Total   Total       Landed Properties                 247340 
+ 9 Total           Total   Total       Others                            35700  
+10 Total           Total   0 - 4       Total                             178090 
+# … with 69,830 more rows</code></pre>
 </div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>male_data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/AgeSex_SG2022_1.1.xlsx"</span>, <span class="at">sheet =</span> <span class="st">'2022(Male)'</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>male_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 69,840 × 5
+   `Planning Area` Subzone `Age Group` `Type of Dwelling`                `2022` 
+   &lt;chr&gt;           &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt;                             &lt;chr&gt;  
+ 1 Total           Total   Total       Total                             1990210
+ 2 Total           Total   Total       Total HDB^                        1535490
+ 3 Total           Total   Total       1- and 2-Room Flats*              95290  
+ 4 Total           Total   Total       3-Room Flats                      264500 
+ 5 Total           Total   Total       4-Room Flats                      653040 
+ 6 Total           Total   Total       5-Room and Executive Flats        522640 
+ 7 Total           Total   Total       Condominiums and Other Apartments 316630 
+ 8 Total           Total   Total       Landed Properties                 118850 
+ 9 Total           Total   Total       Others                            19250  
+10 Total           Total   0 - 4       Total                             90910  
+# … with 69,830 more rows</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>female_data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/AgeSex_SG2022_1.1.xlsx"</span>, <span class="at">sheet =</span> <span class="st">'2022(Female)'</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>female_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 69,840 × 5
+   `Planning Area` Subzone `Age Group` `Type of Dwelling`                `2022` 
+   &lt;chr&gt;           &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt;                             &lt;chr&gt;  
+ 1 Total           Total   Total       Total                             2083030
+ 2 Total           Total   Total       Total HDB^                        1599200
+ 3 Total           Total   Total       1- and 2-Room Flats*              88560  
+ 4 Total           Total   Total       3-Room Flats                      294750 
+ 5 Total           Total   Total       4-Room Flats                      679200 
+ 6 Total           Total   Total       5-Room and Executive Flats        536690 
+ 7 Total           Total   Total       Condominiums and Other Apartments 338890 
+ 8 Total           Total   Total       Landed Properties                 128490 
+ 9 Total           Total   Total       Others                            16450  
+10 Total           Total   0 - 4       Total                             87180  
+# … with 69,830 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="data-exploration-and-cleaning" class="level2">
+<h2 class="anchored" data-anchor-id="data-exploration-and-cleaning">Data Exploration and Cleaning</h2>
 
 
 </section>
