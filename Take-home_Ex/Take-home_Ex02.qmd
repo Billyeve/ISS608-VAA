@@ -1,5 +1,5 @@
 ---
-title: "Data Visualization Makeover 01"
+title: "Data Visualization Makeover 02"
 subtitle: "Critique of Singapore Age-Sex Pyramid"
 author: "Bryant Philippe Lee"
 date: January 29, 2022
