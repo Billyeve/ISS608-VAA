@@ -11,7 +11,7 @@ website:
           href: Hands-on_Ex/Hands-on_Ex01.html
     - text: "In-Class Exercises"
       menu:
-        - text: "In-CLass Exercise 3"
+        - text: "In-Class Exercise 3"
           href: In-Class_Ex/In-Class_Ex03.html
     - text: "Take-home Exercises"
       menu:
