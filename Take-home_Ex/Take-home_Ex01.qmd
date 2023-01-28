@@ -2,7 +2,7 @@
 title: "Data Visualization Makeover 01"
 subtitle: "An Exploration on Singapore's 2022 Population through Age-Sex Pyramid"
 author: "Bryant Philippe Lee"
-date: "January 22, 2022"
+date: January 22, 2022
 ---
 
 # Objective
