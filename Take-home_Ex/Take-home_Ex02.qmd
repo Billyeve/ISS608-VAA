@@ -45,21 +45,34 @@ pacman::p_load(tidyverse,ggplot2,ggiraph,readxl)
 
 ## Importing Data
 
-This code chunk is to import the data from Exam_data.csv file to the Quarto/R page.
+This code chunk is to import the data from AgeSex_SG2022_1.1.xlsx file to the Quarto/R page. Note that there are 3 sheets to take into consideration namely:
+
+-   2022(Total) - shows the total population per category in 2022
+
+-   2022(Male) - shows only the male population per category in 2022
+
+-   2022(Female) - shows only the female population per category in 2022
 
 ```{r}
-pop_data <- read_excel("data/AgeSex_SG2022_1.1.xlsx", sheet = '2022(Total)')
+pop_data <- read_excel("data/AgeSex_SG2022_1.1.xlsx", sheet = '2022(Total)', 
+                       col_types = c("text", "text", "text","text", "numeric"))
 pop_data
 ```
 
 ```{r}
-male_data <- read_excel("data/AgeSex_SG2022_1.1.xlsx", sheet = '2022(Male)')
+male_data <- read_excel("data/AgeSex_SG2022_1.1.xlsx", sheet = '2022(Male)', 
+                       col_types = c("text", "text", "text","text", "numeric"))
 male_data
 ```
 
 ```{r}
-female_data <- read_excel("data/AgeSex_SG2022_1.1.xlsx", sheet = '2022(Female)')
+female_data <- read_excel("data/AgeSex_SG2022_1.1.xlsx", sheet = '2022(Female)', 
+                       col_types = c("text", "text", "text","text", "numeric"))
 female_data
 ```
+
+::: callout-note
+Ensure that the "2022" column is converted to numerical value instead of character
+:::
 
 ## Data Exploration and Cleaning 
