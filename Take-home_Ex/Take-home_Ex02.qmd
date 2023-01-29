@@ -217,7 +217,11 @@ This section explores the visualization of an Age-Sex Pyramid within a Trellis C
 
 ## Removing Planning Areas without Values 
 
-It was previously identified that 26 out of 55 Planning Areas have no value/data. To maximize space, 24 Planning Areas will be retained and filtered.
+It was previously identified that 26 out of 55 Planning Areas have no value/data. To maximize space, 12 Planning Areas will be retained and filtered.
+
+::: callout-note
+Due to the limitations of space in r generated visualization in quarto only a limited number of planning areas can be shown
+:::
 
 ```{r}
 t_pop_pa <- pop_data %>%
@@ -225,24 +229,24 @@ t_pop_pa <- pop_data %>%
   summarise(`sum_pop` = sum(`Pop`)) %>%
   ungroup()
 
-trellis24 <- arrange(t_pop_pa, desc(t_pop_pa$sum_pop)) %>%
-  slice(1:24) %>%
+trellis12 <- arrange(t_pop_pa, desc(t_pop_pa$sum_pop)) %>%
+  slice(1:12) %>%
   select(PA)
 
-trellis24_filter <- pop_pa %>%
+trellis12_filter <- pop_pa %>%
   filter(pop_pa$PA %in% trellis24$PA)
 ```
 
 ```{r}
 PA_Pyr <- ggplot() +
-  geom_bar(data = subset(trellis24_filter, 
+  geom_bar(data = subset(trellis12_filter, 
                          Sex == "Males"), 
            aes(x = AG, 
                y = -sum_pop, 
                fill = PA),
            stat = "identity", 
            fill = "#FFA319FF") +
-  geom_bar(data = subset(trellis24_filter, 
+  geom_bar(data = subset(trellis12_filter, 
                          Sex == "Females"), 
            aes(x = AG, 
                y = sum_pop, 
@@ -273,7 +277,6 @@ PA_Pyr <- ggplot() +
                                   hjust = 0.5),
         plot.subtitle = element_text(size = 8,
                                      colour = "#424242",
-                                     face = "italic",
                                      hjust = 0.5),
         plot.caption = element_text(size = 8,
                                     colour = "#424242",
