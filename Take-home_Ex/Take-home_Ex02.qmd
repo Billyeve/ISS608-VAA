@@ -290,9 +290,9 @@ PA_Pyr <- ggplot() +
         strip.background = element_blank(),
 
         axis.ticks = element_line(colour = "#424242",
-                                  linewidth = 0.3),
+                                  linewidth = 0.5),
         axis.ticks.x = element_line(colour = "#424242",
-                                  linewidth = 0.3),,
+                                  linewidth = 0.5),,
         axis.title.y = element_text(angle = 0, 
                                     size = 8, 
                                     colour = "#424242",
@@ -312,7 +312,7 @@ PA_Pyr <- ggplot() +
         legend.title = element_text(size = 8, 
                                     colour = "#424242"),
         panel.grid.major = element_line(linewidth = rel(0.5)),
-        panel.grid.major.x = element_blank(),
+        panel.grid.major.x = element_line(linewidth = rel(0.5)),
         panel.grid.minor = element_blank(),
         plot.background = element_rect(fill = "#ffffff"),
         legend.background = element_rect(fill = "#ffffff"),
@@ -322,3 +322,19 @@ PA_Pyr <- ggplot() +
 
 PA_Pyr
 ```
+
+## Learning from Practice
+
+### Clarity
+
+-   With the subtitle indicating that these Planning Areas are the most populous in Singapore, the reader is more clear of the message. Not to mention that axis labels and ticks are present to further provide clarity.
+
+-   Due to the limitation of space, a 3x3 Trellis Chart may be the maximum representation that can at least maximize readability. Adding more Age-Sex Pyramids will diminish readability and make the chart more difficult to interpret.
+
+### Aesthetic
+
+-   The removal of bar numbers lessens the elements present in the visualization and makes in more pleasing to look at. This less "noisy" visualization greatly improves its aesthetic and design.
+
+### Interactivity
+
+-   Crafting the visualization in R Studios is more difficult and restrictive as the limits in visual size restrict creative and engaging visuals. Furthermore, transitioning to interactivity may be difficult in the future as the limitations may complicate it further. Future visualization may be better crafted in R Shiny instead of quarto/R Studios.
