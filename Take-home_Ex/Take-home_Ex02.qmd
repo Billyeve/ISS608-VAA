@@ -85,7 +85,7 @@ This section explores the creation of an Age-Sex Pyramid.
 Exp1 <- pop_data %>% 
   filter(PA == "Ang Mo Kio") %>%
   group_by(AG, Sex) %>%
-  summarise(pop = sum(`Pop`), n = n()) %>%
+  summarise(`sum_pop` = sum(`Pop`), n = n()) %>%
   ungroup()
 ```
 
@@ -116,25 +116,25 @@ age_correct <- c("0 to 4", "5 to 9", "10 to 14", "15 to 19", "20 to 24", "25 to 
 
 pop_sg <- pop_data %>%
   group_by(AG, Sex) %>%
-  summarise(`count_pop` = sum(`Pop`)) %>%
+  summarise(`sum_pop` = sum(`Pop`)) %>%
   mutate(AG = factor(AG, levels = age_correct)) %>%
   arrange(AG) %>%
   ungroup()
 
 pop_sg <- pop_sg %>%
-  mutate(pct = scales::percent((count_pop/sum(count_pop)), accuracy = 0.01),
-         res = str_c(count_pop, ", ", pct))
+  mutate(pct = scales::percent((sum_pop/sum(sum_pop)), accuracy = 0.01),
+         res = str_c(sum_pop, ", ", pct))
 
 pop_pa <- pop_data %>%
   group_by(PA, AG, Sex) %>%
-  summarise(`count_pop` = sum(`Pop`)) %>%
+  summarise(`sum_pop` = sum(`Pop`)) %>%
   mutate(AG = factor(AG, levels = age_correct)) %>%
   arrange(AG) %>%
   ungroup()
 
 pop_pa <- pop_pa %>%
-  mutate(pct = scales::percent((count_pop/sum(count_pop)), accuracy = 0.01),
-         res = str_c(count_pop, ", ", pct))
+  mutate(pct = scales::percent((sum_pop/sum(sum_pop)), accuracy = 0.01),
+         res = str_c(sum_pop, ", ", pct))
 ```
 
 # Creating a Age-Sex Pyramid 
@@ -148,8 +148,8 @@ This section will be using the total Singapore data (cummulative of all Planning
 ```{r}
 SG_Pyr <- ggplot(pop_sg,
                     aes(x = ifelse(Sex == "Males", 
-                                   yes = count_pop*(-1),
-                                   no = count_pop),
+                                   yes = sum_pop*(-1),
+                                   no = sum_pop),
                         y = AG,
                         fill = Sex)) + 
   geom_col() +
@@ -215,6 +215,101 @@ SG_Pyr
 
 This section explores the visualization of an Age-Sex Pyramid within a Trellis Chart. Each Pyramid indicates per Planning Area.
 
-```{r}
+## Removing Planning Areas without Values 
 
+It was previously identified that 26 out of 55 Planning Areas have no value/data. To maximize space, 24 Planning Areas will be retained and filtered.
+
+```{r}
+t_pop_pa <- pop_data %>%
+  group_by(PA) %>%
+  summarise(`sum_pop` = sum(`Pop`)) %>%
+  ungroup()
+
+trellis24 <- arrange(t_pop_pa, desc(t_pop_pa$sum_pop)) %>%
+  slice(1:24) %>%
+  select(PA)
+
+trellis24_filter <- pop_pa %>%
+  filter(pop_pa$PA %in% trellis24$PA)
+```
+
+```{r}
+PA_Pyr <- ggplot() +
+  geom_bar(data = subset(trellis24_filter, 
+                         Sex == "Males"), 
+           aes(x = AG, 
+               y = -sum_pop, 
+               fill = PA),
+           stat = "identity", 
+           fill = "#FFA319FF") +
+  geom_bar(data = subset(trellis24_filter, 
+                         Sex == "Females"), 
+           aes(x = AG, 
+               y = sum_pop, 
+               fill = PA), 
+           stat = "identity", 
+           fill = "#302f2f") +
+  coord_flip() +
+  scale_fill_manual(
+    values = c("Males" = "#FFA319FF",
+               "Females" = "#302f2f"),
+    breaks = c("Males", "Females")) +
+  facet_wrap(.~ PA,
+             drop = FALSE, 
+             ncol = 3,
+             scales = "fixed") +
+  scale_y_continuous(limits = c(-13000, 13000),
+                     expand = expansion(mult = c(0, .04))) +
+  labs (y = "Count of Population", 
+        x = "Age Group",
+        fill = "Gender",
+        title = "Singapore Population Pyramid 2022",
+        subtitle = "Distribution of gender and age groups",
+        caption = "Data Source : Singstat.gov.sg, June 2022") +
+  theme_bw() +
+  theme(plot.title = element_text(size = 14, 
+                                  colour = "#302f2f",
+                                  face = "bold",
+                                  hjust = 0.5),
+        plot.subtitle = element_text(size = 8,
+                                     colour = "#424242",
+                                     face = "italic",
+                                     hjust = 0.5),
+        plot.caption = element_text(size = 8,
+                                    colour = "#424242",
+                                    hjust = 0),
+        strip.text = element_text(size = 7,
+                                  colour = "#424242"),
+        strip.background = element_blank(),
+
+        axis.ticks = element_line(colour = "#969595",
+                                  linewidth = 0.3),
+        axis.ticks.x = element_blank(),
+        axis.title.y = element_text(angle = 0, 
+                                    size = 8, 
+                                    colour = "#302f2f",
+                                    vjust = 1.07,
+                                    hjust = 0.8,
+                                    margin = margin(r = -40, l = 20)),
+        axis.title.x = element_text(size = 8, 
+                                    colour = "#302f2f"),
+        axis.text.x = element_blank(),
+        axis.text.y = element_text(size = 7,
+                                   colour = "#424242"),
+        legend.position = "bottom",
+        legend.justification = "left",
+        legend.text = element_text(size = 7,
+                                   colour = "#424242"),
+        legend.title = element_text(size = 8, 
+                                    colour = "#302f2f"),
+        panel.grid.major = element_line(linewidth = rel(0.5)),
+        panel.grid.major.x = element_blank(),
+        panel.grid.minor = element_blank(),
+        plot.background = element_rect(fill = "#f7e9cd"),
+        legend.background = element_rect(fill = "#f7e9cd"),
+        legend.margin = margin(t = -10),
+        panel.border = element_rect(colour = "#969595",
+                                    linewidth = 0.3)) 
+
+PA_Pyr
 ```
