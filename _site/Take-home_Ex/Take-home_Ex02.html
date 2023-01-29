@@ -230,6 +230,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#creating-a-trellis-age-sex-pyramid" id="toc-creating-a-trellis-age-sex-pyramid" class="nav-link" data-scroll-target="#creating-a-trellis-age-sex-pyramid">Creating A Trellis Age-Sex Pyramid</a>
   <ul class="collapse">
   <li><a href="#removing-planning-areas-without-values" id="toc-removing-planning-areas-without-values" class="nav-link" data-scroll-target="#removing-planning-areas-without-values">Removing Planning Areas without Values</a></li>
+  <li><a href="#creating-trellis-chart-age-sex-pyramid" id="toc-creating-trellis-chart-age-sex-pyramid" class="nav-link" data-scroll-target="#creating-trellis-chart-age-sex-pyramid">Creating Trellis Chart Age-Sex Pyramid</a></li>
+  <li><a href="#learning-from-practice" id="toc-learning-from-practice" class="nav-link" data-scroll-target="#learning-from-practice">Learning from Practice</a>
+  <ul class="collapse">
+  <li><a href="#clarity-1" id="toc-clarity-1" class="nav-link" data-scroll-target="#clarity-1">Clarity</a></li>
+  <li><a href="#aesthetic-1" id="toc-aesthetic-1" class="nav-link" data-scroll-target="#aesthetic-1">Aesthetic</a></li>
+  <li><a href="#interactivity" id="toc-interactivity" class="nav-link" data-scroll-target="#interactivity">Interactivity</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -761,6 +768,9 @@ Note
 <span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>trellis9_filter <span class="ot">&lt;-</span> pop_pa <span class="sc">%&gt;%</span></span>
 <span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(pop_pa<span class="sc">$</span>PA <span class="sc">%in%</span> trellis9<span class="sc">$</span>PA)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="creating-trellis-chart-age-sex-pyramid" class="level2">
+<h2 class="anchored" data-anchor-id="creating-trellis-chart-age-sex-pyramid">Creating Trellis Chart Age-Sex Pyramid</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>PA_Pyr <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">data =</span> <span class="fu">subset</span>(trellis9_filter, </span>
@@ -812,9 +822,9 @@ Note
 <span id="cb16-48"><a href="#cb16-48" aria-hidden="true" tabindex="-1"></a>        <span class="at">strip.background =</span> <span class="fu">element_blank</span>(),</span>
 <span id="cb16-49"><a href="#cb16-49" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-50"><a href="#cb16-50" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.ticks =</span> <span class="fu">element_line</span>(<span class="at">colour =</span> <span class="st">"#424242"</span>,</span>
-<span id="cb16-51"><a href="#cb16-51" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">linewidth =</span> <span class="fl">0.3</span>),</span>
+<span id="cb16-51"><a href="#cb16-51" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">linewidth =</span> <span class="fl">0.5</span>),</span>
 <span id="cb16-52"><a href="#cb16-52" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.ticks.x =</span> <span class="fu">element_line</span>(<span class="at">colour =</span> <span class="st">"#424242"</span>,</span>
-<span id="cb16-53"><a href="#cb16-53" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">linewidth =</span> <span class="fl">0.3</span>),,</span>
+<span id="cb16-53"><a href="#cb16-53" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">linewidth =</span> <span class="fl">0.5</span>),,</span>
 <span id="cb16-54"><a href="#cb16-54" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">0</span>, </span>
 <span id="cb16-55"><a href="#cb16-55" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">size =</span> <span class="dv">8</span>, </span>
 <span id="cb16-56"><a href="#cb16-56" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">colour =</span> <span class="st">"#424242"</span>,</span>
@@ -829,12 +839,12 @@ Note
 <span id="cb16-65"><a href="#cb16-65" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">colour =</span> <span class="st">"#424242"</span>),</span>
 <span id="cb16-66"><a href="#cb16-66" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">"bottom"</span>,</span>
 <span id="cb16-67"><a href="#cb16-67" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.justification =</span> <span class="st">"left"</span>,</span>
-<span id="cb16-68"><a href="#cb16-68" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">7</span>,</span>
+<span id="cb16-68"><a href="#cb16-68" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">5</span>,</span>
 <span id="cb16-69"><a href="#cb16-69" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">colour =</span> <span class="st">"#424242"</span>),</span>
 <span id="cb16-70"><a href="#cb16-70" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>, </span>
 <span id="cb16-71"><a href="#cb16-71" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">colour =</span> <span class="st">"#424242"</span>),</span>
 <span id="cb16-72"><a href="#cb16-72" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.grid.major =</span> <span class="fu">element_line</span>(<span class="at">linewidth =</span> <span class="fu">rel</span>(<span class="fl">0.5</span>)),</span>
-<span id="cb16-73"><a href="#cb16-73" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.grid.major.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb16-73"><a href="#cb16-73" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.grid.major.x =</span> <span class="fu">element_line</span>(<span class="at">linewidth =</span> <span class="fu">rel</span>(<span class="fl">0.5</span>)),</span>
 <span id="cb16-74"><a href="#cb16-74" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
 <span id="cb16-75"><a href="#cb16-75" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#ffffff"</span>),</span>
 <span id="cb16-76"><a href="#cb16-76" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#ffffff"</span>),</span>
@@ -847,8 +857,30 @@ Note
 <p><img src="Take-home_Ex02_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+</section>
+<section id="learning-from-practice" class="level2">
+<h2 class="anchored" data-anchor-id="learning-from-practice">Learning from Practice</h2>
+<section id="clarity-1" class="level3">
+<h3 class="anchored" data-anchor-id="clarity-1">Clarity</h3>
+<ul>
+<li><p>With the subtitle indicating that these Planning Areas are the most populous in Singapore, the reader is more clear of the message. Not to mention that axis labels and ticks are present to further provide clarity.</p></li>
+<li><p>Due to the limitation of space, a 3x3 Trellis Chart may be the maximum representation that can at least maximize readability. Adding more Age-Sex Pyramids will diminish readability and make the chart more difficult to interpret.</p></li>
+</ul>
+</section>
+<section id="aesthetic-1" class="level3">
+<h3 class="anchored" data-anchor-id="aesthetic-1">Aesthetic</h3>
+<ul>
+<li>The removal of bar numbers lessens the elements present in the visualization and makes in more pleasing to look at. This less “noisy” visualization greatly improves its aesthetic and design.</li>
+</ul>
+</section>
+<section id="interactivity" class="level3">
+<h3 class="anchored" data-anchor-id="interactivity">Interactivity</h3>
+<ul>
+<li>Crafting the visualization in R Studios is more difficult and restrictive as the limits in visual size restrict creative and engaging visuals. Furthermore, transitioning to interactivity may be difficult in the future as the limitations may complicate it further. Future visualization may be better crafted in R Shiny instead of quarto/R Studios.</li>
+</ul>
 
 
+</section>
 </section>
 </section>
 

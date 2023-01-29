@@ -329,7 +329,7 @@ PA_Pyr
 
 -   With the subtitle indicating that these Planning Areas are the most populous in Singapore, the reader is more clear of the message. Not to mention that axis labels and ticks are present to further provide clarity.
 
--   Due to the limitation of space, a 3x3 Trellis Chart may be the maximum representation that can at least maximize readability. Adding more Age-Sex Pyramids will diminish readability and make the chart more difficult to interpret.
+-   Due to the limitation of space, a 3x3 Trellis Chart may be the maximum representation that can at least maximize readability. Adding more Age-Sex Pyramids will diminish readability and make the chart more difficult to interpret. Furthermore, the limits in size also affects the font sizes, thus reducing clarity and readability.
 
 ### Aesthetic
 
