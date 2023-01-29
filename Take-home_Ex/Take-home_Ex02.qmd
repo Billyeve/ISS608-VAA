@@ -57,17 +57,17 @@ pop_data <- read_csv("data/respopagesextod2022.csv")
 
 The CSV File contains the following columns:
 
-| COLUMN NAME            | DATA TYPE  | DESCRIPTION                                                                                |
-|--------------------|----------------|-------------------------------------|
-| Planning Area (PA)     | Character  | Distinct Planning Areas in Singapore designated and mapped by the Government of Singapore  |
-| Subzone (SZ)           | Character  | Sub-areas within each Planning Areas                                                       |
-| Age Group (AG)         | Character  | Sets of population age group by 5 (ex 0-4, 5-9, etc)                                       |
-| Sex                    | Character  | Binary biological identifier of gender                                                     |
-| Type of Dwelling (TOD) | Character  | Available dwelling types in Sinagpore                                                      |
-| Population (Pop)       | Numerical  | Population per category                                                                    |
-| Time                   | Numerical  | Year -\> 2022                                                                              |
+| COLUMN NAME            | DATA TYPE | DESCRIPTION                                                                               |
+|-------------------|------------------|-----------------------------------|
+| Planning Area (PA)     | Character | Distinct Planning Areas in Singapore designated and mapped by the Government of Singapore |
+| Subzone (SZ)           | Character | Sub-areas within each Planning Areas                                                      |
+| Age Group (AG)         | Character | Sets of population age group by 5 (ex 0-4, 5-9, etc)                                      |
+| Sex                    | Character | Binary biological identifier of gender                                                    |
+| Type of Dwelling (TOD) | Character | Available dwelling types in Sinagpore                                                     |
+| Population (Pop)       | Numerical | Population per category                                                                   |
+| Time                   | Numerical | Year -\> 2022                                                                             |
 
-## Data Exploration and Cleaning 
+## Data Exploration and Cleaning
 
 This section is to check incorrect and missing values in the data set.
 
@@ -75,4 +75,136 @@ This section is to check incorrect and missing values in the data set.
 skimr::skim(pop_data)
 ```
 
-# Create Age-Sex Pyramid 
+# Create Age-Sex Pyramid
+
+This section explores the creation of an Age-Sex Pyramid.
+
+## Exploration of y-axis Data
+
+```{r}
+Exp1 <- pop_data %>% 
+  filter(PA == "Ang Mo Kio") %>%
+  group_by(AG, Sex) %>%
+  summarise(pop = sum(`Pop`), n = n()) %>%
+  ungroup()
+```
+
+```{r}
+ggplot(data = Exp1,
+       aes(y = AG)) +
+  geom_bar() +
+  theme_bw() +  
+  ggtitle("Test: Age Group Distribution") 
+```
+
+Based on the y-axis (Age Group), 2 issues are noticed:
+
+-   Each Age Group is written with an underscore ("\_") instead of a space in between each word/number
+
+-   The values are organized alphabetically with consideration of the starting value (number or alphabet). As such "5_to_9" came before "45_to_49"
+
+### Correcting Age Labels
+
+```{r}
+pop_data$AG <- gsub("_", " ", pop_data$AG, fixed = TRUE)
+```
+
+### Correcting Sequence
+
+```{r}
+age_correct <- c("0 to 4", "5 to 9", "10 to 14", "15 to 19", "20 to 24", "25 to 29", "30 to 34", "35 to 39", "40 to 44", "45 to 49", "50 to 54", "55 to 59", "60 to 64", "65 to 69", "70 to 74", "75 to 79", "80 to 84", "85 to 89", "90 and over")
+
+pop_sg <- pop_data %>%
+  group_by(AG, Sex) %>%
+  summarise(`count_pop` = sum(`Pop`)) %>%
+  mutate(AG = factor(AG, levels = age_correct)) %>%
+  arrange(AG) %>%
+  ungroup()
+
+pop_sg <- pop_sg %>%
+  mutate(pct = scales::percent((count_pop/sum(count_pop)), accuracy = 0.01),
+         res = str_c(count_pop, ", ", pct))
+
+pop_pa <- pop_data %>%
+  group_by(PA, AG, Sex) %>%
+  summarise(`count_pop` = sum(`Pop`)) %>%
+  mutate(AG = factor(AG, levels = age_correct)) %>%
+  arrange(AG) %>%
+  ungroup()
+
+pop_pa <- pop_pa %>%
+  mutate(pct = scales::percent((count_pop/sum(count_pop)), accuracy = 0.01),
+         res = str_c(count_pop, ", ", pct))
+```
+
+# Creating a Age-Sex Pyramid 
+
+This section explores the visualization of an Age-Sex Pyramid.
+
+::: callout-note
+This section will be using the total Singapore data (cummulative of all Planning Area)
+:::
+
+```{r}
+SG_Pyr <- ggplot(pop_sg,
+                    aes(x = ifelse(Sex == "Males", 
+                                   yes = count_pop*(-1),
+                                   no = count_pop),
+                        y = AG,
+                        fill = Sex)) + 
+  geom_col() +
+  scale_x_continuous(limits = c(-170000, 170000),
+    breaks = seq(-200000, 200000, 50000), 
+                     labels = paste0(
+                       as.character(
+                         c(seq(200, 0, -50), 
+                           seq(50, 200, 50))),
+                       "k")) +
+  scale_y_discrete(expand = expansion(mult = c(0, 0.01))) +
+  labs (x = "Count of Population", 
+        y = "Age Group",
+        fill = "Gender",
+        title = "Singapore Population Pyramid 2022",
+        subtitle = "Distribution of gender and age groups",
+        caption = "Data Source : Singstat.gov.sg, June 2022") +
+  theme_bw() +
+  theme(plot.title = element_text(size = 11, 
+                                  colour = "#424242",
+                                  face = "bold",
+                                  hjust = 0.5),
+        plot.subtitle = element_text(size = 8,
+                                     colour = "#424242",
+                                     hjust = 0.5),
+        plot.caption = element_text(size = 5,
+                                    colour = "#424242",
+                                    hjust = 0),
+        axis.ticks = element_line(colour = "#969595",
+                                  linewidth = 0.1),
+        axis.title.y = element_text(angle = 0, 
+                                    size = 8, 
+                                    colour = "#302f2f",
+                                    vjust = 1.07,
+                                    hjust = 1,
+                                    margin = margin(r = -50, l = 10)),
+        axis.title.x = element_text(size = 8, 
+                                    colour = "#424242"),
+        axis.text.x = element_text(size = 7,
+                                   colour = "#424242"),
+        axis.text.y = element_text(size = 7,
+                                   colour = "#424242"),
+        legend.position = "bottom",
+        legend.justification = "left",
+        legend.text = element_text(size = 7,
+                                   colour = "#424242"),
+        legend.title = element_text(size = 8, 
+                                    colour = "#424242"),
+        panel.grid.major = element_line(linewidth = rel(0.5)),
+        panel.grid.minor = element_blank(),
+        plot.background = element_rect(fill = "#ffffff"),
+        legend.background = element_rect(fill = "#ffffff"),
+        legend.margin = margin(t = -10),
+        panel.border = element_rect(colour = "#969595",
+                                    linewidth = 0.3)) 
+  
+SG_Pyr
+```
