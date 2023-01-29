@@ -11,6 +11,10 @@ The objective of this exercise is to critique and improve an **Age-Sex Pyramid A
 
 The visualization is created using the ***Singapore Residents by Planning Area / Sub-zone, Age Group, Sex and Type of Dwelling, June 2022 (Singstat).***
 
+::: callout-note
+The output should be focused as a static Trellis Chart without filter interactivity.
+:::
+
 # Original Visualization and Critique
 
 The Original Visualization Source: https://public.tableau.com/app/profile/joseph.zexeong.tan/viz/SingaporePopulationPyramindJun2022v1_3/trel3x3_d?publish=yes
@@ -40,21 +44,35 @@ The Original Visualization Source: https://public.tableau.com/app/profile/joseph
 Before we get started, it is important for us to ensure that the required R packages have been installed.
 
 ```{r}
-pacman::p_load(tidyverse,ggplot2,ggiraph,readxl)
+pacman::p_load(tidyverse,ggplot2,knitr, plotly, skimr, questionr, funModeling, sf, tmap, quanteda, NLP)
 ```
 
 ## Importing Data
 
-This code chunk is to import the data from AgeSex_SG2022_1.1.xlsx file to the Quarto/R page. Note that there are 3 sheets to take into consideration namely:
-
--   2022(Total) - shows the total population per category in 2022
-
--   2022(Male) - shows only the male population per category in 2022
-
--   2022(Female) - shows only the female population per category in 2022
+This code chunk is to import the data from respopagesextod2022.csv file to the Quarto/R page.
 
 ```{r}
 pop_data <- read_csv("data/respopagesextod2022.csv")
 ```
 
+The CSV File contains the following columns:
+
+| COLUMN NAME            | DATA TYPE  | DESCRIPTION                                                                                |
+|--------------------|----------------|-------------------------------------|
+| Planning Area (PA)     | Character  | Distinct Planning Areas in Singapore designated and mapped by the Government of Singapore  |
+| Subzone (SZ)           | Character  | Sub-areas within each Planning Areas                                                       |
+| Age Group (AG)         | Character  | Sets of population age group by 5 (ex 0-4, 5-9, etc)                                       |
+| Sex                    | Character  | Binary biological identifier of gender                                                     |
+| Type of Dwelling (TOD) | Character  | Available dwelling types in Sinagpore                                                      |
+| Population (Pop)       | Numerical  | Population per category                                                                    |
+| Time                   | Numerical  | Year -\> 2022                                                                              |
+
 ## Data Exploration and Cleaning 
+
+This section is to check incorrect and missing values in the data set.
+
+```{r}
+skimr::skim(pop_data)
+```
+
+# Create Age-Sex Pyramid 
