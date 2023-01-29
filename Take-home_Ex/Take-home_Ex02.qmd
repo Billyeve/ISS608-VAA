@@ -237,6 +237,8 @@ trellis9_filter <- pop_pa %>%
   filter(pop_pa$PA %in% trellis9$PA)
 ```
 
+## Creating Trellis Chart Age-Sex Pyramid
+
 ```{r}
 PA_Pyr <- ggplot() +
   geom_bar(data = subset(trellis9_filter, 
@@ -305,7 +307,7 @@ PA_Pyr <- ggplot() +
                                    colour = "#424242"),
         legend.position = "bottom",
         legend.justification = "left",
-        legend.text = element_text(size = 7,
+        legend.text = element_text(size = 5,
                                    colour = "#424242"),
         legend.title = element_text(size = 8, 
                                     colour = "#424242"),
