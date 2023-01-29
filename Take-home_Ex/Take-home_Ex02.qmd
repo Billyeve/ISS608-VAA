@@ -168,7 +168,7 @@ SG_Pyr <- ggplot(pop_sg,
         subtitle = "Distribution of gender and age groups",
         caption = "Data Source : Singstat.gov.sg, June 2022") +
   theme_bw() +
-  theme(plot.title = element_text(size = 11, 
+  theme(plot.title = element_text(size = 14, 
                                   colour = "#424242",
                                   face = "bold",
                                   hjust = 0.5),
@@ -183,11 +183,13 @@ SG_Pyr <- ggplot(pop_sg,
         axis.title.y = element_text(angle = 0, 
                                     size = 8, 
                                     colour = "#424242",
-                                    vjust = 1.07,
+                                    face = "bold",
+                                    vjust = 1.05,
                                     hjust = 1,
-                                    margin = margin(r = -50, l = 10)),
+                                    margin = margin(r = -40, l = 10)),
         axis.title.x = element_text(size = 8, 
-                                    colour = "#424242"),
+                                    colour = "#424242",
+                                    face = "bold"),
         axis.text.x = element_text(size = 7,
                                    colour = "#424242"),
         axis.text.y = element_text(size = 7,
@@ -207,4 +209,12 @@ SG_Pyr <- ggplot(pop_sg,
                                     linewidth = 0.3)) 
   
 SG_Pyr
+```
+
+# Creating A Trellis Age-Sex Pyramid
+
+This section explores the visualization of an Age-Sex Pyramid within a Trellis Chart. Each Pyramid indicates per Planning Area.
+
+```{r}
+
 ```
