@@ -38,7 +38,7 @@ First, write a code chunk to check, install and launch the following R packages:
 -   [**patchwork**](https://patchwork.data-imaginist.com/) for compising multiple plots.
 
 ```{r}
-pacman::p_load(ggiraph, plotly, gganimate, DT, tidyverse, patchwork, gapminder, rPackedBar, ggplot2, globals) 
+pacman::p_load(ggiraph, plotly, gganimate, DT, tidyverse, patchwork, gapminder, rPackedBar, ggplot2, gifski, av, magick) 
 ```
 
 ## Importing Data
