@@ -37,7 +37,7 @@ To ensure that the data is properly loaded and read, the following actions will 
 
 Trellis Display is a visualization framework aimed at easily presenting visual data in tables and box subdivided by category. The aim is to be able to compare and contrast the data based on the category in one window. 
 
-![](images/image-2015924300.png){width="511"}
+![](images/image-2015924300.png){fig-align="center" width="511"}
 
 Though the original visualization is a trellis display, there are some issues on the clarity, aesthetics, and interactive design of the original data visualization to be explained at the next section. 
 
@@ -75,7 +75,7 @@ There is an opportunity to create filters to limit and focus the dashboard to a 
 
 # Proposed Design of Trellis Chart
 
-![](images/image-1999623995.png){width="510"}
+![](images/image-1999623995.png){fig-align="center" width="510"}
 
 ## Clarity
 

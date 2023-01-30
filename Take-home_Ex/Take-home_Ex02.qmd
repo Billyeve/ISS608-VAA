@@ -19,7 +19,7 @@ The output should be focused as a static Trellis Chart without filter interactiv
 
 The Original Visualization Source: https://public.tableau.com/app/profile/joseph.zexeong.tan/viz/SingaporePopulationPyramindJun2022v1_3/trel3x3_d?publish=yes
 
-![](images/image-2072046901.png)
+![](images/image-2072046901.png){fig-align="center"}
 
 ## Clarity
 
