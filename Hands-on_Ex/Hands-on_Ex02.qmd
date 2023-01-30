@@ -189,4 +189,4 @@ It is not unusual that multiple graphs are required to tell a compelling visual 
 
 Patchwork package has a very simple syntax where we can create layouts super easily. Here\'s the general syntax that combines: - Two-Column Layout using the Plus Sign +. - Parenthesis () to create a subplot group. - Two-Row Layout using the Division Sign `\`
 
-![](images/image-535383520.png)
+![](images/image-535383520.png){width="164"}

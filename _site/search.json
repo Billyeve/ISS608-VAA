@@ -1,5 +1,40 @@
 [
   {
+    "objectID": "Hands-on_Ex/Hands-on_Ex02.html",
+    "href": "Hands-on_Ex/Hands-on_Ex02.html",
+    "title": "Hands-on Exercise 02",
+    "section": "",
+    "text": "Before we get started, it is important for us to ensure that the required R packages have been installed. If yes, we will load the R packages. If they have yet to be installed, we will install the R packages and load them onto R environment.\nThe chunk code on the right will do the trick.\n\n\npacman::p_load(tidyverse, patchwork, \n               ggthemes, hrbrthemes,\n               ggrepel) \n\n\n\n\n\nThe code chunk below imports exam_data.csv into R environment using read_csv() function of readr package.\nreadr is one of the tidyverse package.\n\n\nexam_data <- read_csv(\"data/Exam_data.csv\")\n\nRows: 322 Columns: 7\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (4): ID, CLASS, GENDER, RACE\ndbl (3): ENGLISH, MATHS, SCIENCE\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\n\nYear end examination grades of a cohort of primary 3 students from a local school.\nThere are a total of seven attributes. Four of them are categorical data type and the other three are in continuous data type.\n\nThe categorical attributes are: ID, CLASS, GENDER and RACE.\nThe continuous attributes are: MATHS, ENGLISH and SCIENCE."
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex02.html#working-with-ggrepel",
+    "href": "Hands-on_Ex/Hands-on_Ex02.html#working-with-ggrepel",
+    "title": "Hands-on Exercise 02",
+    "section": "Working with ggrepel",
+    "text": "Working with ggrepel\nggrepel is an extension of ggplot2 package which provides geoms for ggplot2 to repel overlapping text as in our examples on the right. We simply replace geom_text() by geom_text_repel() and geom_label() by geom_label_repel.\n\nggplot(data=exam_data, \n       aes(x= MATHS, \n           y=ENGLISH)) +\n  geom_point() +\n  geom_smooth(method=lm, \n              size=0.5) +  \n  geom_label_repel(aes(label = ID), \n                   fontface = \"bold\") +\n  coord_cartesian(xlim=c(0,100),\n                  ylim=c(0,100)) +\n  ggtitle(\"English scores versus Maths scores for Primary 3\")\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\nWarning: ggrepel: 317 unlabeled data points (too many overlaps). Consider\nincreasing max.overlaps"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex02.html#working-with-ggtheme-package",
+    "href": "Hands-on_Ex/Hands-on_Ex02.html#working-with-ggtheme-package",
+    "title": "Hands-on Exercise 02",
+    "section": "Working with ggtheme package",
+    "text": "Working with ggtheme package\nggthemes provides 'ggplot2' themes that replicate the look of plots by Edward Tufte, Stephen Few, Fivethirtyeight, The Economist, 'Stata', 'Excel', and The Wall Street Journal, among others.\n\nggplot(data=exam_data, \n             aes(x = MATHS)) +\n  geom_histogram(bins=20, \n                 boundary = 100,\n                 color=\"grey25\", \n                 fill=\"grey90\") +\n  ggtitle(\"Distribution of Maths scores\") +\n  theme_economist()\n\n\n\n\n\nIt also provides some extra geoms and scales for 'ggplot2'. Consult this vignette to learn more."
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex02.html#working-with-hrbthems-package",
+    "href": "Hands-on_Ex/Hands-on_Ex02.html#working-with-hrbthems-package",
+    "title": "Hands-on Exercise 02",
+    "section": "Working with hrbthems package",
+    "text": "Working with hrbthems package\nhrbrthemes package provides a base theme that focuses on typographic elements, including where various labels are placed as well as the fonts that are used.\n\nggplot(data=exam_data, \n             aes(x = MATHS)) +\n  geom_histogram(bins=20, \n                 boundary = 100,\n                 color=\"grey25\", \n                 fill=\"grey90\") +\n  ggtitle(\"Distribution of Maths scores\") +\n  theme_ipsum()\n\n\n\n\n\nThe second goal centers around productivity for a production workflow. In fact, this \"production workflow\" is the context for where the elements of hrbrthemes should be used. Consult this vignette to learn more.\n\n\nggplot(data=exam_data, \n             aes(x = MATHS)) +\n  geom_histogram(bins=20, \n                 boundary = 100,\n                 color=\"grey25\", \n                 fill=\"grey90\") +\n  ggtitle(\"Distribution of Maths scores\") +\n  theme_ipsum(axis_title_size = 18, \n              base_size = 15, \n              grid = \"Y\") \n\n\n\n\n\n\n\n\n\n\nWhat can we learn from the code chunk below?\n\n\n\n\naxis_title_size argument is used to increase the font size of the axis title to 18,\nbase_size argument is used to increase the default axis label to 15, and\ngrid argument is used to remove the x-axis grid lines."
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex02.html#creating-composite-graphics-pathwork-methods",
+    "href": "Hands-on_Ex/Hands-on_Ex02.html#creating-composite-graphics-pathwork-methods",
+    "title": "Hands-on Exercise 02",
+    "section": "Creating Composite Graphics: pathwork methods",
+    "text": "Creating Composite Graphics: pathwork methods\nIt is not unusual that multiple graphs are required to tell a compelling visual story. There are several ggplot2 extensions provide functions to compose figure with multiple graphs. In this section, I am going to shared with you patchwork.\nPatchwork package has a very simple syntax where we can create layouts super easily. Here's the general syntax that combines: - Two-Column Layout using the Plus Sign +. - Parenthesis () to create a subplot group. - Two-Row Layout using the Division Sign \\"
+  },
+  {
     "objectID": "Hands-on_Ex/Hands-on_Ex01.html",
     "href": "Hands-on_Ex/Hands-on_Ex01.html",
     "title": "Hands-on Exercise 01",
