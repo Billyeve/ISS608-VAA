@@ -1,5 +1,5 @@
 ---
-title: "ISSS608 - VAA"
+title: "ISSS608 - Visual Analytics and Applications"
 ---
 
 Hello there,
@@ -8,4 +8,4 @@ This is my Quarto/Netify Page, documenting my academic studies in the course **I
 
 This is a work in progress, keep track of the updates.
 
-![](images/image-1552442011.png){width="321"}
+![](images/image-1552442011.png){fig-align="center" width="288"}
