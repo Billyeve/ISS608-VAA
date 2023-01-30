@@ -190,3 +190,55 @@ It is not unusual that multiple graphs are required to tell a compelling visual 
 Patchwork package has a very simple syntax where we can create layouts super easily. Here\'s the general syntax that combines: - Two-Column Layout using the Plus Sign +. - Parenthesis () to create a subplot group. - Two-Row Layout using the Division Sign `\`
 
 ![](images/image-535383520.png){width="164"}
+
+## Working with patchwork
+
+```{r}
+p1 + p2 / p3
+```
+
+-   will place the plots beside each other, while / will stack them.
+
+```{r}
+(p1 / p2) | p3
+```
+
+To learn more about, refer to [Plot Assembly](https://patchwork.data-imaginist.com/articles/guides/assembly.html).
+
+**patchwork** also provides auto-tagging capabilities, in order to identify subplots in text:
+
+```{r}
+((p1 / p2) | p3) + 
+  plot_annotation(tag_levels = 'I')
+```
+
+```{r}
+patchwork <- (p1 / p2) | p3
+patchwork & theme_economist()
+```
+
+Beside providing functions to place plots next to each other based on the provided layout. With [`inset_element()`](https://patchwork.data-imaginist.com/reference/inset_element.html) of **patchwork**, we can place one or several plots or graphic elements freely on top or below another plot.
+
+```{r}
+p3 + inset_element(p2, 
+                   left = 0.02, 
+                   bottom = 0.7, 
+                   right = 0.5, 
+                   top = 1)
+```
+
+# Reference
+
+-   [Patchwork R package goes nerd viral](https://www.littlemissdata.com/blog/patchwork)
+
+-   [ggrepel](https://ggrepel.slowkow.com/index.html)
+
+-   [ggthemes](https://ggplot2.tidyverse.org/reference/ggtheme.html)
+
+-   [hrbrthemes](https://cinc.rud.is/web/packages/hrbrthemes/)
+
+-   [ggplot tips: Arranging plots](https://albert-rapp.de/post/2021-10-28-extend-plot-variety/)
+
+-   [ggplot2 Theme Elements Demonstration](https://henrywang.nl/ggplot2-theme-elements-demonstration/)
+
+-   [ggplot2 Theme Elements Reference Sheet](https://isabella-b.com/blog/ggplot2-theme-elements-reference/)
