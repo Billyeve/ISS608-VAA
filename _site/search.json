@@ -35,6 +35,13 @@
     "text": "Creating Composite Graphics: pathwork methods\nIt is not unusual that multiple graphs are required to tell a compelling visual story. There are several ggplot2 extensions provide functions to compose figure with multiple graphs. In this section, I am going to shared with you patchwork.\nPatchwork package has a very simple syntax where we can create layouts super easily. Here's the general syntax that combines: - Two-Column Layout using the Plus Sign +. - Parenthesis () to create a subplot group. - Two-Row Layout using the Division Sign \\"
   },
   {
+    "objectID": "Hands-on_Ex/Hands-on_Ex02.html#working-with-patchwork",
+    "href": "Hands-on_Ex/Hands-on_Ex02.html#working-with-patchwork",
+    "title": "Hands-on Exercise 02",
+    "section": "Working with patchwork",
+    "text": "Working with patchwork\n\np1 + p2 / p3\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\nwill place the plots beside each other, while / will stack them.\n\n\n(p1 / p2) | p3\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\nTo learn more about, refer to Plot Assembly.\npatchwork also provides auto-tagging capabilities, in order to identify subplots in text:\n\n((p1 / p2) | p3) + \n  plot_annotation(tag_levels = 'I')\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\npatchwork <- (p1 / p2) | p3\npatchwork & theme_economist()\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\nBeside providing functions to place plots next to each other based on the provided layout. With inset_element() of patchwork, we can place one or several plots or graphic elements freely on top or below another plot.\n\np3 + inset_element(p2, \n                   left = 0.02, \n                   bottom = 0.7, \n                   right = 0.5, \n                   top = 1)\n\n`geom_smooth()` using formula = 'y ~ x'"
+  },
+  {
     "objectID": "Hands-on_Ex/Hands-on_Ex01.html",
     "href": "Hands-on_Ex/Hands-on_Ex01.html",
     "title": "Hands-on Exercise 01",
