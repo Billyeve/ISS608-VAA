@@ -5,7 +5,7 @@ author: "Bryant Philippe Lee"
 date: January 29, 2022
 ---
 
-# Objective
+## Objective
 
 The objective of this exercise is to critique and improve an **Age-Sex Pyramid Analytic Visualization** of Singapore of the year 2022. The output is to recreate a Trellis Chart Age-Sex Pyramid through R-Studios by using ggplot2, ggplot2 extensions and tidyverse packages.
 
@@ -15,13 +15,13 @@ The visualization is created using the ***Singapore Residents by Planning Area /
 The output should be focused as a static Trellis Chart without filter interactivity.
 :::
 
-# Original Visualization and Critique
+### Original Visualization and Critique
 
 The Original Visualization Source: https://public.tableau.com/app/profile/joseph.zexeong.tan/viz/SingaporePopulationPyramindJun2022v1_3/trel3x3_d?publish=yes
 
 ![](images/image-2072046901.png){fig-align="center"}
 
-## Clarity
+#### Clarity
 
 -   **The Original Visualization shows 2 separate Age-Pyramid Trellis Chart that shows the same message.** Two sets of visualization normally indicate that they visualize two different messages that may it be independent of each other or connected. The issue with the dashboard is that both sets indicate the same message just in a different format. This raises either confusion to the reader and a form of redundancy that can be best allocated to something else.
 
@@ -29,7 +29,7 @@ The Original Visualization Source: https://public.tableau.com/app/profile/joseph
 
 -   **3x3 Trellis Chart lacks y-axis labels.** Taking to consideration that the Trellis Charts is a stand alone visualization, the lack of y-axis label reduces the clarity of the y-axis values. Furthermore, both Trellis Charts lack x-axis values and labels but make up for it through text values per bar. In terms of clarity, one can argue that the lack of x-axis may confuse the reader due to the text values having no reference while others say the taxt vales are enough to compensate the lack of x-axis.
 
-## Aesthetic
+#### Aesthetic
 
 -   **Text Values center bar alignment makes reading the values difficult.** Due to the mismatched alignment of the text values brought abut by the central alignment placement in the bar chart makes reading the values difficult as the reader cannot simply scroll down and read the values, not mention creates unnecessary confusion in the graph.
 
@@ -37,9 +37,9 @@ The Original Visualization Source: https://public.tableau.com/app/profile/joseph
 
 -   **Horizontally arranged Trellis Chart limits and squeezes the Age-Sex Pyramids.** This visualization arrangement artificially contorts the bar length due to the lack of width space. The squeeze minimizes the visual differentiation between bar charts as such creates an illusion that some bars are of the same size.
 
-# Getting Started - Data Loading and Processing
+## Getting Started - Data Loading and Processing
 
-## Installing and loading the required libraries
+### Installing and loading the required libraries
 
 Before we get started, it is important for us to ensure that the required R packages have been installed.
 
@@ -47,7 +47,7 @@ Before we get started, it is important for us to ensure that the required R pack
 pacman::p_load(tidyverse,ggplot2,knitr, plotly, skimr, questionr, funModeling, sf, tmap, quanteda, NLP)
 ```
 
-## Importing Data
+### Importing Data
 
 This code chunk is to import the data from respopagesextod2022.csv file to the Quarto/R page.
 
@@ -67,7 +67,7 @@ The CSV File contains the following columns:
 | Population (Pop)       | Numerical | Population per category                                                                   |
 | Time                   | Numerical | Year -\> 2022                                                                             |
 
-## Data Exploration and Cleaning
+### Data Exploration and Cleaning
 
 This section is to check incorrect and missing values in the data set.
 
@@ -75,11 +75,11 @@ This section is to check incorrect and missing values in the data set.
 skimr::skim(pop_data)
 ```
 
-# Create Age-Sex Pyramid
+## Create Age-Sex Pyramid
 
 This section explores the creation of an Age-Sex Pyramid.
 
-## Exploration of y-axis Data
+### Exploration of y-axis Data
 
 ```{r}
 Exp1 <- pop_data %>% 
@@ -103,13 +103,13 @@ Based on the y-axis (Age Group), 2 issues are noticed:
 
 -   The values are organized alphabetically with consideration of the starting value (number or alphabet). As such "5_to_9" came before "45_to_49"
 
-### Correcting Age Labels
+#### Correcting Age Labels
 
 ```{r}
 pop_data$AG <- gsub("_", " ", pop_data$AG, fixed = TRUE)
 ```
 
-### Correcting Sequence
+#### Correcting Sequence
 
 ```{r}
 age_correct <- c("0 to 4", "5 to 9", "10 to 14", "15 to 19", "20 to 24", "25 to 29", "30 to 34", "35 to 39", "40 to 44", "45 to 49", "50 to 54", "55 to 59", "60 to 64", "65 to 69", "70 to 74", "75 to 79", "80 to 84", "85 to 89", "90 and over")
@@ -137,7 +137,7 @@ pop_pa <- pop_pa %>%
          res = str_c(sum_pop, ", ", pct))
 ```
 
-# Creating a Age-Sex Pyramid 
+## Creating a Age-Sex Pyramid 
 
 This section explores the visualization of an Age-Sex Pyramid.
 
@@ -211,11 +211,11 @@ SG_Pyr <- ggplot(pop_sg,
 SG_Pyr
 ```
 
-# Creating A Trellis Age-Sex Pyramid
+## Creating A Trellis Age-Sex Pyramid
 
 This section explores the visualization of an Age-Sex Pyramid within a Trellis Chart. Each Pyramid indicates per Planning Area.
 
-## Removing Planning Areas without Values 
+### Removing Planning Areas without Values 
 
 It was previously identified that 26 out of 55 Planning Areas have no value/data. To maximize space, 9 Planning Areas will be retained and filtered.
 
@@ -237,7 +237,7 @@ trellis9_filter <- pop_pa %>%
   filter(pop_pa$PA %in% trellis9$PA)
 ```
 
-## Creating Trellis Chart Age-Sex Pyramid
+### Creating Trellis Chart Age-Sex Pyramid
 
 ```{r}
 PA_Pyr <- ggplot() +
@@ -323,18 +323,18 @@ PA_Pyr <- ggplot() +
 PA_Pyr
 ```
 
-## Learning from Practice
+### Learning from Practice
 
-### Clarity
+#### Clarity
 
 -   With the subtitle indicating that these Planning Areas are the most populous in Singapore, the reader is more clear of the message. Not to mention that axis labels and ticks are present to further provide clarity.
 
 -   Due to the limitation of space, a 3x3 Trellis Chart may be the maximum representation that can at least maximize readability. Adding more Age-Sex Pyramids will diminish readability and make the chart more difficult to interpret. Furthermore, the limits in size also affects the font sizes, thus reducing clarity and readability.
 
-### Aesthetic
+#### Aesthetic
 
 -   The removal of bar numbers lessens the elements present in the visualization and makes in more pleasing to look at. This less "noisy" visualization greatly improves its aesthetic and design.
 
-### Interactivity
+#### Interactivity
 
 -   Crafting the visualization in R Studios is more difficult and restrictive as the limits in visual size restrict creative and engaging visuals. Furthermore, transitioning to interactivity may be difficult in the future as the limitations may complicate it further. Future visualization may be better crafted in R Shiny instead of quarto/R Studios.
