@@ -9,6 +9,8 @@ website:
       menu:
         - text: "Hands-on Exercise 1: Programming Elegant DataVis with ggplot2"
           href: Hands-on_Ex/Hands-on_Ex01.html
+        - text: "Hands-on Exercise 2: Beyond ggplot2 Fundamentals"
+          href: Hands-on_Ex/Hands-on_Ex02.html
     - text: "In-Class Exercises"
       menu:
         - text: "In-Class Exercise 3"
