@@ -157,6 +157,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <a class="dropdown-item" href="../Hands-on_Ex/Hands-on_Ex02.html">
  <span class="dropdown-text">Hands-on Exercise 2: Beyond ggplot2 Fundamentals</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../Hands-on_Ex/Hands-on_Ex03.html">
+ <span class="dropdown-text">Hands-on Exercise 3: Programming Interactive Data Visualisation with R</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -210,11 +214,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#objective" id="toc-objective" class="nav-link active" data-scroll-target="#objective">Objective</a></li>
-  <li><a href="#original-visualization-and-critique" id="toc-original-visualization-and-critique" class="nav-link" data-scroll-target="#original-visualization-and-critique">Original Visualization and Critique</a>
+  <li><a href="#objective" id="toc-objective" class="nav-link active" data-scroll-target="#objective">Objective</a>
   <ul class="collapse">
-  <li><a href="#clarity" id="toc-clarity" class="nav-link" data-scroll-target="#clarity">Clarity</a></li>
-  <li><a href="#aesthetic" id="toc-aesthetic" class="nav-link" data-scroll-target="#aesthetic">Aesthetic</a></li>
+  <li><a href="#original-visualization-and-critique" id="toc-original-visualization-and-critique" class="nav-link" data-scroll-target="#original-visualization-and-critique">Original Visualization and Critique</a></li>
   </ul></li>
   <li><a href="#getting-started---data-loading-and-processing" id="toc-getting-started---data-loading-and-processing" class="nav-link" data-scroll-target="#getting-started---data-loading-and-processing">Getting Started - Data Loading and Processing</a>
   <ul class="collapse">
@@ -224,23 +226,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </ul></li>
   <li><a href="#create-age-sex-pyramid" id="toc-create-age-sex-pyramid" class="nav-link" data-scroll-target="#create-age-sex-pyramid">Create Age-Sex Pyramid</a>
   <ul class="collapse">
-  <li><a href="#exploration-of-y-axis-data" id="toc-exploration-of-y-axis-data" class="nav-link" data-scroll-target="#exploration-of-y-axis-data">Exploration of y-axis Data</a>
-  <ul class="collapse">
-  <li><a href="#correcting-age-labels" id="toc-correcting-age-labels" class="nav-link" data-scroll-target="#correcting-age-labels">Correcting Age Labels</a></li>
-  <li><a href="#correcting-sequence" id="toc-correcting-sequence" class="nav-link" data-scroll-target="#correcting-sequence">Correcting Sequence</a></li>
-  </ul></li>
+  <li><a href="#exploration-of-y-axis-data" id="toc-exploration-of-y-axis-data" class="nav-link" data-scroll-target="#exploration-of-y-axis-data">Exploration of y-axis Data</a></li>
   </ul></li>
   <li><a href="#creating-a-age-sex-pyramid" id="toc-creating-a-age-sex-pyramid" class="nav-link" data-scroll-target="#creating-a-age-sex-pyramid">Creating a Age-Sex Pyramid</a></li>
   <li><a href="#creating-a-trellis-age-sex-pyramid" id="toc-creating-a-trellis-age-sex-pyramid" class="nav-link" data-scroll-target="#creating-a-trellis-age-sex-pyramid">Creating A Trellis Age-Sex Pyramid</a>
   <ul class="collapse">
   <li><a href="#removing-planning-areas-without-values" id="toc-removing-planning-areas-without-values" class="nav-link" data-scroll-target="#removing-planning-areas-without-values">Removing Planning Areas without Values</a></li>
   <li><a href="#creating-trellis-chart-age-sex-pyramid" id="toc-creating-trellis-chart-age-sex-pyramid" class="nav-link" data-scroll-target="#creating-trellis-chart-age-sex-pyramid">Creating Trellis Chart Age-Sex Pyramid</a></li>
-  <li><a href="#learning-from-practice" id="toc-learning-from-practice" class="nav-link" data-scroll-target="#learning-from-practice">Learning from Practice</a>
-  <ul class="collapse">
-  <li><a href="#clarity-1" id="toc-clarity-1" class="nav-link" data-scroll-target="#clarity-1">Clarity</a></li>
-  <li><a href="#aesthetic-1" id="toc-aesthetic-1" class="nav-link" data-scroll-target="#aesthetic-1">Aesthetic</a></li>
-  <li><a href="#interactivity" id="toc-interactivity" class="nav-link" data-scroll-target="#interactivity">Interactivity</a></li>
-  </ul></li>
+  <li><a href="#learning-from-practice" id="toc-learning-from-practice" class="nav-link" data-scroll-target="#learning-from-practice">Learning from Practice</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -278,8 +271,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="objective" class="level1">
-<h1>Objective</h1>
+<section id="objective" class="level2">
+<h2 class="anchored" data-anchor-id="objective">Objective</h2>
 <p>The objective of this exercise is to critique and improve an <strong>Age-Sex Pyramid Analytic Visualization</strong> of Singapore of the year 2022. The output is to recreate a Trellis Chart Age-Sex Pyramid through R-Studios by using ggplot2, ggplot2 extensions and tidyverse packages.</p>
 <p>The visualization is created using the <strong><em>Singapore Residents by Planning Area / Sub-zone, Age Group, Sex and Type of Dwelling, June 2022 (Singstat).</em></strong></p>
 <div class="callout-note callout callout-style-default callout-captioned">
@@ -295,25 +288,24 @@ Note
 <p>The output should be focused as a static Trellis Chart without filter interactivity.</p>
 </div>
 </div>
-</section>
-<section id="original-visualization-and-critique" class="level1">
-<h1>Original Visualization and Critique</h1>
+<section id="original-visualization-and-critique" class="level3">
+<h3 class="anchored" data-anchor-id="original-visualization-and-critique">Original Visualization and Critique</h3>
 <p>The Original Visualization Source: https://public.tableau.com/app/profile/joseph.zexeong.tan/viz/SingaporePopulationPyramindJun2022v1_3/trel3x3_d?publish=yes</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/image-2072046901.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
-<section id="clarity" class="level2">
-<h2 class="anchored" data-anchor-id="clarity">Clarity</h2>
+<section id="clarity" class="level4">
+<h4 class="anchored" data-anchor-id="clarity">Clarity</h4>
 <ul>
 <li><p><strong>The Original Visualization shows 2 separate Age-Pyramid Trellis Chart that shows the same message.</strong> Two sets of visualization normally indicate that they visualize two different messages that may it be independent of each other or connected. The issue with the dashboard is that both sets indicate the same message just in a different format. This raises either confusion to the reader and a form of redundancy that can be best allocated to something else.</p></li>
 <li><p><strong>3x3 Trellis Chart limits the visualization to only 9 Age-Sex Pyramids.</strong> Limited and focused visualizations are normally selected under a criteria. This criteria may be in terms of highest population cumulative or selective. The original visualization shows no indication of the criteria chosen to only visualize 9 areas and may only be concluded as a random selection.</p></li>
 <li><p><strong>3x3 Trellis Chart lacks y-axis labels.</strong> Taking to consideration that the Trellis Charts is a stand alone visualization, the lack of y-axis label reduces the clarity of the y-axis values. Furthermore, both Trellis Charts lack x-axis values and labels but make up for it through text values per bar. In terms of clarity, one can argue that the lack of x-axis may confuse the reader due to the text values having no reference while others say the taxt vales are enough to compensate the lack of x-axis.</p></li>
 </ul>
 </section>
-<section id="aesthetic" class="level2">
-<h2 class="anchored" data-anchor-id="aesthetic">Aesthetic</h2>
+<section id="aesthetic" class="level4">
+<h4 class="anchored" data-anchor-id="aesthetic">Aesthetic</h4>
 <ul>
 <li><p><strong>Text Values center bar alignment makes reading the values difficult.</strong> Due to the mismatched alignment of the text values brought abut by the central alignment placement in the bar chart makes reading the values difficult as the reader cannot simply scroll down and read the values, not mention creates unnecessary confusion in the graph.</p></li>
 <li><p><strong>Text Values on each Bar Chart overwhelms the visualization.</strong> More than the mismatch alignment, the number of the text values in the chart saturates the charts and makes it “noisy”. The text values fill the dashboard with a lot of numbers that is makes the labels and visuals difficult to look at and interpret.</p></li>
@@ -321,17 +313,18 @@ Note
 </ul>
 </section>
 </section>
-<section id="getting-started---data-loading-and-processing" class="level1">
-<h1>Getting Started - Data Loading and Processing</h1>
-<section id="installing-and-loading-the-required-libraries" class="level2">
-<h2 class="anchored" data-anchor-id="installing-and-loading-the-required-libraries">Installing and loading the required libraries</h2>
+</section>
+<section id="getting-started---data-loading-and-processing" class="level2">
+<h2 class="anchored" data-anchor-id="getting-started---data-loading-and-processing">Getting Started - Data Loading and Processing</h2>
+<section id="installing-and-loading-the-required-libraries" class="level3">
+<h3 class="anchored" data-anchor-id="installing-and-loading-the-required-libraries">Installing and loading the required libraries</h3>
 <p>Before we get started, it is important for us to ensure that the required R packages have been installed.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse,ggplot2,knitr, plotly, skimr, questionr, funModeling, sf, tmap, quanteda, NLP)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="importing-data" class="level2">
-<h2 class="anchored" data-anchor-id="importing-data">Importing Data</h2>
+<section id="importing-data" class="level3">
+<h3 class="anchored" data-anchor-id="importing-data">Importing Data</h3>
 <p>This code chunk is to import the data from respopagesextod2022.csv file to the Quarto/R page.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pop_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/respopagesextod2022.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -399,8 +392,8 @@ dbl (2): Pop, Time
 </tbody>
 </table>
 </section>
-<section id="data-exploration-and-cleaning" class="level2">
-<h2 class="anchored" data-anchor-id="data-exploration-and-cleaning">Data Exploration and Cleaning</h2>
+<section id="data-exploration-and-cleaning" class="level3">
+<h3 class="anchored" data-anchor-id="data-exploration-and-cleaning">Data Exploration and Cleaning</h3>
 <p>This section is to check incorrect and missing values in the data set.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>skimr<span class="sc">::</span><span class="fu">skim</span>(pop_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -586,11 +579,11 @@ dbl (2): Pop, Time
 </div>
 </section>
 </section>
-<section id="create-age-sex-pyramid" class="level1">
-<h1>Create Age-Sex Pyramid</h1>
+<section id="create-age-sex-pyramid" class="level2">
+<h2 class="anchored" data-anchor-id="create-age-sex-pyramid">Create Age-Sex Pyramid</h2>
 <p>This section explores the creation of an Age-Sex Pyramid.</p>
-<section id="exploration-of-y-axis-data" class="level2">
-<h2 class="anchored" data-anchor-id="exploration-of-y-axis-data">Exploration of y-axis Data</h2>
+<section id="exploration-of-y-axis-data" class="level3">
+<h3 class="anchored" data-anchor-id="exploration-of-y-axis-data">Exploration of y-axis Data</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>Exp1 <span class="ot">&lt;-</span> pop_data <span class="sc">%&gt;%</span> </span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(PA <span class="sc">==</span> <span class="st">"Ang Mo Kio"</span>) <span class="sc">%&gt;%</span></span>
@@ -617,14 +610,14 @@ argument.</code></pre>
 <li><p>Each Age Group is written with an underscore (“_”) instead of a space in between each word/number</p></li>
 <li><p>The values are organized alphabetically with consideration of the starting value (number or alphabet). As such “5_to_9” came before “45_to_49”</p></li>
 </ul>
-<section id="correcting-age-labels" class="level3">
-<h3 class="anchored" data-anchor-id="correcting-age-labels">Correcting Age Labels</h3>
+<section id="correcting-age-labels" class="level4">
+<h4 class="anchored" data-anchor-id="correcting-age-labels">Correcting Age Labels</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>pop_data<span class="sc">$</span>AG <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"_"</span>, <span class="st">" "</span>, pop_data<span class="sc">$</span>AG, <span class="at">fixed =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="correcting-sequence" class="level3">
-<h3 class="anchored" data-anchor-id="correcting-sequence">Correcting Sequence</h3>
+<section id="correcting-sequence" class="level4">
+<h4 class="anchored" data-anchor-id="correcting-sequence">Correcting Sequence</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>age_correct <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"0 to 4"</span>, <span class="st">"5 to 9"</span>, <span class="st">"10 to 14"</span>, <span class="st">"15 to 19"</span>, <span class="st">"20 to 24"</span>, <span class="st">"25 to 29"</span>, <span class="st">"30 to 34"</span>, <span class="st">"35 to 39"</span>, <span class="st">"40 to 44"</span>, <span class="st">"45 to 49"</span>, <span class="st">"50 to 54"</span>, <span class="st">"55 to 59"</span>, <span class="st">"60 to 64"</span>, <span class="st">"65 to 69"</span>, <span class="st">"70 to 74"</span>, <span class="st">"75 to 79"</span>, <span class="st">"80 to 84"</span>, <span class="st">"85 to 89"</span>, <span class="st">"90 and over"</span>)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -659,8 +652,8 @@ argument.</code></pre>
 </section>
 </section>
 </section>
-<section id="creating-a-age-sex-pyramid" class="level1">
-<h1>Creating a Age-Sex Pyramid</h1>
+<section id="creating-a-age-sex-pyramid" class="level2">
+<h2 class="anchored" data-anchor-id="creating-a-age-sex-pyramid">Creating a Age-Sex Pyramid</h2>
 <p>This section explores the visualization of an Age-Sex Pyramid.</p>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -744,11 +737,11 @@ Note
 </div>
 </div>
 </section>
-<section id="creating-a-trellis-age-sex-pyramid" class="level1">
-<h1>Creating A Trellis Age-Sex Pyramid</h1>
+<section id="creating-a-trellis-age-sex-pyramid" class="level2">
+<h2 class="anchored" data-anchor-id="creating-a-trellis-age-sex-pyramid">Creating A Trellis Age-Sex Pyramid</h2>
 <p>This section explores the visualization of an Age-Sex Pyramid within a Trellis Chart. Each Pyramid indicates per Planning Area.</p>
-<section id="removing-planning-areas-without-values" class="level2">
-<h2 class="anchored" data-anchor-id="removing-planning-areas-without-values">Removing Planning Areas without Values</h2>
+<section id="removing-planning-areas-without-values" class="level3">
+<h3 class="anchored" data-anchor-id="removing-planning-areas-without-values">Removing Planning Areas without Values</h3>
 <p>It was previously identified that 26 out of 55 Planning Areas have no value/data. To maximize space, 9 Planning Areas will be retained and filtered.</p>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -777,8 +770,8 @@ Note
 <span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(pop_pa<span class="sc">$</span>PA <span class="sc">%in%</span> trellis9<span class="sc">$</span>PA)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="creating-trellis-chart-age-sex-pyramid" class="level2">
-<h2 class="anchored" data-anchor-id="creating-trellis-chart-age-sex-pyramid">Creating Trellis Chart Age-Sex Pyramid</h2>
+<section id="creating-trellis-chart-age-sex-pyramid" class="level3">
+<h3 class="anchored" data-anchor-id="creating-trellis-chart-age-sex-pyramid">Creating Trellis Chart Age-Sex Pyramid</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>PA_Pyr <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">data =</span> <span class="fu">subset</span>(trellis9_filter, </span>
@@ -866,23 +859,23 @@ Note
 </div>
 </div>
 </section>
-<section id="learning-from-practice" class="level2">
-<h2 class="anchored" data-anchor-id="learning-from-practice">Learning from Practice</h2>
-<section id="clarity-1" class="level3">
-<h3 class="anchored" data-anchor-id="clarity-1">Clarity</h3>
+<section id="learning-from-practice" class="level3">
+<h3 class="anchored" data-anchor-id="learning-from-practice">Learning from Practice</h3>
+<section id="clarity-1" class="level4">
+<h4 class="anchored" data-anchor-id="clarity-1">Clarity</h4>
 <ul>
 <li><p>With the subtitle indicating that these Planning Areas are the most populous in Singapore, the reader is more clear of the message. Not to mention that axis labels and ticks are present to further provide clarity.</p></li>
 <li><p>Due to the limitation of space, a 3x3 Trellis Chart may be the maximum representation that can at least maximize readability. Adding more Age-Sex Pyramids will diminish readability and make the chart more difficult to interpret. Furthermore, the limits in size also affects the font sizes, thus reducing clarity and readability.</p></li>
 </ul>
 </section>
-<section id="aesthetic-1" class="level3">
-<h3 class="anchored" data-anchor-id="aesthetic-1">Aesthetic</h3>
+<section id="aesthetic-1" class="level4">
+<h4 class="anchored" data-anchor-id="aesthetic-1">Aesthetic</h4>
 <ul>
 <li>The removal of bar numbers lessens the elements present in the visualization and makes in more pleasing to look at. This less “noisy” visualization greatly improves its aesthetic and design.</li>
 </ul>
 </section>
-<section id="interactivity" class="level3">
-<h3 class="anchored" data-anchor-id="interactivity">Interactivity</h3>
+<section id="interactivity" class="level4">
+<h4 class="anchored" data-anchor-id="interactivity">Interactivity</h4>
 <ul>
 <li>Crafting the visualization in R Studios is more difficult and restrictive as the limits in visual size restrict creative and engaging visuals. Furthermore, transitioning to interactivity may be difficult in the future as the limitations may complicate it further. Future visualization may be better crafted in R Shiny instead of quarto/R Studios.</li>
 </ul>

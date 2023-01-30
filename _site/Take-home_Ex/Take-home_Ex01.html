@@ -94,6 +94,10 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="../Hands-on_Ex/Hands-on_Ex02.html">
  <span class="dropdown-text">Hands-on Exercise 2: Beyond ggplot2 Fundamentals</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../Hands-on_Ex/Hands-on_Ex03.html">
+ <span class="dropdown-text">Hands-on Exercise 3: Programming Interactive Data Visualisation with R</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -152,32 +156,14 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#original-visualization" id="toc-original-visualization" class="nav-link" data-scroll-target="#original-visualization">Original Visualization</a></li>
   <li><a href="#visualization-critique" id="toc-visualization-critique" class="nav-link" data-scroll-target="#visualization-critique">Visualization Critique</a>
   <ul class="collapse">
-  <li><a href="#clarity" id="toc-clarity" class="nav-link" data-scroll-target="#clarity">Clarity</a>
-  <ul class="collapse">
-  <li><a href="#a.-lack-of-header-and-titles" id="toc-a.-lack-of-header-and-titles" class="nav-link" data-scroll-target="#a.-lack-of-header-and-titles">a. Lack of Header and Titles</a></li>
-  <li><a href="#b.-lack-of-color-labels" id="toc-b.-lack-of-color-labels" class="nav-link" data-scroll-target="#b.-lack-of-color-labels">b. Lack of Color Labels</a></li>
-  </ul></li>
-  <li><a href="#aesthetic" id="toc-aesthetic" class="nav-link" data-scroll-target="#aesthetic">Aesthetic</a>
-  <ul class="collapse">
-  <li><a href="#c.-poor-layout" id="toc-c.-poor-layout" class="nav-link" data-scroll-target="#c.-poor-layout">c.&nbsp;Poor Layout</a></li>
-  <li><a href="#d.-lack-of-differentiating-color-per-area" id="toc-d.-lack-of-differentiating-color-per-area" class="nav-link" data-scroll-target="#d.-lack-of-differentiating-color-per-area">d.&nbsp;Lack of differentiating color per Area</a></li>
-  <li><a href="#e.-too-many-age-groups" id="toc-e.-too-many-age-groups" class="nav-link" data-scroll-target="#e.-too-many-age-groups">e. Too many Age Groups</a></li>
-  </ul></li>
+  <li><a href="#clarity" id="toc-clarity" class="nav-link" data-scroll-target="#clarity">Clarity</a></li>
+  <li><a href="#aesthetic" id="toc-aesthetic" class="nav-link" data-scroll-target="#aesthetic">Aesthetic</a></li>
   <li><a href="#interactive" id="toc-interactive" class="nav-link" data-scroll-target="#interactive">Interactive</a></li>
   </ul></li>
   <li><a href="#proposed-design-of-trellis-chart" id="toc-proposed-design-of-trellis-chart" class="nav-link" data-scroll-target="#proposed-design-of-trellis-chart">Proposed Design of Trellis Chart</a>
   <ul class="collapse">
-  <li><a href="#clarity-1" id="toc-clarity-1" class="nav-link" data-scroll-target="#clarity-1">Clarity</a>
-  <ul class="collapse">
-  <li><a href="#a.-proper-titles-and-headers" id="toc-a.-proper-titles-and-headers" class="nav-link" data-scroll-target="#a.-proper-titles-and-headers">a. Proper Titles and Headers</a></li>
-  <li><a href="#b.-differentiated-color-labels" id="toc-b.-differentiated-color-labels" class="nav-link" data-scroll-target="#b.-differentiated-color-labels">b. Differentiated Color Labels</a></li>
-  </ul></li>
-  <li><a href="#aesthetic-1" id="toc-aesthetic-1" class="nav-link" data-scroll-target="#aesthetic-1">Aesthetic</a>
-  <ul class="collapse">
-  <li><a href="#c.-3-column-tabular-trellis-chart" id="toc-c.-3-column-tabular-trellis-chart" class="nav-link" data-scroll-target="#c.-3-column-tabular-trellis-chart">c.&nbsp;3 Column Tabular Trellis Chart</a></li>
-  <li><a href="#d.-differentiating-color-per-area" id="toc-d.-differentiating-color-per-area" class="nav-link" data-scroll-target="#d.-differentiating-color-per-area">d.&nbsp;Differentiating Color per Area</a></li>
-  <li><a href="#e.-simplified-age-groups" id="toc-e.-simplified-age-groups" class="nav-link" data-scroll-target="#e.-simplified-age-groups">e. Simplified Age Groups</a></li>
-  </ul></li>
+  <li><a href="#clarity-1" id="toc-clarity-1" class="nav-link" data-scroll-target="#clarity-1">Clarity</a></li>
+  <li><a href="#aesthetic-1" id="toc-aesthetic-1" class="nav-link" data-scroll-target="#aesthetic-1">Aesthetic</a></li>
   <li><a href="#interactive-1" id="toc-interactive-1" class="nav-link" data-scroll-target="#interactive-1">Interactive</a></li>
   </ul></li>
   <li><a href="#process-and-development" id="toc-process-and-development" class="nav-link" data-scroll-target="#process-and-development">Process and Development</a></li>
@@ -221,13 +207,13 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="objective" class="level1">
-<h1>Objective</h1>
+<section id="objective" class="level2">
+<h2 class="anchored" data-anchor-id="objective">Objective</h2>
 <p>The objective is to create <strong>Age-Sex Pyramid Analytic Visualization</strong> to accurately describe the demographic of Singapore. It is a common visual representation to contrast and sub sect the population based on different classifiers, commonly by gender and age. To further illustrate the visualization, multiple Age-Sex Pyramids will be plotted by planning area using the trellis display.&nbsp;</p>
 <p>The visualization is created using the <strong><em>Singapore Residents by Planning Area / Sub-zone, Age Group, Sex and Type of Dwelling, June 2022 (Singstat).</em></strong></p>
 </section>
-<section id="data-cleaning-and-preparation" class="level1">
-<h1>Data Cleaning and Preparation</h1>
+<section id="data-cleaning-and-preparation" class="level2">
+<h2 class="anchored" data-anchor-id="data-cleaning-and-preparation">Data Cleaning and Preparation</h2>
 <p>To ensure that the data is properly loaded and read, the following actions will be done in the raw excel file and tableau.&nbsp;</p>
 <table class="table">
 <colgroup>
@@ -257,8 +243,8 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </section>
-<section id="original-visualization" class="level1">
-<h1>Original Visualization</h1>
+<section id="original-visualization" class="level2">
+<h2 class="anchored" data-anchor-id="original-visualization">Original Visualization</h2>
 <p>Trellis Display is a visualization framework aimed at easily presenting visual data in tables and box subdivided by category. The aim is to be able to compare and contrast the data based on the category in one window.&nbsp;</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -267,81 +253,81 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <p>Though the original visualization is a trellis display, there are some issues on the clarity, aesthetics, and interactive design of the original data visualization to be explained at the next section.&nbsp;</p>
 </section>
-<section id="visualization-critique" class="level1">
-<h1>Visualization Critique</h1>
+<section id="visualization-critique" class="level2">
+<h2 class="anchored" data-anchor-id="visualization-critique">Visualization Critique</h2>
 <p>The issues of the original visualization are as follows:&nbsp;</p>
-<section id="clarity" class="level2">
-<h2 class="anchored" data-anchor-id="clarity">Clarity</h2>
-<section id="a.-lack-of-header-and-titles" class="level3">
-<h3 class="anchored" data-anchor-id="a.-lack-of-header-and-titles">a. Lack of Header and Titles</h3>
+<section id="clarity" class="level3">
+<h3 class="anchored" data-anchor-id="clarity">Clarity</h3>
+<section id="a.-lack-of-header-and-titles" class="level4">
+<h4 class="anchored" data-anchor-id="a.-lack-of-header-and-titles">a. Lack of Header and Titles</h4>
 <p>There is no title to explain the context of the visual. Users would not know the message of the visual at first glance. While an age sex pyramid is a common visual tool to indicate a split in gender population, it is not clear which population is being discussed unless the user is aware of the Planning Areas. Furthermore, though indicated as 2022 at the x-axis, it would have been clearer if it is included in the header or title. A simple title such as 2022 Singapore Age – Sex Pyramid would be enough to communicate the topic of the visual.</p>
 </section>
-<section id="b.-lack-of-color-labels" class="level3">
-<h3 class="anchored" data-anchor-id="b.-lack-of-color-labels">b. Lack of Color Labels</h3>
+<section id="b.-lack-of-color-labels" class="level4">
+<h4 class="anchored" data-anchor-id="b.-lack-of-color-labels">b. Lack of Color Labels</h4>
 <p>The color of the back-to-back horizontal bar chart is the same between male and female values. This may confuse users as it may give the wrong impression that both bars may belong to a single elongated bar. It is proposed that color for both male and female to be separate and distinct, even if in the terms of different shade.&nbsp;</p>
 </section>
 </section>
-<section id="aesthetic" class="level2">
-<h2 class="anchored" data-anchor-id="aesthetic">Aesthetic</h2>
-<section id="c.-poor-layout" class="level3">
-<h3 class="anchored" data-anchor-id="c.-poor-layout">c.&nbsp;Poor Layout</h3>
+<section id="aesthetic" class="level3">
+<h3 class="anchored" data-anchor-id="aesthetic">Aesthetic</h3>
+<section id="c.-poor-layout" class="level4">
+<h4 class="anchored" data-anchor-id="c.-poor-layout">c.&nbsp;Poor Layout</h4>
 <p>The Trellis chart is organized horizontally and side by side and as such is visually difficult to read as there is an estimated 55 Planning Areas to scroll from. This difficult extends also to comparing multiple charts as there is only so much that can be shown per plane. It is recommended to create a table like trellis chart with rows and columns as to ease visualization and maximize space.&nbsp;</p>
 </section>
-<section id="d.-lack-of-differentiating-color-per-area" class="level3">
-<h3 class="anchored" data-anchor-id="d.-lack-of-differentiating-color-per-area">d.&nbsp;Lack of differentiating color per Area</h3>
+<section id="d.-lack-of-differentiating-color-per-area" class="level4">
+<h4 class="anchored" data-anchor-id="d.-lack-of-differentiating-color-per-area">d.&nbsp;Lack of differentiating color per Area</h4>
 <p>Similar to the back to back horizontal bar, the color between planning areas are also the same. To improve aesthetic, it is recommended that Planning Areas will have the same color while male to female bars with share the same color but of different shades.</p>
 </section>
-<section id="e.-too-many-age-groups" class="level3">
-<h3 class="anchored" data-anchor-id="e.-too-many-age-groups">e. Too many Age Groups</h3>
+<section id="e.-too-many-age-groups" class="level4">
+<h4 class="anchored" data-anchor-id="e.-too-many-age-groups">e. Too many Age Groups</h4>
 <p>The is an overall 19 age gaps that extends the chart and limits the number of planes that can be shown per window. It is recommended to group together the different age groups from 5 years to 10 years thus reducing the y axis by half and increase the number of charts that can be seen in one viewing.&nbsp;</p>
 </section>
 </section>
-<section id="interactive" class="level2">
-<h2 class="anchored" data-anchor-id="interactive">Interactive</h2>
+<section id="interactive" class="level3">
+<h3 class="anchored" data-anchor-id="interactive">Interactive</h3>
 <p>There is an opportunity to create filters to limit and focus the dashboard to a select Area, Subzone and Dwelling Type. This opportunity can allow for a more interactive and dynamic analysis.&nbsp;</p>
 </section>
 </section>
-<section id="proposed-design-of-trellis-chart" class="level1">
-<h1>Proposed Design of Trellis Chart</h1>
+<section id="proposed-design-of-trellis-chart" class="level2">
+<h2 class="anchored" data-anchor-id="proposed-design-of-trellis-chart">Proposed Design of Trellis Chart</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/image-1999623995.png" class="img-fluid figure-img" width="510"></p>
 </figure>
 </div>
-<section id="clarity-1" class="level2">
-<h2 class="anchored" data-anchor-id="clarity-1">Clarity</h2>
-<section id="a.-proper-titles-and-headers" class="level3">
-<h3 class="anchored" data-anchor-id="a.-proper-titles-and-headers">a. Proper Titles and Headers</h3>
+<section id="clarity-1" class="level3">
+<h3 class="anchored" data-anchor-id="clarity-1">Clarity</h3>
+<section id="a.-proper-titles-and-headers" class="level4">
+<h4 class="anchored" data-anchor-id="a.-proper-titles-and-headers">a. Proper Titles and Headers</h4>
 <p>The Age-Sex Pyramid Trellis Chart is titled correctly, indicating as <strong>2022 Singapore Age-Sex Pyramid per Area</strong>. Furthermore, each Age-Sex Pyramid is labeled per Planning Area at the bottom right-hand corner of each plane. These labels ensure that users can properly read and identify the overall message of the chart and category of each individual pyramid.&nbsp;</p>
 <p>It may be recommended to add value labels per bar to textually visualize the amount each chart, yet this step can be avoid as the chart allows for pop out labels and values to appear when hovering over the chart. Furthermore, on the design aspect, value labels will clutter the chart and cause it to be overly noisy.&nbsp;</p>
 </section>
-<section id="b.-differentiated-color-labels" class="level3">
-<h3 class="anchored" data-anchor-id="b.-differentiated-color-labels">b. Differentiated Color Labels</h3>
+<section id="b.-differentiated-color-labels" class="level4">
+<h4 class="anchored" data-anchor-id="b.-differentiated-color-labels">b. Differentiated Color Labels</h4>
 <p>Male-Female bar colors are identified with different shades with the lighter colors indicating male and darker as female. This ensures visual differentiation between genders with ensuring some similarity within planning area.</p>
 </section>
 </section>
-<section id="aesthetic-1" class="level2">
-<h2 class="anchored" data-anchor-id="aesthetic-1">Aesthetic</h2>
-<section id="c.-3-column-tabular-trellis-chart" class="level3">
-<h3 class="anchored" data-anchor-id="c.-3-column-tabular-trellis-chart">c.&nbsp;3 Column Tabular Trellis Chart</h3>
+<section id="aesthetic-1" class="level3">
+<h3 class="anchored" data-anchor-id="aesthetic-1">Aesthetic</h3>
+<section id="c.-3-column-tabular-trellis-chart" class="level4">
+<h4 class="anchored" data-anchor-id="c.-3-column-tabular-trellis-chart">c.&nbsp;3 Column Tabular Trellis Chart</h4>
 <p>The Trellis Chart is organized to 3 columns to ensure that the pyramids are visually maximized both in terms of the number of pyramid charts in one viewing and the max value of the y-axis for the bars to be visually district.</p>
 </section>
-<section id="d.-differentiating-color-per-area" class="level3">
-<h3 class="anchored" data-anchor-id="d.-differentiating-color-per-area">d.&nbsp;Differentiating Color per Area</h3>
+<section id="d.-differentiating-color-per-area" class="level4">
+<h4 class="anchored" data-anchor-id="d.-differentiating-color-per-area">d.&nbsp;Differentiating Color per Area</h4>
 <p>Colors per Planning Area is colored differently to ensure distinct differentiation per pyramid.&nbsp;</p>
 </section>
-<section id="e.-simplified-age-groups" class="level3">
-<h3 class="anchored" data-anchor-id="e.-simplified-age-groups">e. Simplified Age Groups</h3>
+<section id="e.-simplified-age-groups" class="level4">
+<h4 class="anchored" data-anchor-id="e.-simplified-age-groups">e. Simplified Age Groups</h4>
 <p>19 age groups are reduced to 10 age groups to visually maximize the space of the plane without oversimplifying the data points.&nbsp;</p>
 </section>
 </section>
-<section id="interactive-1" class="level2">
-<h2 class="anchored" data-anchor-id="interactive-1">Interactive</h2>
+<section id="interactive-1" class="level3">
+<h3 class="anchored" data-anchor-id="interactive-1">Interactive</h3>
 <p>The Trellis Chart can be filtered per Planning Area, Subzone and Type of Dwelling. This ensures interactive use of the chart and allow for more drilled down analysis of the data. Though there is a <em>limitation as this chart cannot compare Subzones within the same Planning Area as can be an improvement for future developments.</em>&nbsp;</p>
 </section>
 </section>
-<section id="process-and-development" class="level1">
-<h1>Process and Development</h1>
+<section id="process-and-development" class="level2">
+<h2 class="anchored" data-anchor-id="process-and-development">Process and Development</h2>
 <table class="table">
 <colgroup>
 <col style="width: 81%">
@@ -389,8 +375,8 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </section>
-<section id="dashboard-overview" class="level1">
-<h1>Dashboard Overview</h1>
+<section id="dashboard-overview" class="level2">
+<h2 class="anchored" data-anchor-id="dashboard-overview">Dashboard Overview</h2>
 <p>Besides the Trellis Chart, additional charts are created as well to build a better interactive dashboard. Page 1 of the dashboard is to give an overview of Singapore 2022 population while Page 2 presents the Trellis Chart and Age-Sex Pyramids per Planning Area.&nbsp;</p>
 <table class="table">
 <thead>
@@ -406,8 +392,8 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-<section id="major-findings" class="level2">
-<h2 class="anchored" data-anchor-id="major-findings">Major Findings</h2>
+<section id="major-findings" class="level3">
+<h3 class="anchored" data-anchor-id="major-findings">Major Findings</h3>
 <ul>
 <li><p><strong>Overall, Singapore has more females than males by est. 500,000 heavily contributed by the adult (25 and above) age group.</strong> Male population is 11 million while Female is 11.5 million. This is a stark contrast from previous years as there are more males in Singapore than females, average ratio at 53% male and 47% female. The shift in population shares maybe due to migration and the impact of COVID lockdown as male manpower migrating to the city state decreased during COVID and has not recovered since.&nbsp;</p></li>
 <li><p><strong>Male and Female distribution per Planning Area and age group are almost equal except for the senior population.</strong> The close distribution maybe due to the equal economic opportunity for both genders in Singapore. Furthermore, top areas that are heavily populated by males are populated by females as well.&nbsp;</p></li>
