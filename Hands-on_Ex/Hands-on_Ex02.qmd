@@ -90,7 +90,7 @@ ggplot(data=exam_data,
 
 ### Working with ggtheme package
 
-[**ggthemes**](https://cran.r-project.org/web/packages/ggthemes/index.html) provides [\'ggplot2\' themes](https://yutannihilation.github.io/allYourFigureAreBelongToUs/ggthemes/) that replicate the look of plots by Edward Tufte, Stephen Few, [Fivethirtyeight](https://fivethirtyeight.com/), [The Economist](https://www.economist.com/graphic-detail), \'Stata\', \'Excel\', and [The Wall Street Journal](https://www.pinterest.com/wsjgraphics/wsj-graphics/), among others.
+[**ggthemes**](https://cran.r-project.org/web/packages/ggthemes/index.html) provides ['ggplot2' themes](https://yutannihilation.github.io/allYourFigureAreBelongToUs/ggthemes/) that replicate the look of plots by Edward Tufte, Stephen Few, [Fivethirtyeight](https://fivethirtyeight.com/), [The Economist](https://www.economist.com/graphic-detail), 'Stata', 'Excel', and [The Wall Street Journal](https://www.pinterest.com/wsjgraphics/wsj-graphics/), among others.
 
 ```{r}
 ggplot(data=exam_data, 
@@ -103,7 +103,7 @@ ggplot(data=exam_data,
   theme_economist()
 ```
 
--   It also provides some extra geoms and scales for \'ggplot2\'. Consult [this vignette](https://mran.microsoft.com/snapshot/2016-12-28/web/packages/ggthemes/vignettes/ggthemes.html) to learn more.
+-   It also provides some extra geoms and scales for 'ggplot2'. Consult [this vignette](https://mran.microsoft.com/snapshot/2016-12-28/web/packages/ggthemes/vignettes/ggthemes.html) to learn more.
 
 ### Working with hrbthems package
 
@@ -120,7 +120,7 @@ ggplot(data=exam_data,
   theme_ipsum()
 ```
 
--   The second goal centers around productivity for a production workflow. In fact, this \"production workflow\" is the context for where the elements of hrbrthemes should be used. Consult [this vignette](https://cran.r-project.org/web/packages/hrbrthemes/vignettes/why_hrbrthemes.html) to learn more.
+-   The second goal centers around productivity for a production workflow. In fact, this "production workflow" is the context for where the elements of hrbrthemes should be used. Consult [this vignette](https://cran.r-project.org/web/packages/hrbrthemes/vignettes/why_hrbrthemes.html) to learn more.
 
 ```{r}
 ggplot(data=exam_data, 
@@ -187,7 +187,7 @@ p3 <- ggplot(data=exam_data,
 
 It is not unusual that multiple graphs are required to tell a compelling visual story. There are several ggplot2 extensions provide functions to compose figure with multiple graphs. In this section, I am going to shared with you [**patchwork**](https://patchwork.data-imaginist.com/index.html).
 
-Patchwork package has a very simple syntax where we can create layouts super easily. Here\'s the general syntax that combines: - Two-Column Layout using the Plus Sign +. - Parenthesis () to create a subplot group. - Two-Row Layout using the Division Sign `\`
+Patchwork package has a very simple syntax where we can create layouts super easily. Here's the general syntax that combines: - Two-Column Layout using the Plus Sign +. - Parenthesis () to create a subplot group. - Two-Row Layout using the Division Sign `\`
 
 ![](images/image-535383520.png){width="164"}
 
