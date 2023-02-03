@@ -58,7 +58,7 @@ pop_data <- read_csv("data/respopagesextod2022.csv")
 The CSV File contains the following columns:
 
 | COLUMN NAME            | DATA TYPE | DESCRIPTION                                                                               |
-|------------------------|-----------|-------------------------------------------------------------------------------------------|
+|-------------------|-------------------|---------------------------------|
 | Planning Area (PA)     | Character | Distinct Planning Areas in Singapore designated and mapped by the Government of Singapore |
 | Subzone (SZ)           | Character | Sub-areas within each Planning Areas                                                      |
 | Age Group (AG)         | Character | Sets of population age group by 5 (ex 0-4, 5-9, etc)                                      |
@@ -495,17 +495,17 @@ PA_Pyr <- ggplot() +
         subtitle = "Distribution of gender and age groups from Most Populated Planning Areas",
         caption = "Data Source : Singstat.gov.sg, June 2022") +
   theme_bw() +
-  theme(plot.title = element_text(size = 20, 
+  theme(plot.title = element_text(size = 24, 
                                   colour = "#424242",
                                   face = "bold",
                                   hjust = 0.5),
-        plot.subtitle = element_text(size = 14,
+        plot.subtitle = element_text(size = 16,
                                      colour = "#424242",
                                      hjust = 0.5),
-        plot.caption = element_text(size = 12,
+        plot.caption = element_text(size = 14,
                                     colour = "#424242",
                                     hjust = 0),
-        strip.text = element_text(size = 12,
+        strip.text = element_text(size = 14,
                                   colour = "#424242"),
         strip.background = element_blank(),
 
@@ -514,22 +514,22 @@ PA_Pyr <- ggplot() +
         axis.ticks.x = element_line(colour = "#424242",
                                   linewidth = 0.5),,
         axis.title.y = element_text(angle = 0, 
-                                    size = 12, 
+                                    size = 14, 
                                     colour = "#424242",
                                     vjust = 1.025,
                                     hjust = 0.7,
                                     margin = margin(r = -20, l = 20)),
-        axis.title.x = element_text(size = 12, 
+        axis.title.x = element_text(size = 14, 
                                     colour = "#424242"),
-        axis.text.x = element_text(size = 10,
+        axis.text.x = element_text(size = 12,
                                    colour = "#424242"),
-        axis.text.y = element_text(size = 10,
+        axis.text.y = element_text(size = 12,
                                    colour = "#424242"),
         legend.position = "bottom",
         legend.justification = "left",
-        legend.text = element_text(size = 12,
+        legend.text = element_text(size = 14,
                                    colour = "#424242"),
-        legend.title = element_text(size = 12, 
+        legend.title = element_text(size = 14, 
                                     colour = "#424242"),
         panel.grid.major = element_line(linewidth = rel(0.5)),
         panel.grid.major.x = element_line(linewidth = rel(0.5)),
@@ -543,6 +543,6 @@ PA_Pyr <- ggplot() +
 girafe(
   ggobj = PA_Pyr,
   width_svg = 24,
-  height_svg = 24*0.618
+  height_svg = 36*0.618
 )
 ```
