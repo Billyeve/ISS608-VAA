@@ -1,0 +1,13 @@
+---
+title: "In-Class Exercise 03"
+author: "Bryant Philippe Lee"
+date: February 4, 2023
+date-modified: "`r Sys.Date()`"
+fontsize: smaller
+execute: 
+  echo: true
+  eval: true
+  warning: false
+format: html
+editor: visual
+---
