@@ -17,6 +17,8 @@ website:
           href: Hands-on_Ex/Hands-on_Ex04.1.html
         - text: "Hands-on Exercise 4.2: Visualising Uncertainty"
           href: Hands-on_Ex/Hands-on_Ex04.2.html
+        - text: "Hands-on Exercise 4.3: Building Funnel Plot with R"
+          href: Hands-on_Ex/Hands-on_Ex04.3.html
     - text: "In-Class Exercises"
       menu:
         - text: "In-Class Exercise 3"
