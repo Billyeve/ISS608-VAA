@@ -146,3 +146,13 @@ check_h <- check_heteroscedasticity(model1)
 
 plot(check_h)
 ```
+
+### **Model Diagnostic: Complete check**
+
+We can also perform the complete by using [*check_model()*](https://easystats.github.io/performance/reference/check_model.html).
+
+```{r}
+#| fig-height: 16
+#| fig-width: 16
+check_model(model1)
+```
