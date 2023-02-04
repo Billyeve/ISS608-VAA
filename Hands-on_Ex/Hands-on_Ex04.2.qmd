@@ -200,7 +200,7 @@ exam %>%
 
 Gentle advice: This function comes with many arguments, students are advised to read the syntax reference for more detail.
 
-## Visualising Uncertainty with Hypothetical Outcome Plots (HOPs)
+## Visualizing Uncertainty with Hypothetical Outcome Plots (HOPs)
 
 Step 1: Installing ungeviz package
 
@@ -226,7 +226,7 @@ ggplot(data = exam,
   transition_states(.draw, 1, 3)
 ```
 
-## Visualising Uncertainty with Hypothetical Outcome Plots (HOPs)
+## Visualizing Uncertainty with Hypothetical Outcome Plots (HOPs)
 
 ```{r}
 ggplot(data = exam, 
