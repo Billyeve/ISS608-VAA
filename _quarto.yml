@@ -13,6 +13,8 @@ website:
           href: Hands-on_Ex/Hands-on_Ex02.html
         - text: "Hands-on Exercise 3: Programming Interactive Data Visualisation with R"
           href: Hands-on_Ex/Hands-on_Ex03.html
+        - text: "Hands-on Exercise 4.1: Visual Statistical Analysis"
+          href: Hands-on_Ex/Hands-on_Ex04.1.html
     - text: "In-Class Exercises"
       menu:
         - text: "In-Class Exercise 3"
