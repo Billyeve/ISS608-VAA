@@ -1,7 +1,6 @@
 ---
 title: "Hands-on Exercise 04.1"
 subtitle: "Visual Statistical Analysis"
-author: "Bryant Philippe Lee"
 ---
 
 ## Learning Outcome

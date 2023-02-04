@@ -1,7 +1,6 @@
 ---
 title: "Hands-on Exercise 02"
 subtitle: "Programming Interactive Data Visualisation with R"
-author: "Bryant Philippe Lee"
 ---
 
 ## Interactive Data Visualisation with R

@@ -1,7 +1,6 @@
 ---
 title: "Hands-on Exercise 02"
 subtitle: "Beyond ggplot2 Fundamentals"
-author: "Bryant Philippe Lee"
 ---
 
 ## Getting Started

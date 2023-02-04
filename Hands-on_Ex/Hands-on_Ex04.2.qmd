@@ -1,7 +1,6 @@
 ---
 title: "Hands-on Exercise 04.2"
 subtitle: "Visualising Uncertainty"
-author: "Bryant Philippe Lee"
 ---
 
 ## Visualizing the uncertainty of point estimates

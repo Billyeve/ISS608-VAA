@@ -1,7 +1,6 @@
 ---
 title: "Hands-on Exercise 01" 
 subtitle: "Programming Elegant DataVis with ggplot2"
-author: "Bryant Philippe Lee"
 ---
 
 ## Introducing Tidyverse
