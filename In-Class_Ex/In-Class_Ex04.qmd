@@ -168,7 +168,7 @@ The code chunk below performs the followings:
 -   save the output as a tibble data table called `my_sum`.
 
 ```{r}
-my_sum <- exam %>%
+my_sum <- exam_data %>%
   group_by(RACE) %>%
   summarise(
     n=n(),
