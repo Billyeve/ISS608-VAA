@@ -200,3 +200,52 @@ ggplot(my_sum) +
   ggtitle("Standard error of mean 
           maths score by rac")
 ```
+
+### **Visualizing the uncertainty of point estimates: ggplot2 methods**
+
+```{r}
+ggplot(my_sum) +
+  geom_errorbar(
+    aes(x=reorder(RACE,-mean), 
+        ymin=mean-se, 
+        ymax=mean+se), 
+    width=0.2, 
+    colour="black", 
+    alpha=0.95, 
+    size=0.5) +
+  geom_point(aes
+           (x=RACE, 
+            y=mean), 
+           stat="identity", 
+           color="red",
+           size = 1.5,
+           alpha=1) +
+  ggtitle("95% confidence interval of mean maths score by race")
+```
+
+```{r}
+p <- ggplot(my_sum) +
+  geom_errorbar(
+    aes(x=reorder(RACE,-mean), 
+        ymin=mean-se, 
+        ymax=mean+se), 
+    width=0.2, 
+    colour="black", 
+    alpha=0.99, 
+    size=0.5) +
+  geom_point(aes
+           (x=RACE, 
+            y=mean), 
+           stat="identity", 
+           color="red",
+           size = 1.5,
+           alpha=1) +
+  ggtitle("99% confidence interval of mean maths score by race")
+
+pp <- highlight(ggplotly(p))
+
+d <- highlight_key(my_sum)
+
+crosstalk::bscols(pp,
+                  DT::datatable(d))
+```
