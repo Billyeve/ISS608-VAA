@@ -24,7 +24,7 @@ This is a walk through of In-Class Exercise 4
 pacman::p_load(plotly, DT, patchwork, crosstalk, ggstatsplot, readxl, performance, parameters, see, tidyverse)
 ```
 
-## Importing Data
+### Importing Data
 
 This code chunk is to import the data from Exam_data.csv file to the Quarto/R page.
 
@@ -93,7 +93,7 @@ ggscatterstats(
 pacman::p_load(plotly, DT, patchwork, crosstalk, ggstatsplot, readxl, performance, parameters, see, tidyverse)
 ```
 
-## Importing Data
+### Importing Data
 
 In the code chunk below, [*read_xls()*](https://readxl.tidyverse.org/reference/read_excel.html) of [**readxl**](https://readxl.tidyverse.org/) package is used to import the data worksheet of `ToyotaCorolla.xls` workbook into R.
 
@@ -155,4 +155,48 @@ We can also perform the complete by using [*check_model()*](https://easystats.gi
 #| fig-height: 16
 #| fig-width: 16
 check_model(model1)
+```
+
+### **Visualizing the uncertainty of point estimates: ggplot2 methods**
+
+The code chunk below performs the followings:
+
+-   group the observation by RACE,
+
+-   computes the count of observations, mean, standard deviation and standard error of Maths by RACE, and
+
+-   save the output as a tibble data table called `my_sum`.
+
+```{r}
+my_sum <- exam %>%
+  group_by(RACE) %>%
+  summarise(
+    n=n(),
+    mean=mean(MATHS),
+    sd=sd(MATHS)
+    ) %>%
+  mutate(se=sd/sqrt(n-1))
+
+knitr::kable(head(my_sum), format = 'html')
+```
+
+```{r}
+ggplot(my_sum) +
+  geom_errorbar(
+    aes(x=RACE, 
+        ymin=mean-se, 
+        ymax=mean+se), 
+    width=0.2, 
+    colour="black", 
+    alpha=0.9, 
+    size=0.5) +
+  geom_point(aes
+           (x=RACE, 
+            y=mean), 
+           stat="identity", 
+           color="red",
+           size = 1.5,
+           alpha=1) +
+  ggtitle("Standard error of mean 
+          maths score by rac")
 ```
