@@ -22,7 +22,7 @@ For the purpose of this study, the focus should be on **3-ROOM, 4-ROOM and 5-ROO
 Before we get started, it is important for us to ensure that the required R packages have been installed.
 
 ```{r}
-pacman::p_load(tidyverse,ggplot2,knitr, plotly, skimr, questionr, funModeling, sf, tmap, quanteda, NLP, ggiraph, ggstatsplot, dplyr, crosstalk, DT, ggdist, gganimate, ggpubr)
+pacman::p_load(tidyverse, ggplot2, knitr, plotly, skimr, questionr, funModeling, sf, tmap, quanteda, NLP, ggiraph, ggstatsplot, dplyr, crosstalk, DT, ggdist, gganimate, ggpubr)
 ```
 
 ### Importing Data
@@ -33,7 +33,7 @@ This code chunk is to import the data from resale-flat-prices-based-on-registrat
 total_flat_data <- read_csv("data/resale-flat-prices-based-on-registration-date-from-jan-2017-onwards.csv")
 ```
 
-### Limiting the Dataset 
+### Filtering the Dataset 
 
 This section deals with limiting the data to the following criteria:
 

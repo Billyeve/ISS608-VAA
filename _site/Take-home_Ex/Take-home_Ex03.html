@@ -242,7 +242,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul class="collapse">
   <li><a href="#installing-and-loading-the-required-libraries" id="toc-installing-and-loading-the-required-libraries" class="nav-link" data-scroll-target="#installing-and-loading-the-required-libraries">Installing and loading the required libraries</a></li>
   <li><a href="#importing-data" id="toc-importing-data" class="nav-link" data-scroll-target="#importing-data">Importing Data</a></li>
-  <li><a href="#limiting-the-dataset" id="toc-limiting-the-dataset" class="nav-link" data-scroll-target="#limiting-the-dataset">Limiting the Dataset</a></li>
+  <li><a href="#filtering-the-dataset" id="toc-filtering-the-dataset" class="nav-link" data-scroll-target="#filtering-the-dataset">Filtering the Dataset</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -295,7 +295,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3 class="anchored" data-anchor-id="installing-and-loading-the-required-libraries">Installing and loading the required libraries</h3>
 <p>Before we get started, it is important for us to ensure that the required R packages have been installed.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse,ggplot2,knitr, plotly, skimr, questionr, funModeling, sf, tmap, quanteda, NLP, ggiraph, ggstatsplot, dplyr, crosstalk, DT, ggdist, gganimate, ggpubr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse, ggplot2, knitr, plotly, skimr, questionr, funModeling, sf, tmap, quanteda, NLP, ggiraph, ggstatsplot, dplyr, crosstalk, DT, ggdist, gganimate, ggpubr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="importing-data" class="level3">
@@ -315,8 +315,8 @@ dbl (3): floor_area_sqm, lease_commence_date, resale_price
 </div>
 </div>
 </section>
-<section id="limiting-the-dataset" class="level3">
-<h3 class="anchored" data-anchor-id="limiting-the-dataset">Limiting the Dataset</h3>
+<section id="filtering-the-dataset" class="level3">
+<h3 class="anchored" data-anchor-id="filtering-the-dataset">Filtering the Dataset</h3>
 <p>This section deals with limiting the data to the following criteria:</p>
 <ul>
 <li><p>The year should be <strong>2022</strong></p></li>
