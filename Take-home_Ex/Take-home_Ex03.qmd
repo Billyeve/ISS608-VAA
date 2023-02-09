@@ -4,3 +4,31 @@ subtitle: "Putting Visual Analytics into Practical Use"
 author: "Bryant Philippe Lee"
 date: February 15, 2022
 ---
+
+## Objective
+
+The objective of this exercise is to uncover the salient patterns of the resale prices of public housing property by residential towns and estates in Singapore by using appropriate analytical visualisation techniques and apply appropriate interactive techniques to enhance user and data discovery experiences.
+
+The visualization is created using the ***Resale flat princes based on registration date from Jan-2017 onwards ([Data.gov.sg](https://data.gov.sg/)).***
+
+### Scope and Limitation 
+
+For the purpose of this study, the focus should be on **3-ROOM, 4-ROOM and 5-ROOM types**. You can choose to focus on either one housing type or multiple housing types. The study period should be on **2022**.
+
+## Getting Started - Data Loading and Processing
+
+### Installing and loading the required libraries
+
+Before we get started, it is important for us to ensure that the required R packages have been installed.
+
+```{r}
+pacman::p_load(tidyverse,ggplot2,knitr, plotly, skimr, questionr, funModeling, sf, tmap, quanteda, NLP, ggiraph, ggstatsplot, plotly, crosstalk, DT, ggdist, gganimate, ggpubr)
+```
+
+### Importing Data
+
+This code chunk is to import the data from resale-flat-prices-based-on-registration-date-from-jan-2017-onwards.csv file to the Quarto/R page.
+
+```{r}
+flat_data <- read_csv("data/resale-flat-prices-based-on-registration-date-from-jan-2017-onwards.csv")
+```
