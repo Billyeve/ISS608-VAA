@@ -242,6 +242,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul class="collapse">
   <li><a href="#installing-and-loading-the-required-libraries" id="toc-installing-and-loading-the-required-libraries" class="nav-link" data-scroll-target="#installing-and-loading-the-required-libraries">Installing and loading the required libraries</a></li>
   <li><a href="#importing-data" id="toc-importing-data" class="nav-link" data-scroll-target="#importing-data">Importing Data</a></li>
+  <li><a href="#limiting-the-dataset" id="toc-limiting-the-dataset" class="nav-link" data-scroll-target="#limiting-the-dataset">Limiting the Dataset</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -294,14 +295,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3 class="anchored" data-anchor-id="installing-and-loading-the-required-libraries">Installing and loading the required libraries</h3>
 <p>Before we get started, it is important for us to ensure that the required R packages have been installed.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse,ggplot2,knitr, plotly, skimr, questionr, funModeling, sf, tmap, quanteda, NLP, ggiraph, ggstatsplot, plotly, crosstalk, DT, ggdist, gganimate, ggpubr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse,ggplot2,knitr, plotly, skimr, questionr, funModeling, sf, tmap, quanteda, NLP, ggiraph, ggstatsplot, dplyr, crosstalk, DT, ggdist, gganimate, ggpubr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="importing-data" class="level3">
 <h3 class="anchored" data-anchor-id="importing-data">Importing Data</h3>
 <p>This code chunk is to import the data from resale-flat-prices-based-on-registration-date-from-jan-2017-onwards.csv file to the Quarto/R page.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>flat_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/resale-flat-prices-based-on-registration-date-from-jan-2017-onwards.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>total_flat_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/resale-flat-prices-based-on-registration-date-from-jan-2017-onwards.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Rows: 146429 Columns: 11
 ── Column specification ────────────────────────────────────────────────────────
@@ -311,6 +312,37 @@ dbl (3): floor_area_sqm, lease_commence_date, resale_price
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+</section>
+<section id="limiting-the-dataset" class="level3">
+<h3 class="anchored" data-anchor-id="limiting-the-dataset">Limiting the Dataset</h3>
+<p>This section deals with limiting the data to the following criteria:</p>
+<ul>
+<li><p>The year should be <strong>2022</strong></p></li>
+<li><p>The flat_type should be only <strong>3-ROOM, 4-ROOM and 5-ROOM</strong></p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>filter_flat_data <span class="ot">&lt;-</span> <span class="fu">filter</span>(total_flat_data, <span class="fu">grepl</span>(<span class="st">'2022'</span>, month) <span class="sc">&amp;</span> flat_type <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"3 ROOM"</span>, <span class="st">"4 ROOM"</span>,<span class="st">"5 ROOM"</span>))</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>filter_flat_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 24,374 × 11
+   month   town    flat_…¹ block stree…² store…³ floor…⁴ flat_…⁵ lease…⁶ remai…⁷
+   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;  
+ 1 2022-01 ANG MO… 3 ROOM  320   ANG MO… 07 TO …      73 New Ge…    1977 54 yea…
+ 2 2022-01 ANG MO… 3 ROOM  225   ANG MO… 07 TO …      67 New Ge…    1978 55 yea…
+ 3 2022-01 ANG MO… 3 ROOM  331   ANG MO… 07 TO …      68 New Ge…    1981 58 yea…
+ 4 2022-01 ANG MO… 3 ROOM  534   ANG MO… 07 TO …      82 New Ge…    1980 57 yea…
+ 5 2022-01 ANG MO… 3 ROOM  578   ANG MO… 04 TO …      67 New Ge…    1980 57 yea…
+ 6 2022-01 ANG MO… 3 ROOM  452   ANG MO… 01 TO …      83 New Ge…    1979 56 yea…
+ 7 2022-01 ANG MO… 3 ROOM  560   ANG MO… 01 TO …      67 New Ge…    1980 57 yea…
+ 8 2022-01 ANG MO… 3 ROOM  435   ANG MO… 04 TO …      67 New Ge…    1979 56 yea…
+ 9 2022-01 ANG MO… 3 ROOM  435   ANG MO… 04 TO …      67 New Ge…    1979 56 yea…
+10 2022-01 ANG MO… 3 ROOM  560   ANG MO… 10 TO …      67 New Ge…    1980 57 yea…
+# … with 24,364 more rows, 1 more variable: resale_price &lt;dbl&gt;, and abbreviated
+#   variable names ¹​flat_type, ²​street_name, ³​storey_range, ⁴​floor_area_sqm,
+#   ⁵​flat_model, ⁶​lease_commence_date, ⁷​remaining_lease</code></pre>
 </div>
 </div>
 

@@ -22,7 +22,7 @@ For the purpose of this study, the focus should be on **3-ROOM, 4-ROOM and 5-ROO
 Before we get started, it is important for us to ensure that the required R packages have been installed.
 
 ```{r}
-pacman::p_load(tidyverse,ggplot2,knitr, plotly, skimr, questionr, funModeling, sf, tmap, quanteda, NLP, ggiraph, ggstatsplot, plotly, crosstalk, DT, ggdist, gganimate, ggpubr)
+pacman::p_load(tidyverse,ggplot2,knitr, plotly, skimr, questionr, funModeling, sf, tmap, quanteda, NLP, ggiraph, ggstatsplot, dplyr, crosstalk, DT, ggdist, gganimate, ggpubr)
 ```
 
 ### Importing Data
@@ -30,5 +30,19 @@ pacman::p_load(tidyverse,ggplot2,knitr, plotly, skimr, questionr, funModeling, s
 This code chunk is to import the data from resale-flat-prices-based-on-registration-date-from-jan-2017-onwards.csv file to the Quarto/R page.
 
 ```{r}
-flat_data <- read_csv("data/resale-flat-prices-based-on-registration-date-from-jan-2017-onwards.csv")
+total_flat_data <- read_csv("data/resale-flat-prices-based-on-registration-date-from-jan-2017-onwards.csv")
+```
+
+### Limiting the Dataset 
+
+This section deals with limiting the data to the following criteria:
+
+-   The year should be **2022**
+
+-   The flat_type should be only **3-ROOM, 4-ROOM and 5-ROOM**
+
+```{r}
+filter_flat_data <- filter(total_flat_data, grepl('2022', month) & flat_type %in% c("3 ROOM", "4 ROOM","5 ROOM"))
+
+filter_flat_data
 ```
