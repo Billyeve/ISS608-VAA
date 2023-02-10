@@ -46,3 +46,51 @@ filter_flat_data <- filter(total_flat_data, grepl('2022', month) & flat_type %in
 
 filter_flat_data
 ```
+
+### Data Exploring
+
+This section of the code aims to ensure that the scope and limitation are followed and the data are listed correctly
+
+```{r}
+skimr::skim(filter_flat_data)
+```
+
+```{r}
+glimpse(filter_flat_data, 60)
+```
+
+```{r}
+unique(filter_flat_data$month)
+```
+
+```{r}
+unique(filter_flat_data$flat_type)
+```
+
+```{r}
+unique(filter_flat_data$storey_range)
+```
+
+::: callout-note
+\*storey_range is listed as a string and needed for the arrangement to be corrected moving foreward
+:::
+
+```{r}
+unique(filter_flat_data$floor_area_sqm)
+```
+
+```{r}
+unique(filter_flat_data$remaining_lease)
+```
+
+::: callout-note
+\*remaining lease is listed as a string and needed for the arrangement to be corrected moving foreward
+:::
+
+```{r}
+summary(filter_flat_data$resale_price)
+```
+
+### Data Correction 
+
+This section deals with correcting the data last inspected previously.
