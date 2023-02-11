@@ -54,10 +54,17 @@ pairs(wine[,1:11])
 On of the advantage of using *ggcorrmat()* over many other methods to visualise a correlation matrix is it's ability to provide a comprehensive and yet professional statistical report as shown in the figure below.
 
 ```{r}
+#| eval: false 
 ggstatsplot::ggcorrmat(
   data = wine, 
   cor.vars = 1:11)
 ```
+
+::: callout-note
+code cannot run due to ggcorrmat() is in conflict with ggtern(). Processed image will be presented instead.
+:::
+
+![](images/image-1475898146.png)
 
 ### **Building multiple plots**
 
