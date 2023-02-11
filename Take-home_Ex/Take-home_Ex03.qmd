@@ -22,7 +22,7 @@ For the purpose of this study, the focus should be on **3-ROOM, 4-ROOM and 5-ROO
 Before we get started, it is important for us to ensure that the required R packages have been installed.
 
 ```{r}
-pacman::p_load(tidyverse, ggplot2, knitr, plotly, skimr, questionr, funModeling, sf, tmap, quanteda, NLP, ggiraph, ggstatsplot, dplyr, crosstalk, DT, ggdist, gganimate, ggpubr)
+pacman::p_load(tidyverse, ggplot2, knitr, plotly, skimr, questionr, funModeling, sf, tmap, quanteda, NLP, ggiraph, ggstatsplot, dplyr, crosstalk, DT, ggdist, gganimate, ggpubr, corrplot, performance, parameters, see)
 ```
 
 ### Importing Data
@@ -76,7 +76,9 @@ unique(filter_flat_data$storey_range)
 ```
 
 ::: callout-note
-\*storey_range is listed as a string and needed for the arrangement to be corrected moving foreward
+##### Critical!
+
+storey_range is listed as a string and needed for the arrangement to be corrected moving forward
 :::
 
 ```{r}
@@ -88,7 +90,9 @@ unique(filter_flat_data$remaining_lease)
 ```
 
 ::: callout-note
-\*remaining lease is listed as a string and needed for the arrangement to be corrected moving foreward
+##### Critical!
+
+remaining lease is listed as a string and needed for the arrangement to be corrected moving foreward
 :::
 
 ```{r}
@@ -137,7 +141,11 @@ use_flat_data
 
 This section presents the statistical visualization and explanation of the data.
 
-### One-way ANOVA Test between Flat Type and Resale Price
+### Analysis on the Type of Flat
+
+This section presents insights with regards to the relationship between Type of Flat and other variables.
+
+#### One-way ANOVA Test on Type of Flat and Resale Price
 
 ```{r}
 #| fig-height: 12
@@ -156,3 +164,249 @@ ggbetweenstats(
   messages = FALSE
 )
 ```
+
+Coming from One-way ANOVA test between Type of Flat and the Resale Price, overall p-value of the ANOVA test is 0.00 \< 0.05 means that we can reject the null hypotheses meaning each flat type have different mean resale price coming from the ANOVA hypothesis:
+
+-   Ho = there's no difference between the means and conclude that a significant difference does not exist.
+
+-   Ha = there's difference between the means and conclude that a significant difference does exist.
+
+Pairwise P-Test also concluded the following:
+
+|    Relation     |      P-Value      |                     Remark                     |
+|:-----------------:|:-----------------:|:--------------------------------:|
+| 3 Room - 4 Room | 3.25 e-08 \< 0.05 | Reject null hypothesis, Significant difference |
+| 3 Room - 5 Room |     0 \< 0.05     | Reject null hypothesis, Significant difference |
+| 4 Room - 5 Room |     0 \< 0.05     | Reject null hypothesis, Significant difference |
+
+::: callout-note
+##### P-Value = 0
+
+Please note that P-Value cannot be equals to 0, the 0 value is a reference that p-value is very close to 0
+:::
+
+It can also be noted that in 2022, around 46% (n = 11,312 rooms) of the total scoped rooms belong to the 4 Room category and with 54% of the rooms split almost evenly between 3 and 5 Room categories.
+
+#### One-way ANOVA Test on Type of Flat and Floor Sqr Area
+
+```{r}
+#| fig-height: 12
+#| fig-width: 12
+#| code-fold: true
+
+ggbetweenstats(
+  data = use_flat_data,
+  x = flat_type,
+  y = floor_area_sqm, 
+  type = "p",
+  mean.ci = TRUE, 
+  pairwise.comparisons = TRUE, 
+  pairwise.display = "s",
+  p.adjust.method = "fdr",
+  messages = FALSE
+)
+```
+
+Coming from One-way ANOVA test between Type of Flat and the Floor Area, overall p-value of the ANOVA test is 0.00 \< 0.05 means that we can reject the null hypotheses meaning each flat type have different mean resale price coming from the ANOVA hypothesis:
+
+-   Ho = there's no difference between the means and conclude that a significant difference does not exist.
+
+-   Ha = there's difference between the means and conclude that a significant difference does exist.
+
+Pairwise P-Test also concluded the following:
+
+|    Relation     |      P-Value      |                     Remark                     |
+|:-----------------:|:-----------------:|:--------------------------------:|
+| 3 Room - 4 Room | 1.19 e-08 \< 0.05 | Reject null hypothesis, Significant difference |
+| 3 Room - 5 Room |     0 \< 0.05     | Reject null hypothesis, Significant difference |
+| 4 Room - 5 Room | 1.07 e-09 \< 0.05 | Reject null hypothesis, Significant difference |
+
+#### Correlation between Resale Price, Remaining Lease Years and Floor Area
+
+```{r}
+#| code-fold: true
+
+ggstatsplot::ggcorrmat(
+  data = use_flat_data,
+  cor.vars = c(resale_price, lease_ryear, floor_area_sqm)
+)
+```
+
+Based on the correlation coefficients, there is moderate correlation between resale price and floor area and resale price and remaining lease year while weak correlation between the floor area and remaining lease year. This concludes that there is a relationship between resale price and remaining lease year and resale price and floor area though this does not mean causality between both relationship.
+
+#### Model Diagnostic 
+
+```{r}
+#| fig-height: 36
+#| fig-width: 36
+#| code-fold: true
+
+model <- lm(resale_price ~ flat_type + lease_ryear + floor_area_sqm, data = use_flat_data)
+
+check_model(model)
+```
+
+### Analysis on 3 Room Flats
+
+```{r}
+room_3 <- filter(use_flat_data, grepl("3 ROOM", flat_type))
+room_3
+```
+
+#### One-way ANOVA Test on Town and Resale Price
+
+```{r}
+#| fig-height: 12
+#| fig-width: 12
+#| code-fold: true
+
+ggbetweenstats(
+  data = room_3,
+  x = town,
+  y = resale_price, 
+  type = "p",
+  mean.ci = TRUE, 
+  pairwise.comparisons = TRUE, 
+  pairwise.display = "s",
+  p.adjust.method = "fdr",
+  messages = FALSE
+)
+```
+
+```{r}
+res.aov <- aov(resale_price~town, data = room_3)
+summary (res.aov)
+
+TukeyHSD(res.aov)
+```
+
+::: callout-note
+##### Too Many Values
+
+There is an estimated 55 areas as such would yield large amount of combination for pairwise analysis.
+:::
+
+#### One-way ANOVA Test on Flat Model and Resale Price
+
+```{r}
+#| fig-height: 12
+#| fig-width: 12
+#| code-fold: true
+
+ggbetweenstats(
+  data = room_3,
+  x = flat_model,
+  y = resale_price, 
+  type = "p",
+  mean.ci = TRUE, 
+  pairwise.comparisons = TRUE, 
+  pairwise.display = "s",
+  p.adjust.method = "fdr",
+  messages = FALSE
+)
+```
+
+Based on the Oneway ANOVA, overall ANOVA has a p-value less than 0.05 (4.36 e-107 \< 0.05), indicating that the mean price is significantly different from each Flat Model.
+
+#### Correlation between Resale Price, Remaining Lease Years and Floor Area
+
+```{r}
+#| code-fold: true
+
+ggstatsplot::ggcorrmat(
+  data = room_3,
+  cor.vars = c(resale_price, lease_ryear, floor_area_sqm)
+)
+```
+
+Based on the correlation coefficients, there is moderate correlation between resale price and remaining lease year while weak to no correlation between the floor area and remaining lease year and resale price and floor area. This concludes that there is a relationship between resale price and remaining lease year though this does not mean causality between both relationship.
+
+### Analysis on 4 Room Flats
+
+```{r}
+room_4 <- filter(use_flat_data, grepl("4 ROOM", flat_type))
+room_4
+```
+
+#### One-way ANOVA Test on Flat Model and Resale Price
+
+```{r}
+#| fig-height: 12
+#| fig-width: 12
+#| code-fold: true
+
+ggbetweenstats(
+  data = room_4,
+  x = flat_model,
+  y = resale_price, 
+  type = "p",
+  mean.ci = TRUE, 
+  pairwise.comparisons = TRUE, 
+  pairwise.display = "s",
+  p.adjust.method = "fdr",
+  messages = FALSE
+)
+```
+
+Based on the Oneway ANOVA, overall ANOVA has a p-value less than 0.05 (5.37 e-34 \< 0.05), indicating that the mean price is significantly different from each Flat Model.
+
+#### Correlation between Resale Price, Remaining Lease Years and Floor Area
+
+```{r}
+#| code-fold: true
+
+ggstatsplot::ggcorrmat(
+  data = room_4,
+  cor.vars = c(resale_price, lease_ryear, floor_area_sqm)
+)
+```
+
+Based on the correlation coefficients, there is moderate correlation between resale price and remaining lease year while weak to no correlation between the floor area and remaining lease year and resale price and floor area. This concludes that there is a relationship between resale price and remaining lease year though this does not mean causality between both relationship.
+
+### Analysis on 5 Room Flats
+
+```{r}
+room_5 <- filter(use_flat_data, grepl("5 ROOM", flat_type))
+room_5
+```
+
+#### One-way ANOVA Test on Flat Model and Resale Price
+
+```{r}
+#| fig-height: 12
+#| fig-width: 12
+#| code-fold: true
+
+ggbetweenstats(
+  data = room_5,
+  x = flat_model,
+  y = resale_price, 
+  type = "p",
+  mean.ci = TRUE, 
+  pairwise.comparisons = TRUE, 
+  pairwise.display = "s",
+  p.adjust.method = "fdr",
+  messages = FALSE
+)
+```
+
+Based on the Oneway ANOVA, overall ANOVA has a p-value less than 0.05 (3.88 e-17 \< 0.05), indicating that the mean price is significantly different from each Flat Model.
+
+#### Correlation between Resale Price, Remaining Lease Years and Floor Area
+
+```{r}
+#| code-fold: true
+
+ggstatsplot::ggcorrmat(
+  data = room_5,
+  cor.vars = c(resale_price, lease_ryear, floor_area_sqm)
+)
+```
+
+Based on the correlation coefficients, for 5 Room Flats, the resale price, remaining lease years and floor area have weak to no correlation meaning each variable is independent of each other.
+
+## Learning and Insights 
+
+**Size Limitations:** due to the limitations of quarto size, visualization many variables may be difficult. Filters and selected values may be considered
+
+**Ease of Statistical Understanding:** certain visualizations may not be easily understood by readers/users. Simplification may be a better option.
