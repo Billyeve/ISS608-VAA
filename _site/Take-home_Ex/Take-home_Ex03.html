@@ -268,8 +268,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </ul></li>
   <li><a href="#data-exploration-through-statistical-visualization" id="toc-data-exploration-through-statistical-visualization" class="nav-link" data-scroll-target="#data-exploration-through-statistical-visualization">Data Exploration through Statistical Visualization</a>
   <ul class="collapse">
-  <li><a href="#one-way-anova-test-between-flat-type-and-resale-price" id="toc-one-way-anova-test-between-flat-type-and-resale-price" class="nav-link" data-scroll-target="#one-way-anova-test-between-flat-type-and-resale-price">One-way ANOVA Test between Flat Type and Resale Price</a></li>
+  <li><a href="#analysis-on-the-type-of-flat" id="toc-analysis-on-the-type-of-flat" class="nav-link" data-scroll-target="#analysis-on-the-type-of-flat">Analysis on the Type of Flat</a></li>
+  <li><a href="#analysis-on-3-room-flats" id="toc-analysis-on-3-room-flats" class="nav-link" data-scroll-target="#analysis-on-3-room-flats">Analysis on 3 Room Flats</a></li>
+  <li><a href="#analysis-on-4-room-flats" id="toc-analysis-on-4-room-flats" class="nav-link" data-scroll-target="#analysis-on-4-room-flats">Analysis on 4 Room Flats</a></li>
+  <li><a href="#analysis-on-5-room-flats" id="toc-analysis-on-5-room-flats" class="nav-link" data-scroll-target="#analysis-on-5-room-flats">Analysis on 5 Room Flats</a></li>
   </ul></li>
+  <li><a href="#learning-and-insights" id="toc-learning-and-insights" class="nav-link" data-scroll-target="#learning-and-insights">Learning and Insights</a></li>
   </ul>
 </nav>
     </div>
@@ -321,7 +325,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3 class="anchored" data-anchor-id="installing-and-loading-the-required-libraries">Installing and loading the required libraries</h3>
 <p>Before we get started, it is important for us to ensure that the required R packages have been installed.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse, ggplot2, knitr, plotly, skimr, questionr, funModeling, sf, tmap, quanteda, NLP, ggiraph, ggstatsplot, dplyr, crosstalk, DT, ggdist, gganimate, ggpubr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse, ggplot2, knitr, plotly, skimr, questionr, funModeling, sf, tmap, quanteda, NLP, ggiraph, ggstatsplot, dplyr, crosstalk, DT, ggdist, gganimate, ggpubr, corrplot, performance, parameters, see)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="importing-data" class="level3">
@@ -658,11 +662,11 @@ $ resale_price        &lt;dbl&gt; 358000, 355000, 338000, 420000…</code></pre>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Note
+Critical!
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>*storey_range is listed as a string and needed for the arrangement to be corrected moving foreward</p>
+<p>storey_range is listed as a string and needed for the arrangement to be corrected moving forward</p>
 </div>
 </div>
 <div class="cell">
@@ -903,11 +907,11 @@ Note
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Note
+Critical!
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>*remaining lease is listed as a string and needed for the arrangement to be corrected moving foreward</p>
+<p>remaining lease is listed as a string and needed for the arrangement to be corrected moving foreward</p>
 </div>
 </div>
 <div class="cell">
@@ -988,8 +992,11 @@ Note
 <section id="data-exploration-through-statistical-visualization" class="level2">
 <h2 class="anchored" data-anchor-id="data-exploration-through-statistical-visualization">Data Exploration through Statistical Visualization</h2>
 <p>This section presents the statistical visualization and explanation of the data.</p>
-<section id="one-way-anova-test-between-flat-type-and-resale-price" class="level3">
-<h3 class="anchored" data-anchor-id="one-way-anova-test-between-flat-type-and-resale-price">One-way ANOVA Test between Flat Type and Resale Price</h3>
+<section id="analysis-on-the-type-of-flat" class="level3">
+<h3 class="anchored" data-anchor-id="analysis-on-the-type-of-flat">Analysis on the Type of Flat</h3>
+<p>This section presents insights with regards to the relationship between Type of Flat and other variables.</p>
+<section id="one-way-anova-test-on-type-of-flat-and-resale-price" class="level4">
+<h4 class="anchored" data-anchor-id="one-way-anova-test-on-type-of-flat-and-resale-price">One-way ANOVA Test on Type of Flat and Resale Price</h4>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -1009,9 +1016,750 @@ Note
 <p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="1152"></p>
 </div>
 </div>
-
-
+<p>Coming from One-way ANOVA test between Type of Flat and the Resale Price, overall p-value of the ANOVA test is 0.00 &lt; 0.05 means that we can reject the null hypotheses meaning each flat type have different mean resale price coming from the ANOVA hypothesis:</p>
+<ul>
+<li><p>Ho = there’s no difference between the means and conclude that a significant difference does not exist.</p></li>
+<li><p>Ha = there’s difference between the means and conclude that a significant difference does exist.</p></li>
+</ul>
+<p>Pairwise P-Test also concluded the following:</p>
+<table class="table">
+<colgroup>
+<col style="width: 26%">
+<col style="width: 26%">
+<col style="width: 47%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Relation</th>
+<th style="text-align: center;">P-Value</th>
+<th style="text-align: center;">Remark</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">3 Room - 4 Room</td>
+<td style="text-align: center;">3.25 e-08 &lt; 0.05</td>
+<td style="text-align: center;">Reject null hypothesis, Significant difference</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">3 Room - 5 Room</td>
+<td style="text-align: center;">0 &lt; 0.05</td>
+<td style="text-align: center;">Reject null hypothesis, Significant difference</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">4 Room - 5 Room</td>
+<td style="text-align: center;">0 &lt; 0.05</td>
+<td style="text-align: center;">Reject null hypothesis, Significant difference</td>
+</tr>
+</tbody>
+</table>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+P-Value = 0
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Please note that P-Value cannot be equals to 0, the 0 value is a reference that p-value is very close to 0</p>
+</div>
+</div>
+<p>It can also be noted that in 2022, around 46% (n = 11,312 rooms) of the total scoped rooms belong to the 4 Room category and with 54% of the rooms split almost evenly between 3 and 5 Room categories.</p>
 </section>
+<section id="one-way-anova-test-on-type-of-flat-and-floor-sqr-area" class="level4">
+<h4 class="anchored" data-anchor-id="one-way-anova-test-on-type-of-flat-and-floor-sqr-area">One-way ANOVA Test on Type of Flat and Floor Sqr Area</h4>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggbetweenstats</span>(</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> use_flat_data,</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> flat_type,</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> floor_area_sqm, </span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">"p"</span>,</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">mean.ci =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">pairwise.comparisons =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">pairwise.display =</span> <span class="st">"s"</span>,</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">p.adjust.method =</span> <span class="st">"fdr"</span>,</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">messages =</span> <span class="cn">FALSE</span></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="1152"></p>
+</div>
+</div>
+<p>Coming from One-way ANOVA test between Type of Flat and the Floor Area, overall p-value of the ANOVA test is 0.00 &lt; 0.05 means that we can reject the null hypotheses meaning each flat type have different mean resale price coming from the ANOVA hypothesis:</p>
+<ul>
+<li><p>Ho = there’s no difference between the means and conclude that a significant difference does not exist.</p></li>
+<li><p>Ha = there’s difference between the means and conclude that a significant difference does exist.</p></li>
+</ul>
+<p>Pairwise P-Test also concluded the following:</p>
+<table class="table">
+<colgroup>
+<col style="width: 26%">
+<col style="width: 26%">
+<col style="width: 47%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Relation</th>
+<th style="text-align: center;">P-Value</th>
+<th style="text-align: center;">Remark</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">3 Room - 4 Room</td>
+<td style="text-align: center;">1.19 e-08 &lt; 0.05</td>
+<td style="text-align: center;">Reject null hypothesis, Significant difference</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">3 Room - 5 Room</td>
+<td style="text-align: center;">0 &lt; 0.05</td>
+<td style="text-align: center;">Reject null hypothesis, Significant difference</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">4 Room - 5 Room</td>
+<td style="text-align: center;">1.07 e-09 &lt; 0.05</td>
+<td style="text-align: center;">Reject null hypothesis, Significant difference</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="correlation-between-resale-price-remaining-lease-years-and-floor-area" class="level4">
+<h4 class="anchored" data-anchor-id="correlation-between-resale-price-remaining-lease-years-and-floor-area">Correlation between Resale Price, Remaining Lease Years and Floor Area</h4>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>ggstatsplot<span class="sc">::</span><span class="fu">ggcorrmat</span>(</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> use_flat_data,</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">cor.vars =</span> <span class="fu">c</span>(resale_price, lease_ryear, floor_area_sqm)</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Based on the correlation coefficients, there is moderate correlation between resale price and floor area and resale price and remaining lease year while weak correlation between the floor area and remaining lease year. This concludes that there is a relationship between resale price and remaining lease year and resale price and floor area though this does not mean causality between both relationship.</p>
+</section>
+<section id="model-diagnostic" class="level4">
+<h4 class="anchored" data-anchor-id="model-diagnostic">Model Diagnostic</h4>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(resale_price <span class="sc">~</span> flat_type <span class="sc">+</span> lease_ryear <span class="sc">+</span> floor_area_sqm, <span class="at">data =</span> use_flat_data)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">check_model</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Variable `Component` is not in your data frame :/</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="3456"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="analysis-on-3-room-flats" class="level3">
+<h3 class="anchored" data-anchor-id="analysis-on-3-room-flats">Analysis on 3 Room Flats</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>room_3 <span class="ot">&lt;-</span> <span class="fu">filter</span>(use_flat_data, <span class="fu">grepl</span>(<span class="st">"3 ROOM"</span>, flat_type))</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>room_3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6,346 × 12
+   month   town    flat_…¹ block stree…² store…³ floor…⁴ flat_…⁵ lease…⁶ remai…⁷
+   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;fct&gt;     &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;  
+ 1 2022-01 ANG MO… 3 ROOM  320   ANG MO… 07 TO …      73 New Ge…    1977 54 yea…
+ 2 2022-01 ANG MO… 3 ROOM  225   ANG MO… 07 TO …      67 New Ge…    1978 55 yea…
+ 3 2022-01 ANG MO… 3 ROOM  331   ANG MO… 07 TO …      68 New Ge…    1981 58 yea…
+ 4 2022-01 ANG MO… 3 ROOM  534   ANG MO… 07 TO …      82 New Ge…    1980 57 yea…
+ 5 2022-01 ANG MO… 3 ROOM  578   ANG MO… 04 TO …      67 New Ge…    1980 57 yea…
+ 6 2022-01 ANG MO… 3 ROOM  452   ANG MO… 01 TO …      83 New Ge…    1979 56 yea…
+ 7 2022-01 ANG MO… 3 ROOM  560   ANG MO… 01 TO …      67 New Ge…    1980 57 yea…
+ 8 2022-01 ANG MO… 3 ROOM  435   ANG MO… 04 TO …      67 New Ge…    1979 56 yea…
+ 9 2022-01 ANG MO… 3 ROOM  435   ANG MO… 04 TO …      67 New Ge…    1979 56 yea…
+10 2022-01 ANG MO… 3 ROOM  560   ANG MO… 10 TO …      67 New Ge…    1980 57 yea…
+# … with 6,336 more rows, 2 more variables: resale_price &lt;dbl&gt;,
+#   lease_ryear &lt;dbl&gt;, and abbreviated variable names ¹​flat_type, ²​street_name,
+#   ³​storey_range, ⁴​floor_area_sqm, ⁵​flat_model, ⁶​lease_commence_date,
+#   ⁷​remaining_lease</code></pre>
+</div>
+</div>
+<section id="one-way-anova-test-on-town-and-resale-price" class="level4">
+<h4 class="anchored" data-anchor-id="one-way-anova-test-on-town-and-resale-price">One-way ANOVA Test on Town and Resale Price</h4>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggbetweenstats</span>(</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> room_3,</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> town,</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> resale_price, </span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">"p"</span>,</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">mean.ci =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">pairwise.comparisons =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">pairwise.display =</span> <span class="st">"s"</span>,</span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">p.adjust.method =</span> <span class="st">"fdr"</span>,</span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">messages =</span> <span class="cn">FALSE</span></span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Number of labels is greater than default palette color count.
+• Select another color `palette` (and/or `package`).</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="1152"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>res.aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(resale_price<span class="sc">~</span>town, <span class="at">data =</span> room_3)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span> (res.aov)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>              Df    Sum Sq   Mean Sq F value Pr(&gt;F)    
+town          25 6.746e+12 2.699e+11   43.27 &lt;2e-16 ***
+Residuals   6320 3.942e+13 6.237e+09                   
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">TukeyHSD</span>(res.aov)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = resale_price ~ town, data = room_3)
+
+$town
+                                      diff          lwr         upr     p adj
+BEDOK-ANG MO KIO               -18620.3726  -36284.7679   -955.9773 0.0248933
+BISHAN-ANG MO KIO               28273.3450   -9921.2322  66467.9221 0.5371259
+BUKIT BATOK-ANG MO KIO         -15676.8676  -37133.0345   5779.2993 0.5659993
+BUKIT MERAH-ANG MO KIO          60593.6676   40297.5004  80889.8348 0.0000000
+BUKIT PANJANG-ANG MO KIO        -4396.5473  -34850.5958  26057.5011 1.0000000
+BUKIT TIMAH-ANG MO KIO          54741.7603  -26833.4109 136316.9316 0.7379320
+CENTRAL AREA-ANG MO KIO         68699.3131   34911.0399 102487.5864 0.0000000
+CHOA CHU KANG-ANG MO KIO         4861.0927  -26828.0770  36550.2623 1.0000000
+CLEMENTI-ANG MO KIO             42478.2353   20895.5975  64060.8730 0.0000000
+GEYLANG-ANG MO KIO             -31842.7295  -52570.7040 -11114.7549 0.0000053
+HOUGANG-ANG MO KIO                836.9030  -20126.7331  21800.5391 1.0000000
+JURONG EAST-ANG MO KIO         -17969.7384  -43153.6616   7214.1849 0.6172205
+JURONG WEST-ANG MO KIO         -31329.1798  -51894.3527 -10764.0068 0.0000069
+KALLANG/WHAMPOA-ANG MO KIO      61021.8457   40924.0372  81119.6543 0.0000000
+MARINE PARADE-ANG MO KIO        38314.0790    5333.6982  71294.4598 0.0052470
+PASIR RIS-ANG MO KIO            97581.9765   32926.1656 162237.7873 0.0000093
+PUNGGOL-ANG MO KIO              57573.7158   33827.6516  81319.7801 0.0000000
+QUEENSTOWN-ANG MO KIO           60308.2460   39899.1626  80717.3293 0.0000000
+SEMBAWANG-ANG MO KIO            46015.3881    7006.7132  85024.0631 0.0039681
+SENGKANG-ANG MO KIO             50753.9583   25570.0350  75937.8815 0.0000000
+SERANGOON-ANG MO KIO             3423.2353  -29403.8988  36250.3693 1.0000000
+TAMPINES-ANG MO KIO             27478.7721    8005.6287  46951.9155 0.0000669
+TOA PAYOH-ANG MO KIO            -3272.2922  -22701.8498  16157.2654 1.0000000
+WOODLANDS-ANG MO KIO           -16066.6297  -38591.1261   6457.8667 0.6179462
+YISHUN-ANG MO KIO               -5407.6457  -23199.4038  12384.1124 0.9999965
+BISHAN-BEDOK                    46893.7175    8801.1125  84986.3226 0.0017246
+BUKIT BATOK-BEDOK                2943.5049  -18330.6093  24217.6191 1.0000000
+BUKIT MERAH-BEDOK               79214.0402   59110.4275  99317.6528 0.0000000
+BUKIT PANJANG-BEDOK             14223.8252  -16102.2346  44549.8851 0.9939382
+BUKIT TIMAH-BEDOK               73362.1329   -8165.3434 154889.6093 0.1532958
+CENTRAL AREA-BEDOK              87319.6857   53646.7255 120992.6458 0.0000000
+CHOA CHU KANG-BEDOK             23481.4652   -8084.7241  55047.6546 0.5262089
+CLEMENTI-BEDOK                  61098.6078   39696.9470  82500.2687 0.0000000
+GEYLANG-BEDOK                  -13222.3569  -33761.8254   7317.1116 0.8060836
+HOUGANG-BEDOK                   19457.2756   -1319.9927  40234.5438 0.1045683
+JURONG EAST-BEDOK                 650.6342  -24378.3655  25679.6339 1.0000000
+JURONG WEST-BEDOK              -12708.8072  -33083.9680   7666.3536 0.8494961
+KALLANG/WHAMPOA-BEDOK           79642.2183   59738.8833  99545.5533 0.0000000
+MARINE PARADE-BEDOK             56934.4516   24072.2186  89796.6846 0.0000001
+PASIR RIS-BEDOK                116202.3490   51606.7245 180797.9736 0.0000000
+PUNGGOL-BEDOK                   76194.0884   52612.3920  99775.7848 0.0000000
+QUEENSTOWN-BEDOK                78928.6185   58711.0143  99146.2228 0.0000000
+SEMBAWANG-BEDOK                 64635.7607   25726.9242 103544.5972 0.0000003
+SENGKANG-BEDOK                  69374.3308   44345.3311  94403.3306 0.0000000
+SERANGOON-BEDOK                 22043.6078  -10664.8248  54752.0405 0.7302170
+TAMPINES-BEDOK                  46099.1447   26826.7772  65371.5122 0.0000000
+TOA PAYOH-BEDOK                 15348.0804   -3880.2463  34576.4070 0.3698323
+WOODLANDS-BEDOK                  2553.7429  -19797.4042  24904.8900 1.0000000
+YISHUN-BEDOK                    13212.7269   -4359.0543  30784.5080 0.5021302
+BUKIT BATOK-BISHAN             -43950.2126  -83942.4968  -3957.9284 0.0133576
+BUKIT MERAH-BISHAN              32320.3226   -7061.7812  71702.4264 0.3118034
+BUKIT PANJANG-BISHAN           -32669.8923  -78128.2773  12788.4927 0.6019101
+BUKIT TIMAH-BISHAN              26468.4154  -61812.5240 114749.3548 0.9999973
+CENTRAL AREA-BISHAN             40425.9682   -7330.3205  88182.2568 0.2519136
+CHOA CHU KANG-BISHAN           -23412.2523  -69707.1675  22882.6629 0.9834724
+CLEMENTI-BISHAN                 14204.8903  -25855.3886  54265.1693 0.9999347
+GEYLANG-BISHAN                 -60116.0744  -99722.4455 -20509.7034 0.0000078
+HOUGANG-BISHAN                 -27436.4420  -67166.6539  12293.7699 0.6841679
+JURONG EAST-BISHAN             -46243.0833  -88353.0072  -4133.1595 0.0135144
+JURONG WEST-BISHAN             -59602.5247  -99123.9371 -20081.1123 0.0000095
+KALLANG/WHAMPOA-BISHAN          32748.5008   -6531.7437  72028.7452 0.2806273
+MARINE PARADE-BISHAN            10040.7341  -37147.4129  57228.8811 1.0000000
+PASIR RIS-BISHAN                69308.6315   -3625.5140 142242.7770 0.0897604
+PUNGGOL-BISHAN                  29300.3709  -11965.7323  70566.4740 0.6276142
+QUEENSTOWN-BISHAN               32034.9010   -7405.5146  71475.3166 0.3330134
+SEMBAWANG-BISHAN                17742.0432  -33839.8570  69323.9433 0.9999626
+SENGKANG-BISHAN                 22480.6133  -19629.3106  64590.5372 0.9681761
+SERANGOON-BISHAN               -24850.1097  -71931.2782  22231.0588 0.9721390
+TAMPINES-BISHAN                  -794.5728  -39758.9028  38169.7572 1.0000000
+TOA PAYOH-BISHAN               -31545.6372  -70488.2026   7396.9283 0.3386057
+WOODLANDS-BISHAN               -44339.9746  -84915.4430  -3764.5062 0.0145896
+YISHUN-BISHAN                  -33680.9906  -71832.8235   4470.8423 0.1810828
+BUKIT MERAH-BUKIT BATOK         76270.5352   52765.3980  99775.6725 0.0000000
+BUKIT PANJANG-BUKIT BATOK       11280.3203  -21400.0430  43960.6835 0.9999601
+BUKIT TIMAH-BUKIT BATOK         70418.6280  -12013.5601 152850.8161 0.2354481
+CENTRAL AREA-BUKIT BATOK        84376.1807   48568.2978 120184.0637 0.0000000
+CHOA CHU KANG-BUKIT BATOK       20537.9603  -13296.3499  54372.2705 0.8810195
+CLEMENTI-BUKIT BATOK            58155.1029   33530.5760  82779.6298 0.0000000
+GEYLANG-BUKIT BATOK            -16165.8618  -40044.8485   7713.1248 0.7219671
+HOUGANG-BUKIT BATOK             16513.7706   -7570.0645  40597.6057 0.6979668
+JURONG EAST-BUKIT BATOK         -2292.8707  -30127.8678  25542.1264 1.0000000
+JURONG WEST-BUKIT BATOK        -15652.3121  -39390.1177   8085.4934 0.7682176
+KALLANG/WHAMPOA-BUKIT BATOK     76698.7133   53364.6399 100032.7868 0.0000000
+MARINE PARADE-BUKIT BATOK       53990.9467   18944.3692  89037.5241 0.0000048
+PASIR RIS-BUKIT BATOK          113258.8441   47525.0556 178992.6326 0.0000001
+PUNGGOL-BUKIT BATOK             73250.5834   46709.4335  99791.7334 0.0000000
+QUEENSTOWN-BUKIT BATOK          75985.1136   52382.4070  99587.8202 0.0000000
+SEMBAWANG-BUKIT BATOK           61692.2558   20921.7542 102462.7573 0.0000086
+SENGKANG-BUKIT BATOK            66430.8259   38595.8288  94265.8230 0.0000000
+SERANGOON-BUKIT BATOK           19100.1029  -15802.3011  54002.5069 0.9578702
+TAMPINES-BUKIT BATOK            43155.6398   20357.3857  65953.8938 0.0000000
+TOA PAYOH-BUKIT BATOK           12404.5754  -10356.4611  35165.6119 0.9597580
+WOODLANDS-BUKIT BATOK            -389.7620  -25843.8386  25064.3145 1.0000000
+YISHUN-BUKIT BATOK              10269.2220  -11110.7624  31649.2063 0.9915860
+BUKIT PANJANG-BUKIT MERAH      -64990.2149  -96920.9751 -33059.4547 0.0000000
+BUKIT TIMAH-BUKIT MERAH         -5851.9072  -87989.7970  76285.9826 1.0000000
+CENTRAL AREA-BUKIT MERAH         8105.6455  -27019.4422  43230.7333 1.0000000
+CHOA CHU KANG-BUKIT MERAH      -55732.5749  -88843.4168 -22621.7330 0.0000002
+CLEMENTI-BUKIT MERAH           -18115.4323  -41736.0723   5505.2076 0.4578283
+GEYLANG-BUKIT MERAH            -92436.3970 -115278.7548 -69594.0393 0.0000000
+HOUGANG-BUKIT MERAH            -59756.7646  -82813.1828 -36700.3464 0.0000000
+JURONG EAST-BUKIT MERAH        -78563.4059 -105514.3683 -51612.4436 0.0000000
+JURONG WEST-BUKIT MERAH        -91922.8474 -114617.5762 -69228.1185 0.0000000
+KALLANG/WHAMPOA-BUKIT MERAH       428.1781  -21843.9185  22700.2748 1.0000000
+MARINE PARADE-BUKIT MERAH      -22279.5886  -56628.2406  12069.0635 0.7946202
+PASIR RIS-BUKIT MERAH           36988.3089  -28376.0411 102352.6589 0.9396362
+PUNGGOL-BUKIT MERAH             -3019.9518  -28632.4477  22592.5442 1.0000000
+QUEENSTOWN-BUKIT MERAH           -285.4216  -22838.8041  22267.9609 1.0000000
+SEMBAWANG-BUKIT MERAH          -14578.2794  -54750.4228  25593.8639 0.9999009
+SENGKANG-BUKIT MERAH            -9839.7093  -36790.6716  17111.2530 0.9998897
+SERANGOON-BUKIT MERAH          -57170.4323  -91371.9690 -22968.8956 0.0000003
+TAMPINES-BUKIT MERAH           -33114.8954  -54824.9782 -11404.8127 0.0000066
+TOA PAYOH-BUKIT MERAH          -63865.9598  -85536.9562 -42194.9633 0.0000000
+WOODLANDS-BUKIT MERAH          -76660.2972 -101144.5231 -52176.0713 0.0000000
+YISHUN-BUKIT MERAH             -66001.3133  -86216.9269 -45785.6996 0.0000000
+BUKIT TIMAH-BUKIT PANJANG       59138.3077  -26079.9275 144356.5429 0.6744804
+CENTRAL AREA-BUKIT PANJANG      73095.8605   31271.3885 114920.3324 0.0000000
+CHOA CHU KANG-BUKIT PANJANG      9257.6400  -30890.1186  49405.3986 1.0000000
+CLEMENTI-BUKIT PANJANG          46874.7826   14111.2465  79638.3187 0.0000456
+GEYLANG-BUKIT PANJANG          -27446.1821  -59653.1375   4760.7732 0.2397921
+HOUGANG-BUKIT PANJANG            5233.4503  -27125.6764  37592.5771 1.0000000
+JURONG EAST-BUKIT PANJANG      -13573.1910  -48813.3532  21666.9712 0.9997196
+JURONG WEST-BUKIT PANJANG      -26932.6324  -59035.0526   5169.7878 0.2686211
+KALLANG/WHAMPOA-BUKIT PANJANG   65418.3931   33613.3470  97223.4391 0.0000000
+MARINE PARADE-BUKIT PANJANG     42710.6264    1536.0643  83885.1885 0.0311163
+PASIR RIS-BUKIT PANJANG        101978.5238   32783.0549 171173.9927 0.0000193
+PUNGGOL-BUKIT PANJANG           61970.2632   27742.8675  96197.6588 0.0000000
+QUEENSTOWN-BUKIT PANJANG        64704.7933   32702.1414  96707.4452 0.0000000
+SEMBAWANG-BUKIT PANJANG         50411.9355    4267.4259  96556.4451 0.0146514
+SENGKANG-BUKIT PANJANG          55150.5056   19910.3434  90390.6679 0.0000029
+SERANGOON-BUKIT PANJANG          7819.7826  -33232.1330  48871.6982 1.0000000
+TAMPINES-BUKIT PANJANG          31875.3195     461.2723  63289.3666 0.0416304
+TOA PAYOH-BUKIT PANJANG          1124.2552  -30262.7924  32511.3027 1.0000000
+WOODLANDS-BUKIT PANJANG        -11670.0823  -45061.5780  21721.4134 0.9999499
+YISHUN-BUKIT PANJANG            -1011.0983  -31411.5210  29389.3244 1.0000000
+CENTRAL AREA-BUKIT TIMAH        13957.5528  -72508.3130 100423.4186 1.0000000
+CHOA CHU KANG-BUKIT TIMAH      -49880.6677 -135548.0595  35786.7241 0.9194632
+CLEMENTI-BUKIT TIMAH           -12263.5251  -94728.7225  70201.6724 1.0000000
+GEYLANG-BUKIT TIMAH            -86584.4898 -168830.1430  -4338.8366 0.0253535
+HOUGANG-BUKIT TIMAH            -53904.8574 -136210.2191  28400.5044 0.7793168
+JURONG EAST-BUKIT TIMAH        -72711.4987 -156191.6073  10768.6099 0.2023762
+JURONG WEST-BUKIT TIMAH        -86070.9401 -168275.7142  -3866.1661 0.0273677
+KALLANG/WHAMPOA-BUKIT TIMAH      6280.0854  -75809.0153  88369.1860 1.0000000
+MARINE PARADE-BUKIT TIMAH      -16427.6813 -102581.0565  69725.6939 1.0000000
+PASIR RIS-BUKIT TIMAH           42840.2161  -59702.8110 145383.2432 0.9989278
+PUNGGOL-BUKIT TIMAH              2831.9555  -80225.6998  85889.6108 1.0000000
+QUEENSTOWN-BUKIT TIMAH           5566.4856  -76599.3785  87732.3497 1.0000000
+SEMBAWANG-BUKIT TIMAH           -8726.3722  -97362.5683  79909.8239 1.0000000
+SENGKANG-BUKIT TIMAH            -3987.8021  -87467.9106  79492.3065 1.0000000
+SERANGOON-BUKIT TIMAH          -51318.5251 -137413.3523  34776.3021 0.8992254
+TAMPINES-BUKIT TIMAH           -27262.9882 -109201.3910  54675.4146 0.9999799
+TOA PAYOH-BUKIT TIMAH          -58014.0525 -139942.1078  23914.0028 0.6333007
+WOODLANDS-BUKIT TIMAH          -70808.3900 -153525.0841  11908.3041 0.2317839
+YISHUN-BUKIT TIMAH             -60149.4060 -141704.5726  21405.7605 0.5452882
+CHOA CHU KANG-CENTRAL AREA     -63838.2205 -106570.4198 -21106.0211 0.0000128
+CLEMENTI-CENTRAL AREA          -26221.0779  -62104.8853   9662.7296 0.5657722
+GEYLANG-CENTRAL AREA          -100542.0426 -135918.3950 -65165.6901 0.0000000
+HOUGANG-CENTRAL AREA           -67862.4101 -103377.3566 -32347.4636 0.0000000
+JURONG EAST-CENTRAL AREA       -86669.0515 -124827.5024 -48510.6006 0.0000000
+JURONG WEST-CENTRAL AREA      -100028.4929 -135309.7021 -64747.2837 0.0000000
+KALLANG/WHAMPOA-CENTRAL AREA    -7677.4674  -42688.3128  27333.3780 1.0000000
+MARINE PARADE-CENTRAL AREA     -30385.2341  -74083.5510  13313.0829 0.6705238
+PASIR RIS-CENTRAL AREA          28882.6633  -41843.6490  99608.9757 0.9992564
+PUNGGOL-CENTRAL AREA           -11125.5973  -48350.7629  26099.5683 0.9999975
+QUEENSTOWN-CENTRAL AREA         -8391.0672  -43581.5214  26799.3871 1.0000000
+SEMBAWANG-CENTRAL AREA         -22683.9250  -71093.7805  25725.9305 0.9940190
+SENGKANG-CENTRAL AREA          -17945.3548  -56103.8058  20213.0961 0.9937075
+SERANGOON-CENTRAL AREA         -65276.0779 -108858.8510 -21693.3047 0.0000118
+TAMPINES-CENTRAL AREA          -41220.5410  -75876.5751  -6564.5069 0.0033972
+TOA PAYOH-CENTRAL AREA         -71971.6053 -106603.1674 -37340.0432 0.0000000
+WOODLANDS-CENTRAL AREA         -84765.9428 -121224.0053 -48307.8802 0.0000000
+YISHUN-CENTRAL AREA            -74106.9588 -107846.9061 -40367.0115 0.0000000
+CLEMENTI-CHOA CHU KANG          37617.1426    3702.4894  71531.7958 0.0115315
+GEYLANG-CHOA CHU KANG          -36703.8221  -70081.0955  -3326.5487 0.0132248
+HOUGANG-CHOA CHU KANG           -4024.1897  -37548.3226  29499.9433 1.0000000
+JURONG EAST-CHOA CHU KANG      -22830.8310  -59143.6860  13482.0240 0.8392466
+JURONG WEST-CHOA CHU KANG      -36190.2724  -69466.6873  -2913.8575 0.0157059
+KALLANG/WHAMPOA-CHOA CHU KANG   56160.7531   23171.1281  89150.3781 0.0000001
+MARINE PARADE-CHOA CHU KANG     33452.9864   -8643.3195  75549.2923 0.3793682
+PASIR RIS-CHOA CHU KANG         92720.8838   22972.9998 162468.7678 0.0003110
+PUNGGOL-CHOA CHU KANG           52712.6232   17381.7724  88043.4739 0.0000133
+QUEENSTOWN-CHOA CHU KANG        55447.1533   22266.9765  88627.3301 0.0000003
+SEMBAWANG-CHOA CHU KANG         41154.2955   -5814.5258  88123.1168 0.1927931
+SENGKANG-CHOA CHU KANG          45892.8656    9580.0106  82205.7206 0.0009912
+SERANGOON-CHOA CHU KANG         -1437.8574  -43414.2100  40538.4952 1.0000000
+TAMPINES-CHOA CHU KANG          22617.6795   -9995.1518  55230.5107 0.6757472
+TOA PAYOH-CHOA CHU KANG         -8133.3848  -40720.2098  24453.4401 0.9999999
+WOODLANDS-CHOA CHU KANG        -20927.7223  -55449.4023  13593.9577 0.8824086
+YISHUN-CHOA CHU KANG           -10268.7383  -41906.3758  21368.8992 0.9999875
+GEYLANG-CLEMENTI               -74320.9647  -98313.6544 -50328.2751 0.0000000
+HOUGANG-CLEMENTI               -41641.3323  -65837.9078 -17444.7568 0.0000001
+JURONG EAST-CLEMENTI           -60447.9736  -88380.5750 -32515.3723 0.0000000
+JURONG WEST-CLEMENTI           -73807.4150  -97659.5966 -49955.2334 0.0000000
+KALLANG/WHAMPOA-CLEMENTI        18543.6105   -4906.8082  41994.0291 0.3901003
+MARINE PARADE-CLEMENTI          -4164.1562  -39288.3039  30959.9914 1.0000000
+PASIR RIS-CLEMENTI              55103.7412  -10671.4373 120878.9197 0.2713411
+PUNGGOL-CLEMENTI                15095.4805  -11548.0139  41738.9750 0.9388630
+QUEENSTOWN-CLEMENTI             17830.0107   -5887.7234  41547.7448 0.5026374
+SEMBAWANG-CLEMENTI               3537.1529  -37300.0477  44374.3535 1.0000000
+SENGKANG-CLEMENTI                8275.7230  -19656.8783  36208.3244 0.9999979
+SERANGOON-CLEMENTI             -39055.0000  -74035.2939  -4074.7061 0.0103656
+TAMPINES-CLEMENTI              -14999.4631  -37916.7828   7917.8566 0.7803867
+TOA PAYOH-CLEMENTI             -45750.5275  -68630.8233 -22870.2317 0.0000000
+WOODLANDS-CLEMENTI             -58544.8649  -84105.6389 -32984.0909 0.0000000
+YISHUN-CLEMENTI                -47885.8809  -69392.7841 -26378.9778 0.0000000
+HOUGANG-GEYLANG                 32679.6324    9242.2063  56117.0586 0.0000924
+JURONG EAST-GEYLANG             13872.9911  -13404.6352  41150.6174 0.9822562
+JURONG WEST-GEYLANG               513.5497  -22568.1583  23595.2577 1.0000000
+KALLANG/WHAMPOA-GEYLANG         92864.5752   70198.2827 115530.8676 0.0000000
+MARINE PARADE-GEYLANG           70156.8085   35551.2537 104762.3633 0.0000000
+PASIR RIS-GEYLANG              129424.7059   63924.9900 194924.4218 0.0000000
+PUNGGOL-GEYLANG                 89416.4453   63460.4349 115372.4556 0.0000000
+QUEENSTOWN-GEYLANG              92150.9754   69208.2295 115093.7213 0.0000000
+SEMBAWANG-GEYLANG               77858.1176   37466.0933 118250.1419 0.0000000
+SENGKANG-GEYLANG                82596.6877   55319.0614 109874.3140 0.0000000
+SERANGOON-GEYLANG               35265.9647     806.4285  69725.5009 0.0372594
+TAMPINES-GEYLANG                59321.5016   37207.2026  81435.8006 0.0000000
+TOA PAYOH-GEYLANG               28570.4373    6494.5089  50646.3656 0.0005842
+WOODLANDS-GEYLANG               15776.0998   -9067.2463  40619.4459 0.8257573
+YISHUN-GEYLANG                  26435.0838    5785.9782  47084.1894 0.0007466
+JURONG EAST-HOUGANG            -18806.6413  -46263.7717   8650.4890 0.7000181
+JURONG WEST-HOUGANG            -32166.0828  -55459.6517  -8872.5138 0.0001194
+KALLANG/WHAMPOA-HOUGANG         60184.9427   37302.9427  83066.9427 0.0000000
+MARINE PARADE-HOUGANG           37477.1760    2729.9526  72224.3994 0.0178161
+PASIR RIS-HOUGANG               96745.0735   31170.3993 162319.7476 0.0000187
+PUNGGOL-HOUGANG                 56736.8128   30592.2229  82881.4028 0.0000000
+QUEENSTOWN-HOUGANG              59471.3430   36315.4647  82627.2213 0.0000000
+SEMBAWANG-HOUGANG               45178.4852    4665.0215  85691.9488 0.0105705
+SENGKANG-HOUGANG                49917.0553   22459.9250  77374.1856 0.0000000
+SERANGOON-HOUGANG                2586.3323  -32015.4704  37188.1349 1.0000000
+TAMPINES-HOUGANG                26641.8691    4306.5310  48977.2073 0.0032181
+TOA PAYOH-HOUGANG               -4109.1952  -26406.5431  18188.1527 1.0000000
+WOODLANDS-HOUGANG              -16903.5326  -41943.8392   8136.7739 0.7272232
+YISHUN-HOUGANG                  -6244.5487  -27130.2057  14641.1084 0.9999975
+JURONG WEST-JURONG EAST        -13359.4414  -40513.5628  13794.6799 0.9884069
+KALLANG/WHAMPOA-JURONG EAST     78991.5841   52189.6835 105793.4847 0.0000000
+MARINE PARADE-JURONG EAST       56283.8174   18838.8513  93728.7835 0.0000106
+PASIR RIS-JURONG EAST          115551.7148   48508.4911 182594.9385 0.0000001
+PUNGGOL-JURONG EAST             75543.4542   45907.4029 105179.5054 0.0000000
+QUEENSTOWN-JURONG EAST          78277.9843   51241.8853 105314.0833 0.0000000
+SEMBAWANG-JURONG EAST           63985.1265   21135.4277 106834.8253 0.0000129
+SENGKANG-JURONG EAST            68723.6966   37923.5350  99523.8583 0.0000000
+SERANGOON-JURONG EAST           21392.9736  -15917.0880  58703.0352 0.9308973
+TAMPINES-JURONG EAST            45448.5105   19111.7818  71785.2392 0.0000001
+TOA PAYOH-JURONG EAST           14697.4462  -11607.0720  41001.9643 0.9471863
+WOODLANDS-JURONG EAST            1903.1087  -26763.4730  30569.6904 1.0000000
+YISHUN-JURONG EAST              12562.0927  -12556.9563  37681.1417 0.9856626
+KALLANG/WHAMPOA-JURONG WEST     92351.0255   69833.5162 114868.5348 0.0000000
+MARINE PARADE-JURONG WEST       69643.2588   35134.9723 104151.5453 0.0000000
+PASIR RIS-JURONG WEST          128911.1562   63462.7782 194359.5343 0.0000000
+PUNGGOL-JURONG WEST             88902.8956   63076.7096 114729.0816 0.0000000
+QUEENSTOWN-JURONG WEST          91637.4257   68841.6586 114433.1929 0.0000000
+SEMBAWANG-JURONG WEST           77344.5679   37035.8463 117653.2895 0.0000000
+SENGKANG-JURONG WEST            82083.1380   54929.0167 109237.2594 0.0000000
+SERANGOON-JURONG WEST           34752.4150     390.5605  69114.2696 0.0434070
+TAMPINES-JURONG WEST            58807.9519   36846.1754  80769.7285 0.0000000
+TOA PAYOH-JURONG WEST           28056.8876    6133.7486  49980.0266 0.0007520
+WOODLANDS-JURONG WEST           15262.5501   -9445.1259  39970.2261 0.8613456
+YISHUN-JURONG WEST              25921.5341    5435.8569  46407.2113 0.0009654
+MARINE PARADE-KALLANG/WHAMPOA  -22707.7667  -56939.5853  11524.0519 0.7581007
+PASIR RIS-KALLANG/WHAMPOA       36560.1307  -28742.8995 101863.1610 0.9460582
+PUNGGOL-KALLANG/WHAMPOA         -3448.1299  -28903.7276  22007.4678 1.0000000
+QUEENSTOWN-KALLANG/WHAMPOA       -713.5998  -23088.6432  21661.4437 1.0000000
+SEMBAWANG-KALLANG/WHAMPOA      -15006.4576  -55078.7499  25065.8347 0.9998274
+SENGKANG-KALLANG/WHAMPOA       -10267.8874  -37069.7880  16534.0131 0.9997442
+SERANGOON-KALLANG/WHAMPOA      -57598.6105  -91682.8094 -23514.4115 0.0000002
+TAMPINES-KALLANG/WHAMPOA       -33543.0736  -55067.8314 -12018.3158 0.0000033
+TOA PAYOH-KALLANG/WHAMPOA      -64294.1379  -85779.4723 -42808.8035 0.0000000
+WOODLANDS-KALLANG/WHAMPOA      -77088.4754 -101408.5252 -52768.4256 0.0000000
+YISHUN-KALLANG/WHAMPOA         -66429.4914  -86445.9481 -46413.0347 0.0000000
+PASIR RIS-MARINE PARADE         59267.8974  -11076.0388 129611.8337 0.2606000
+PUNGGOL-MARINE PARADE           19259.6368  -17233.8018  55753.0754 0.9721751
+QUEENSTOWN-MARINE PARADE        21994.1669  -12421.3264  56409.6602 0.8167589
+SEMBAWANG-MARINE PARADE          7701.3091  -40148.1655  55550.7837 1.0000000
+SENGKANG-MARINE PARADE          12439.8792  -25005.0868  49884.8453 0.9999805
+SERANGOON-MARINE PARADE        -34890.8438  -77850.3157   8068.6281 0.3331537
+TAMPINES-MARINE PARADE         -10835.3069  -44704.1541  23033.5403 0.9999905
+TOA PAYOH-MARINE PARADE        -41586.3712  -75430.1772  -7742.5652 0.0017910
+WOODLANDS-MARINE PARADE        -54380.7087  -90091.3294 -18670.0879 0.0000070
+YISHUN-MARINE PARADE           -43721.7247  -76652.5940 -10790.8554 0.0003207
+PUNGGOL-PASIR RIS              -40008.2607 -106524.7204  26508.1991 0.8904692
+QUEENSTOWN-PASIR RIS           -37273.7305 -102673.2300  28125.7690 0.9350120
+SEMBAWANG-PASIR RIS            -51566.5883 -124930.3435  21797.1669 0.6486317
+SENGKANG-PASIR RIS             -46828.0182 -113871.2419  20215.2055 0.6614774
+SERANGOON-PASIR RIS            -94158.7412 -164430.9589 -23886.5235 0.0002565
+TAMPINES-PASIR RIS             -70103.2043 -135216.6988  -4989.7098 0.0183019
+TOA PAYOH-PASIR RIS           -100854.2687 -165954.7415 -35753.7958 0.0000040
+WOODLANDS-PASIR RIS           -113648.6061 -179738.8232 -47558.3891 0.0000001
+YISHUN-PASIR RIS              -102989.6221 -167620.1916 -38359.0527 0.0000015
+QUEENSTOWN-PUNGGOL               2734.5302  -22967.5365  28436.5968 1.0000000
+SEMBAWANG-PUNGGOL              -11558.3277  -53579.0638  30462.4085 0.9999995
+SENGKANG-PUNGGOL                -6819.7575  -36455.8088  22816.2937 1.0000000
+SERANGOON-PUNGGOL              -54150.4805  -90505.4840 -17795.4771 0.0000140
+TAMPINES-PUNGGOL               -30094.9437  -55060.2968  -5129.5905 0.0026248
+TOA PAYOH-PUNGGOL              -60846.0080  -85777.3788 -35914.6372 0.0000000
+WOODLANDS-PUNGGOL              -73640.3455 -101052.3589 -46228.3320 0.0000000
+YISHUN-PUNGGOL                 -62981.3615  -86658.6122 -39304.1108 0.0000000
+SEMBAWANG-QUEENSTOWN           -14292.8578  -54522.1678  25936.4522 0.9999324
+SENGKANG-QUEENSTOWN             -9554.2877  -36590.3867  17481.8113 0.9999386
+SERANGOON-QUEENSTOWN           -56885.0107  -91153.6756 -22616.3458 0.0000003
+TAMPINES-QUEENSTOWN            -32829.4738  -54645.1557 -11013.7920 0.0000102
+TOA PAYOH-QUEENSTOWN           -63580.5382  -85357.3232 -41803.7531 0.0000000
+WOODLANDS-QUEENSTOWN           -76374.8756 -100952.7844 -51796.9669 0.0000000
+YISHUN-QUEENSTOWN              -65715.8916  -86044.8689 -45386.9144 0.0000000
+SENGKANG-SEMBAWANG               4738.5701  -38111.1287  47588.2690 1.0000000
+SERANGOON-SEMBAWANG            -42592.1529  -90336.1308   5151.8251 0.1655197
+TAMPINES-SEMBAWANG             -18536.6160  -58299.2871  21226.0551 0.9944354
+TOA PAYOH-SEMBAWANG            -49287.6803  -89029.0241  -9546.3365 0.0014797
+WOODLANDS-SEMBAWANG            -62082.0178 -103424.7274 -20739.3082 0.0000109
+YISHUN-SEMBAWANG               -51423.0338  -90389.8576 -12456.2100 0.0003708
+SERANGOON-SENGKANG             -47330.7230  -84640.7846 -10020.6614 0.0009132
+TAMPINES-SENGKANG              -23275.1861  -49611.9149   3061.5426 0.1794610
+TOA PAYOH-SENGKANG             -54026.2505  -80330.7686 -27721.7323 0.0000000
+WOODLANDS-SENGKANG             -66820.5879  -95487.1696 -38154.0062 0.0000000
+YISHUN-SENGKANG                -56161.6039  -81280.6529 -31042.5550 0.0000000
+TAMPINES-SERANGOON              24055.5369   -9664.1016  57775.1754 0.6176415
+TOA PAYOH-SERANGOON             -6695.5275  -40390.0139  26998.9590 1.0000000
+WOODLANDS-SERANGOON            -19489.8649  -55059.0039  16079.2740 0.9572700
+YISHUN-SERANGOON                -8830.8809  -41608.2720  23946.5101 0.9999997
+TOA PAYOH-TAMPINES             -30751.0643  -51653.2412  -9848.8875 0.0000203
+WOODLANDS-TAMPINES             -43545.4018  -67351.8343 -19738.9693 0.0000000
+YISHUN-TAMPINES                -32886.4178  -52275.5886 -13497.2470 0.0000002
+WOODLANDS-TOA PAYOH            -12794.3375  -36565.1309  10976.4560 0.9650414
+YISHUN-TOA PAYOH                -2135.3535  -21480.7493  17210.0424 1.0000000
+YISHUN-WOODLANDS                10658.9840  -11792.9552  33110.9231 0.9928273</code></pre>
+</div>
+</div>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Too Many Values
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>There is an estimated 55 areas as such would yield large amount of combination for pairwise analysis.</p>
+</div>
+</div>
+</section>
+<section id="one-way-anova-test-on-flat-model-and-resale-price" class="level4">
+<h4 class="anchored" data-anchor-id="one-way-anova-test-on-flat-model-and-resale-price">One-way ANOVA Test on Flat Model and Resale Price</h4>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggbetweenstats</span>(</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> room_3,</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> flat_model,</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> resale_price, </span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">"p"</span>,</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">mean.ci =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">pairwise.comparisons =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">pairwise.display =</span> <span class="st">"s"</span>,</span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">p.adjust.method =</span> <span class="st">"fdr"</span>,</span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">messages =</span> <span class="cn">FALSE</span></span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Number of labels is greater than default palette color count.
+• Select another color `palette` (and/or `package`).</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="1152"></p>
+</div>
+</div>
+<p>Based on the Oneway ANOVA, overall ANOVA has a p-value less than 0.05 (4.36 e-107 &lt; 0.05), indicating that the mean price is significantly different from each Flat Model.</p>
+</section>
+<section id="correlation-between-resale-price-remaining-lease-years-and-floor-area-1" class="level4">
+<h4 class="anchored" data-anchor-id="correlation-between-resale-price-remaining-lease-years-and-floor-area-1">Correlation between Resale Price, Remaining Lease Years and Floor Area</h4>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>ggstatsplot<span class="sc">::</span><span class="fu">ggcorrmat</span>(</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> room_3,</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">cor.vars =</span> <span class="fu">c</span>(resale_price, lease_ryear, floor_area_sqm)</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Based on the correlation coefficients, there is moderate correlation between resale price and remaining lease year while weak to no correlation between the floor area and remaining lease year and resale price and floor area. This concludes that there is a relationship between resale price and remaining lease year though this does not mean causality between both relationship.</p>
+</section>
+</section>
+<section id="analysis-on-4-room-flats" class="level3">
+<h3 class="anchored" data-anchor-id="analysis-on-4-room-flats">Analysis on 4 Room Flats</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>room_4 <span class="ot">&lt;-</span> <span class="fu">filter</span>(use_flat_data, <span class="fu">grepl</span>(<span class="st">"4 ROOM"</span>, flat_type))</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>room_4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 11,312 × 12
+   month   town    flat_…¹ block stree…² store…³ floor…⁴ flat_…⁵ lease…⁶ remai…⁷
+   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;fct&gt;     &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;  
+ 1 2022-01 ANG MO… 4 ROOM  438   ANG MO… 10 TO …      92 New Ge…    1979 56 yea…
+ 2 2022-01 ANG MO… 4 ROOM  556   ANG MO… 13 TO …      92 New Ge…    1980 57 yea…
+ 3 2022-01 ANG MO… 4 ROOM  419   ANG MO… 07 TO …      99 New Ge…    1979 56 yea…
+ 4 2022-01 ANG MO… 4 ROOM  466   ANG MO… 04 TO …      93 New Ge…    1984 61 yea…
+ 5 2022-01 ANG MO… 4 ROOM  472   ANG MO… 01 TO …      92 New Ge…    1979 56 yea…
+ 6 2022-01 ANG MO… 4 ROOM  405   ANG MO… 01 TO …      92 New Ge…    1979 56 yea…
+ 7 2022-01 ANG MO… 4 ROOM  547   ANG MO… 01 TO …      92 New Ge…    1981 58 yea…
+ 8 2022-01 ANG MO… 4 ROOM  415   ANG MO… 01 TO …      92 New Ge…    1979 56 yea…
+ 9 2022-01 ANG MO… 4 ROOM  324   ANG MO… 04 TO …      98 New Ge…    1978 55 yea…
+10 2022-01 ANG MO… 4 ROOM  121   ANG MO… 10 TO …      92 New Ge…    1978 55 yea…
+# … with 11,302 more rows, 2 more variables: resale_price &lt;dbl&gt;,
+#   lease_ryear &lt;dbl&gt;, and abbreviated variable names ¹​flat_type, ²​street_name,
+#   ³​storey_range, ⁴​floor_area_sqm, ⁵​flat_model, ⁶​lease_commence_date,
+#   ⁷​remaining_lease</code></pre>
+</div>
+</div>
+<section id="one-way-anova-test-on-flat-model-and-resale-price-1" class="level4">
+<h4 class="anchored" data-anchor-id="one-way-anova-test-on-flat-model-and-resale-price-1">One-way ANOVA Test on Flat Model and Resale Price</h4>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggbetweenstats</span>(</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> room_4,</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> flat_model,</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> resale_price, </span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">"p"</span>,</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">mean.ci =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">pairwise.comparisons =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">pairwise.display =</span> <span class="st">"s"</span>,</span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">p.adjust.method =</span> <span class="st">"fdr"</span>,</span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">messages =</span> <span class="cn">FALSE</span></span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Number of labels is greater than default palette color count.
+• Select another color `palette` (and/or `package`).</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid" width="1152"></p>
+</div>
+</div>
+<p>Based on the Oneway ANOVA, overall ANOVA has a p-value less than 0.05 (5.37 e-34 &lt; 0.05), indicating that the mean price is significantly different from each Flat Model.</p>
+</section>
+<section id="correlation-between-resale-price-remaining-lease-years-and-floor-area-2" class="level4">
+<h4 class="anchored" data-anchor-id="correlation-between-resale-price-remaining-lease-years-and-floor-area-2">Correlation between Resale Price, Remaining Lease Years and Floor Area</h4>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>ggstatsplot<span class="sc">::</span><span class="fu">ggcorrmat</span>(</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> room_4,</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">cor.vars =</span> <span class="fu">c</span>(resale_price, lease_ryear, floor_area_sqm)</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Based on the correlation coefficients, there is moderate correlation between resale price and remaining lease year while weak to no correlation between the floor area and remaining lease year and resale price and floor area. This concludes that there is a relationship between resale price and remaining lease year though this does not mean causality between both relationship.</p>
+</section>
+</section>
+<section id="analysis-on-5-room-flats" class="level3">
+<h3 class="anchored" data-anchor-id="analysis-on-5-room-flats">Analysis on 5 Room Flats</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>room_5 <span class="ot">&lt;-</span> <span class="fu">filter</span>(use_flat_data, <span class="fu">grepl</span>(<span class="st">"5 ROOM"</span>, flat_type))</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>room_5</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6,716 × 12
+   month   town    flat_…¹ block stree…² store…³ floor…⁴ flat_…⁵ lease…⁶ remai…⁷
+   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;fct&gt;     &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;  
+ 1 2022-01 ANG MO… 5 ROOM  402   ANG MO… 19 TO …     119 Improv…    1979 56 yea…
+ 2 2022-01 ANG MO… 5 ROOM  460   ANG MO… 16 TO …     120 Improv…    1980 57 yea…
+ 3 2022-01 ANG MO… 5 ROOM  539   ANG MO… 22 TO …     118 Improv…    1980 57 yea…
+ 4 2022-01 ANG MO… 5 ROOM  521   ANG MO… 10 TO …     118 Improv…    1980 57 yea…
+ 5 2022-01 ANG MO… 5 ROOM  648   ANG MO… 01 TO …     125 Improv…    1980 57 yea…
+ 6 2022-01 ANG MO… 5 ROOM  354   ANG MO… 04 TO …     110 Improv…    2001 78 yea…
+ 7 2022-01 ANG MO… 5 ROOM  353   ANG MO… 04 TO …     110 Improv…    2001 78 yea…
+ 8 2022-01 ANG MO… 5 ROOM  350   ANG MO… 22 TO …     110 Improv…    2001 79 yea…
+ 9 2022-01 ANG MO… 5 ROOM  588A  ANG MO… 01 TO …     120 DBSS       2011 88 yea…
+10 2022-01 ANG MO… 5 ROOM  588B  ANG MO… 28 TO …     120 DBSS       2011 88 yea…
+# … with 6,706 more rows, 2 more variables: resale_price &lt;dbl&gt;,
+#   lease_ryear &lt;dbl&gt;, and abbreviated variable names ¹​flat_type, ²​street_name,
+#   ³​storey_range, ⁴​floor_area_sqm, ⁵​flat_model, ⁶​lease_commence_date,
+#   ⁷​remaining_lease</code></pre>
+</div>
+</div>
+<section id="one-way-anova-test-on-flat-model-and-resale-price-2" class="level4">
+<h4 class="anchored" data-anchor-id="one-way-anova-test-on-flat-model-and-resale-price-2">One-way ANOVA Test on Flat Model and Resale Price</h4>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggbetweenstats</span>(</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> room_5,</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> flat_model,</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> resale_price, </span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">"p"</span>,</span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">mean.ci =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">pairwise.comparisons =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">pairwise.display =</span> <span class="st">"s"</span>,</span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">p.adjust.method =</span> <span class="st">"fdr"</span>,</span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">messages =</span> <span class="cn">FALSE</span></span>
+<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Number of labels is greater than default palette color count.
+• Select another color `palette` (and/or `package`).</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid" width="1152"></p>
+</div>
+</div>
+<p>Based on the Oneway ANOVA, overall ANOVA has a p-value less than 0.05 (3.88 e-17 &lt; 0.05), indicating that the mean price is significantly different from each Flat Model.</p>
+</section>
+<section id="correlation-between-resale-price-remaining-lease-years-and-floor-area-3" class="level4">
+<h4 class="anchored" data-anchor-id="correlation-between-resale-price-remaining-lease-years-and-floor-area-3">Correlation between Resale Price, Remaining Lease Years and Floor Area</h4>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>ggstatsplot<span class="sc">::</span><span class="fu">ggcorrmat</span>(</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> room_5,</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">cor.vars =</span> <span class="fu">c</span>(resale_price, lease_ryear, floor_area_sqm)</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Based on the correlation coefficients, for 5 Room Flats, the resale price, remaining lease years and floor area have weak to no correlation meaning each variable is independent of each other.</p>
+</section>
+</section>
+</section>
+<section id="learning-and-insights" class="level2">
+<h2 class="anchored" data-anchor-id="learning-and-insights">Learning and Insights</h2>
+<p><strong>Size Limitations:</strong> due to the limitations of quarto size, visualization many variables may be difficult. Filters and selected values may be considered</p>
+<p><strong>Ease of Statistical Understanding:</strong> certain visualizations may not be easily understood by readers/users. Simplification may be a better option.</p>
+
+
 </section>
 
 </main> <!-- /main -->
