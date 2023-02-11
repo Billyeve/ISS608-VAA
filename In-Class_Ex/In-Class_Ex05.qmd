@@ -37,6 +37,8 @@ pop_data <- read_csv("data/respopagsex2000to2018_tidy.csv")
 ```{r}
 wh <- read_csv("data/WHData-2018.csv")
 row.names(wh) <- wh$Country
+wh1 <- dplyr::select(wh, c(3, 7:12))
+wh_matrix <- data.matrix(wh)
 ```
 
 ## Building the Correlation Matrix
