@@ -243,8 +243,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#installing-and-loading-the-required-libraries" id="toc-installing-and-loading-the-required-libraries" class="nav-link" data-scroll-target="#installing-and-loading-the-required-libraries">Installing and loading the required libraries</a></li>
   <li><a href="#importing-data" id="toc-importing-data" class="nav-link" data-scroll-target="#importing-data">Importing Data</a></li>
   <li><a href="#filtering-the-dataset" id="toc-filtering-the-dataset" class="nav-link" data-scroll-target="#filtering-the-dataset">Filtering the Dataset</a></li>
-  <li><a href="#data-exploring" id="toc-data-exploring" class="nav-link" data-scroll-target="#data-exploring">Data Exploring</a></li>
-  <li><a href="#data-correction" id="toc-data-correction" class="nav-link" data-scroll-target="#data-correction">Data Correction</a></li>
+  <li><a href="#exploring-the-data" id="toc-exploring-the-data" class="nav-link" data-scroll-target="#exploring-the-data">Exploring the Data</a></li>
+  <li><a href="#correcting-the-data" id="toc-correcting-the-data" class="nav-link" data-scroll-target="#correcting-the-data">Correcting the Data</a></li>
+  </ul></li>
+  <li><a href="#data-exploration-through-statistical-visualization" id="toc-data-exploration-through-statistical-visualization" class="nav-link" data-scroll-target="#data-exploration-through-statistical-visualization">Data Exploration through Statistical Visualization</a>
+  <ul class="collapse">
+  <li><a href="#one-way-anova-test-between-flat-type-and-resale-price" id="toc-one-way-anova-test-between-flat-type-and-resale-price" class="nav-link" data-scroll-target="#one-way-anova-test-between-flat-type-and-resale-price">One-way ANOVA Test between Flat Type and Resale Price</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -324,6 +328,19 @@ dbl (3): floor_area_sqm, lease_commence_date, resale_price
 <li><p>The year should be <strong>2022</strong></p></li>
 <li><p>The flat_type should be only <strong>3-ROOM, 4-ROOM and 5-ROOM</strong></p></li>
 </ul>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This code uses the dplyr package to filter out the rows with year 2022 and correct flat type</p>
+</div>
+</div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>filter_flat_data <span class="ot">&lt;-</span> <span class="fu">filter</span>(total_flat_data, <span class="fu">grepl</span>(<span class="st">'2022'</span>, month) <span class="sc">&amp;</span> flat_type <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"3 ROOM"</span>, <span class="st">"4 ROOM"</span>,<span class="st">"5 ROOM"</span>))</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -348,8 +365,8 @@ dbl (3): floor_area_sqm, lease_commence_date, resale_price
 </div>
 </div>
 </section>
-<section id="data-exploring" class="level3">
-<h3 class="anchored" data-anchor-id="data-exploring">Data Exploring</h3>
+<section id="exploring-the-data" class="level3">
+<h3 class="anchored" data-anchor-id="exploring-the-data">Exploring the Data</h3>
 <p>This section of the code aims to ensure that the scope and limitation are followed and the data are listed correctly</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>skimr<span class="sc">::</span><span class="fu">skim</span>(filter_flat_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -881,9 +898,97 @@ Note
 </div>
 </div>
 </section>
-<section id="data-correction" class="level3">
-<h3 class="anchored" data-anchor-id="data-correction">Data Correction</h3>
+<section id="correcting-the-data" class="level3">
+<h3 class="anchored" data-anchor-id="correcting-the-data">Correcting the Data</h3>
 <p>This section deals with correcting the data last inspected previously.</p>
+<section id="correcting-the-storey-arrangement" class="level4">
+<h4 class="anchored" data-anchor-id="correcting-the-storey-arrangement">Correcting the Storey Arrangement</h4>
+<p>The code adds corrects the order of the storey arrangement</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>storey_correct <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"01 TO 03"</span>, <span class="st">"04 TO 06"</span>, <span class="st">"07 TO 09"</span>, <span class="st">"10 TO 12"</span>, <span class="st">"13 TO 15"</span>, <span class="st">"16 TO 18"</span>, <span class="st">"19 TO 21"</span>, <span class="st">"22 TO 24"</span>, <span class="st">"25 TO 27"</span>, <span class="st">"28 TO 30"</span>, <span class="st">"31 TO 33"</span>, <span class="st">"34 TO 36"</span>, <span class="st">"37 TO 39"</span>, <span class="st">"40 TO 42"</span>, <span class="st">"43 TO 45"</span>, <span class="st">"46 TO 48"</span>, <span class="st">"49 TO 51"</span>)  </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>use_flat_data <span class="ot">&lt;-</span> filter_flat_data <span class="sc">%&gt;%</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="at">storey_range =</span> <span class="fu">factor</span>(storey_range, <span class="at">levels =</span> storey_correct)) <span class="sc">%&gt;%</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> use_flat_data,</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">y =</span> storey_range)) <span class="sc">+</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="converting-remaining-lease-from-string-to-num" class="level4">
+<h4 class="anchored" data-anchor-id="converting-remaining-lease-from-string-to-num">Converting Remaining Lease from String to Num</h4>
+<p>The code adds a new integer column derived from the remaining_lease string column.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This code uses the gsub-regex function to get the integer within the string.</p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>lease_ryear <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">gsub</span>(<span class="st">"([0-9]+).*$"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">1"</span>, filter_flat_data<span class="sc">$</span>remaining_lease))</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>use_flat_data<span class="sc">$</span>lease_ryear <span class="ot">&lt;-</span> lease_ryear</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>use_flat_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 24,374 × 12
+   month   town    flat_…¹ block stree…² store…³ floor…⁴ flat_…⁵ lease…⁶ remai…⁷
+   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;fct&gt;     &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;  
+ 1 2022-01 ANG MO… 3 ROOM  320   ANG MO… 07 TO …      73 New Ge…    1977 54 yea…
+ 2 2022-01 ANG MO… 3 ROOM  225   ANG MO… 07 TO …      67 New Ge…    1978 55 yea…
+ 3 2022-01 ANG MO… 3 ROOM  331   ANG MO… 07 TO …      68 New Ge…    1981 58 yea…
+ 4 2022-01 ANG MO… 3 ROOM  534   ANG MO… 07 TO …      82 New Ge…    1980 57 yea…
+ 5 2022-01 ANG MO… 3 ROOM  578   ANG MO… 04 TO …      67 New Ge…    1980 57 yea…
+ 6 2022-01 ANG MO… 3 ROOM  452   ANG MO… 01 TO …      83 New Ge…    1979 56 yea…
+ 7 2022-01 ANG MO… 3 ROOM  560   ANG MO… 01 TO …      67 New Ge…    1980 57 yea…
+ 8 2022-01 ANG MO… 3 ROOM  435   ANG MO… 04 TO …      67 New Ge…    1979 56 yea…
+ 9 2022-01 ANG MO… 3 ROOM  435   ANG MO… 04 TO …      67 New Ge…    1979 56 yea…
+10 2022-01 ANG MO… 3 ROOM  560   ANG MO… 10 TO …      67 New Ge…    1980 57 yea…
+# … with 24,364 more rows, 2 more variables: resale_price &lt;dbl&gt;,
+#   lease_ryear &lt;dbl&gt;, and abbreviated variable names ¹​flat_type, ²​street_name,
+#   ³​storey_range, ⁴​floor_area_sqm, ⁵​flat_model, ⁶​lease_commence_date,
+#   ⁷​remaining_lease</code></pre>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="data-exploration-through-statistical-visualization" class="level2">
+<h2 class="anchored" data-anchor-id="data-exploration-through-statistical-visualization">Data Exploration through Statistical Visualization</h2>
+<p>This section presents the statistical visualization and explanation of the data.</p>
+<section id="one-way-anova-test-between-flat-type-and-resale-price" class="level3">
+<h3 class="anchored" data-anchor-id="one-way-anova-test-between-flat-type-and-resale-price">One-way ANOVA Test between Flat Type and Resale Price</h3>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggbetweenstats</span>(</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> use_flat_data,</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> flat_type,</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> resale_price, </span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">"p"</span>,</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">mean.ci =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">pairwise.comparisons =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">pairwise.display =</span> <span class="st">"s"</span>,</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">p.adjust.method =</span> <span class="st">"fdr"</span>,</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">messages =</span> <span class="cn">FALSE</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="1152"></p>
+</div>
+</div>
 
 
 </section>

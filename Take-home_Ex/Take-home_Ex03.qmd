@@ -41,13 +41,17 @@ This section deals with limiting the data to the following criteria:
 
 -   The flat_type should be only **3-ROOM, 4-ROOM and 5-ROOM**
 
+::: callout-note
+This code uses the dplyr package to filter out the rows with year 2022 and correct flat type
+:::
+
 ```{r}
 filter_flat_data <- filter(total_flat_data, grepl('2022', month) & flat_type %in% c("3 ROOM", "4 ROOM","5 ROOM"))
 
 filter_flat_data
 ```
 
-### Data Exploring
+### Exploring the Data
 
 This section of the code aims to ensure that the scope and limitation are followed and the data are listed correctly
 
@@ -91,6 +95,64 @@ unique(filter_flat_data$remaining_lease)
 summary(filter_flat_data$resale_price)
 ```
 
-### Data Correction 
+### Correcting the Data
 
 This section deals with correcting the data last inspected previously.
+
+#### Correcting the Storey Arrangement
+
+The code adds corrects the order of the storey arrangement
+
+```{r}
+storey_correct <- c("01 TO 03", "04 TO 06", "07 TO 09", "10 TO 12", "13 TO 15", "16 TO 18", "19 TO 21", "22 TO 24", "25 TO 27", "28 TO 30", "31 TO 33", "34 TO 36", "37 TO 39", "40 TO 42", "43 TO 45", "46 TO 48", "49 TO 51")  
+
+use_flat_data <- filter_flat_data %>%
+  mutate (storey_range = factor(storey_range, levels = storey_correct)) %>%
+  ungroup()
+```
+
+```{r}
+ggplot(data = use_flat_data,
+       aes(y = storey_range)) +
+  geom_bar() 
+```
+
+#### Converting Remaining Lease from String to Num
+
+The code adds a new integer column derived from the remaining_lease string column.
+
+::: callout-note
+This code uses the gsub-regex function to get the integer within the string.
+:::
+
+```{r}
+lease_ryear <- as.numeric(gsub("([0-9]+).*$", "\\1", filter_flat_data$remaining_lease))
+
+use_flat_data$lease_ryear <- lease_ryear
+
+use_flat_data
+```
+
+## Data Exploration through Statistical Visualization 
+
+This section presents the statistical visualization and explanation of the data.
+
+### One-way ANOVA Test between Flat Type and Resale Price 
+
+```{r}
+#| fig-height: 12
+#| fig-width: 12
+#| code-fold: true
+
+ggbetweenstats(
+  data = use_flat_data,
+  x = flat_type,
+  y = resale_price, 
+  type = "p",
+  mean.ci = TRUE, 
+  pairwise.comparisons = TRUE, 
+  pairwise.display = "s",
+  p.adjust.method = "fdr",
+  messages = FALSE
+)
+```
