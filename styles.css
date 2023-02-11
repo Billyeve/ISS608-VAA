@@ -1,12 +1,12 @@
 /* css styles */
 
 :root {
-  --primary: #90AFC5; 
-  --secondary: #336B87; 
-  --contrast: #2A3132; 
-  --contrast2: #763628; 
-  --contrast3: #615049; 
-  --innerbg: #C4DFE6;
+  --primary: #607d8b; 
+  --secondary: #78909c; 
+  --contrast: #90a4ae; 
+  --contrast2: #b0bec5; 
+  --contrast3: #cfd8dc; 
+  --innerbg: #eceff1;
   --text: #2E1A1F;
 }
 
