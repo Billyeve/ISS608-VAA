@@ -12,6 +12,7 @@ format: html
 editor: visual
 ---
 
+
 ## Overview
 
 This is a walk through of In-Class Exercise 5
@@ -20,15 +21,19 @@ This is a walk through of In-Class Exercise 5
 
 ### **Installing and Launching R Packages**
 
+
 ```{r}
 pacman::p_load(corrplot, tidyverse, ggstatsplot, ggcorrplot)
 ```
 
+
 ### **Importing and Preparing The Data Set**
+
 
 ```{r}
 wine <- read_csv("data/wine_quality.csv")
 ```
+
 
 ## Building the Correlation Matrix
 
@@ -36,13 +41,16 @@ wine <- read_csv("data/wine_quality.csv")
 
 Figure below shows the scatter plot matrix of Wine Quality Data. It is a 11 by 11 matrix.
 
+
 ```{r}
 pairs(wine[,1:11])
 ```
 
+
 ### **The basic plot**
 
 On of the advantage of using *ggcorrmat()* over many other methods to visualise a correlation matrix is it's ability to provide a comprehensive and yet professional statistical report as shown in the figure below.
+
 
 ```{r}
 ggstatsplot::ggcorrmat(
@@ -50,9 +58,11 @@ ggstatsplot::ggcorrmat(
   cor.vars = 1:11)
 ```
 
+
 ### **Building multiple plots**
 
 Since ggstasplot is an extension of ggplot2, it also supports faceting. However the feature is not available in *ggcorrmat()* but in the [*grouped_ggcorrmat()*](https://indrajeetpatil.github.io/ggstatsplot/reference/grouped_ggcorrmat.html) of **ggstatsplot**.
+
 
 ```{r}
 grouped_ggcorrmat(
@@ -74,13 +84,16 @@ grouped_ggcorrmat(
 )
 ```
 
+
 ### **Getting started with corrplot**
 
 Before we can plot a corrgram using *corrplot()*, we need to compute the correlation matrix of wine data frame.
 
 In the code chunk below, [*cor()*](https://www.rdocumentation.org/packages/stats/versions/3.6.0/topics/cor) of R Stats is used to compute the correlation matrix of wine data frame.
 
+
 ```{r}
 wine.cor <- cor(wine[, 1:11])
 corrplot(wine.cor)
 ```
+
