@@ -21,7 +21,7 @@ This is a walk through of In-Class Exercise 5
 ### **Installing and Launching R Packages**
 
 ```{r}
-pacman::p_load(corrplot, tidyverse, ggstatsplot, ggcorrplot, ggtern, plotly, seriation, dendextend, heatmaply)
+pacman::p_load(corrplot, tidyverse, ggtern, ggstatsplot, ggcorrplot, plotly, seriation, dendextend, heatmaply)
 ```
 
 ### **Importing and Preparing The Data Set**
