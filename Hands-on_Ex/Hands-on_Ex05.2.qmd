@@ -123,7 +123,7 @@ pairs(wine[,2:12],
       upper.panel = panel.cor)
 ```
 
-## **Visualising Correlation Matrix: ggcormat()**
+## **Visualizing Correlation Matrix: ggcormat()**
 
 One of the major limitation of the correlation matrix is that the scatter plots appear very cluttered when the number of observations is relatively large (i.e. more than 500 observations). To over come this problem, **Corrgram** data visualisation technique suggested by D. J. Murdoch and E. D. Chow (1996) and Friendly, M (2002) and will be used.
 
