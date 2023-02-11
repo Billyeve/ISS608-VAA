@@ -21,13 +21,17 @@ This is a walk through of In-Class Exercise 5
 ### **Installing and Launching R Packages**
 
 ```{r}
-pacman::p_load(corrplot, tidyverse, ggstatsplot, ggcorrplot)
+pacman::p_load(corrplot, tidyverse, ggstatsplot, ggcorrplot, ggtern, plotly)
 ```
 
 ### **Importing and Preparing The Data Set**
 
 ```{r}
 wine <- read_csv("data/wine_quality.csv")
+```
+
+```{r}
+pop_data <- read_csv("data/respopagsex2000to2018_tidy.csv") 
 ```
 
 ## Building the Correlation Matrix
