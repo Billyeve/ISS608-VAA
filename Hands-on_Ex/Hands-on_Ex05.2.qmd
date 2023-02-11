@@ -15,13 +15,13 @@ There are three broad reasons for computing a correlation matrix.
 
 -   To input into other analyses. For example, people commonly use correlation matrices as inputs for exploratory factor analysis, confirmatory factor analysis, structural equation models, and linear regression when excluding missing values pairwise.
 
--   As a diagnostic when checking other analyses. For example, with linear regression a high amount of correlations suggests that the linear regression\'s estimates will be unreliable.
+-   As a diagnostic when checking other analyses. For example, with linear regression a high amount of correlations suggests that the linear regression's estimates will be unreliable.
 
 When the data is large, both in terms of the number of observations and the number of variables, [Corrgram](http://www.datavis.ca/papers/corrgram.pdf) tend to be used to visually explore and analyse the structure and the patterns of relations among variables. It is designed based on two main schemes:
 
 -   Rendering the value of a correlation to depict its sign and magnitude, and
 
--   Reordering the variables in a correlation matrix so that \"similar\" variables are positioned adjacently, facilitating perception.
+-   Reordering the variables in a correlation matrix so that "similar" variables are positioned adjacently, facilitating perception.
 
 In this hands-on exercise, you will learn how to plot data visualisation for visualising correlation matrix with R. It consists of three main sections. First, you will learn how to create correlation matrix using [*pairs()*](https://www.rdocumentation.org/packages/graphics/versions/3.6.0/topics/pairs) of R Graphics. Next, you will learn how to plot corrgram using **corrplot** package of R. Lastly, you will learn how to create an interactive correlation matrix using plotly R.
 
@@ -105,7 +105,7 @@ pairs(wine[,2:12], lower.panel = NULL)
 
 To show the correlation coefficient of each pair of variables instead of a scatter plot, [*panel.cor*](https://www.rdocumentation.org/packages/xcms/versions/1.48.0/topics/panel.cor) function will be used. This will also show higher correlations in a larger font.
 
-Don\'t worry about the details for now-just type this code into your R session or script. Let\'s have more fun way to display the correlation matrix.
+Don't worry about the details for now-just type this code into your R session or script. Let's have more fun way to display the correlation matrix.
 
 ```{r}
 panel.cor <- function(x, y, digits=2, prefix="", cex.cor, ...) {
@@ -141,7 +141,7 @@ In this section, you will learn how to visualising correlation matrix by using [
 
 ### **The basic plot**
 
-On of the advantage of using *ggcorrmat()* over many other methods to visualise a correlation matrix is it\'s ability to provide a comprehensive and yet professional statistical report as shown in the figure below.
+On of the advantage of using *ggcorrmat()* over many other methods to visualise a correlation matrix is it's ability to provide a comprehensive and yet professional statistical report as shown in the figure below.
 
 ```{r}
 ggstatsplot::ggcorrmat(
@@ -245,7 +245,7 @@ Feel free to change the *method* argument to other supported visual geometrics.
 
 ### **Working with layout**
 
-*corrplor()* supports three layout types, namely: \"full\", \"upper\" or \"lower\". The default is \"full\" which display full matrix. The default setting can be changed by using the *type* argument of *corrplot()*.
+*corrplor()* supports three layout types, namely: "full", "upper" or "lower". The default is "full" which display full matrix. The default setting can be changed by using the *type* argument of *corrplot()*.
 
 ```{r}
 corrplot(wine.cor, 
@@ -324,19 +324,19 @@ corrplot(wine.cor,
 
 ### **Reorder a corrgram**
 
-Matrix reorder is very important for mining the hiden structure and pattern in a corrgram. By default, the order of attributes of a corrgram is sorted according to the correlation matrix (i.e. \"original\"). The default setting can be over-write by using the *order* argument of *corrplot()*. Currently, **corrplot** package support four sorting methods, they are:
+Matrix reorder is very important for mining the hiden structure and pattern in a corrgram. By default, the order of attributes of a corrgram is sorted according to the correlation matrix (i.e. "original"). The default setting can be over-write by using the *order* argument of *corrplot()*. Currently, **corrplot** package support four sorting methods, they are:
 
--   \"AOE\" is for the angular order of the eigenvectors. See Michael Friendly (2002) for details.
+-   "AOE" is for the angular order of the eigenvectors. See Michael Friendly (2002) for details.
 
--   \"FPC\" for the first principal component order.
+-   "FPC" for the first principal component order.
 
--   \"hclust\" for hierarchical clustering order, and \"hclust.method\" for the agglomeration method to be used.
+-   "hclust" for hierarchical clustering order, and "hclust.method" for the agglomeration method to be used.
 
-    -   \"hclust.method\" should be one of \"ward\", \"single\", \"complete\", \"average\", \"mcquitty\", \"median\" or \"centroid\".
+    -   "hclust.method" should be one of "ward", "single", "complete", "average", "mcquitty", "median" or "centroid".
 
--   \"alphabet\" for alphabetical order.
+-   "alphabet" for alphabetical order.
 
-\"AOE\", \"FPC\", \"hclust\", \"alphabet\". More algorithms can be found in **seriation** package.
+"AOE", "FPC", "hclust", "alphabet". More algorithms can be found in **seriation** package.
 
 ```{r}
 corrplot.mixed(wine.cor, 
@@ -364,9 +364,9 @@ corrplot(wine.cor,
 
 ## **Reference**
 
-Michael Friendly (2002). \"Corrgrams: Exploratory displays for correlation matrices\". *The American Statistician*, 56, 316--324.
+Michael Friendly (2002). "Corrgrams: Exploratory displays for correlation matrices". *The American Statistician*, 56, 316--324.
 
-D.J. Murdoch, E.D. Chow (1996). \"A graphical display of large correlation matrices\". *The American Statistician*, 50, 178--180.
+D.J. Murdoch, E.D. Chow (1996). "A graphical display of large correlation matrices". *The American Statistician*, 50, 178--180.
 
 ### **R packages**
 

@@ -11,7 +11,7 @@ The objective of this exercise is to uncover the salient patterns of the resale 
 
 The visualization is created using the ***Resale flat princes based on registration date from Jan-2017 onwards ([Data.gov.sg](https://data.gov.sg/)).***
 
-### Scope and Limitation 
+### Scope and Limitation
 
 For the purpose of this study, the focus should be on **3-ROOM, 4-ROOM and 5-ROOM types**. You can choose to focus on either one housing type or multiple housing types. The study period should be on **2022**.
 
@@ -33,7 +33,7 @@ This code chunk is to import the data from resale-flat-prices-based-on-registrat
 total_flat_data <- read_csv("data/resale-flat-prices-based-on-registration-date-from-jan-2017-onwards.csv")
 ```
 
-### Filtering the Dataset 
+### Filtering the Dataset
 
 This section deals with limiting the data to the following criteria:
 
@@ -133,11 +133,11 @@ use_flat_data$lease_ryear <- lease_ryear
 use_flat_data
 ```
 
-## Data Exploration through Statistical Visualization 
+## Data Exploration through Statistical Visualization
 
 This section presents the statistical visualization and explanation of the data.
 
-### One-way ANOVA Test between Flat Type and Resale Price 
+### One-way ANOVA Test between Flat Type and Resale Price
 
 ```{r}
 #| fig-height: 12

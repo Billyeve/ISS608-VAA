@@ -314,12 +314,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><p>To reveal the relationship between high-dimensional variables pair-wisely.</p></li>
 <li><p>To input into other analyses. For example, people commonly use correlation matrices as inputs for exploratory factor analysis, confirmatory factor analysis, structural equation models, and linear regression when excluding missing values pairwise.</p></li>
-<li><p>As a diagnostic when checking other analyses. For example, with linear regression a high amount of correlations suggests that the linear regression's estimates will be unreliable.</p></li>
+<li><p>As a diagnostic when checking other analyses. For example, with linear regression a high amount of correlations suggests that the linear regression’s estimates will be unreliable.</p></li>
 </ul>
 <p>When the data is large, both in terms of the number of observations and the number of variables, <a href="http://www.datavis.ca/papers/corrgram.pdf">Corrgram</a> tend to be used to visually explore and analyse the structure and the patterns of relations among variables. It is designed based on two main schemes:</p>
 <ul>
 <li><p>Rendering the value of a correlation to depict its sign and magnitude, and</p></li>
-<li><p>Reordering the variables in a correlation matrix so that "similar" variables are positioned adjacently, facilitating perception.</p></li>
+<li><p>Reordering the variables in a correlation matrix so that “similar” variables are positioned adjacently, facilitating perception.</p></li>
 </ul>
 <p>In this hands-on exercise, you will learn how to plot data visualisation for visualising correlation matrix with R. It consists of three main sections. First, you will learn how to create correlation matrix using <a href="https://www.rdocumentation.org/packages/graphics/versions/3.6.0/topics/pairs"><em>pairs()</em></a> of R Graphics. Next, you will learn how to plot corrgram using <strong>corrplot</strong> package of R. Lastly, you will learn how to create an interactive correlation matrix using plotly R.</p>
 </section>
@@ -399,7 +399,7 @@ dbl (12): fixed acidity, volatile acidity, citric acid, residual sugar, chlo...
 <section id="including-with-correlation-coefficients" class="level3">
 <h3 class="anchored" data-anchor-id="including-with-correlation-coefficients"><strong>Including with correlation coefficients</strong></h3>
 <p>To show the correlation coefficient of each pair of variables instead of a scatter plot, <a href="https://www.rdocumentation.org/packages/xcms/versions/1.48.0/topics/panel.cor"><em>panel.cor</em></a> function will be used. This will also show higher correlations in a larger font.</p>
-<p>Don't worry about the details for now-just type this code into your R session or script. Let's have more fun way to display the correlation matrix.</p>
+<p>Don’t worry about the details for now-just type this code into your R session or script. Let’s have more fun way to display the correlation matrix.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>panel.cor <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y, <span class="at">digits=</span><span class="dv">2</span>, <span class="at">prefix=</span><span class="st">""</span>, cex.cor, ...) {</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>usr <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="st">"usr"</span>)</span>
@@ -544,7 +544,7 @@ Warning in par(usr): argument 1 does not name a graphical parameter</code></pre>
 <p>In this section, you will learn how to visualising correlation matrix by using <a href="https://indrajeetpatil.github.io/ggstatsplot/reference/ggcorrmat.html"><em>ggcorrmat()</em></a> of <a href="https://indrajeetpatil.github.io/ggstatsplot/"><strong>ggstatsplot</strong></a> package.</p>
 <section id="the-basic-plot" class="level3">
 <h3 class="anchored" data-anchor-id="the-basic-plot"><strong>The basic plot</strong></h3>
-<p>On of the advantage of using <em>ggcorrmat()</em> over many other methods to visualise a correlation matrix is it's ability to provide a comprehensive and yet professional statistical report as shown in the figure below.</p>
+<p>On of the advantage of using <em>ggcorrmat()</em> over many other methods to visualise a correlation matrix is it’s ability to provide a comprehensive and yet professional statistical report as shown in the figure below.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>ggstatsplot<span class="sc">::</span><span class="fu">ggcorrmat</span>(</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> wine, </span>
@@ -647,7 +647,7 @@ Warning in par(usr): argument 1 does not name a graphical parameter</code></pre>
 </section>
 <section id="working-with-layout" class="level3">
 <h3 class="anchored" data-anchor-id="working-with-layout"><strong>Working with layout</strong></h3>
-<p><em>corrplor()</em> supports three layout types, namely: "full", "upper" or "lower". The default is "full" which display full matrix. The default setting can be changed by using the <em>type</em> argument of <em>corrplot()</em>.</p>
+<p><em>corrplor()</em> supports three layout types, namely: “full”, “upper” or “lower”. The default is “full” which display full matrix. The default setting can be changed by using the <em>type</em> argument of <em>corrplot()</em>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(wine.cor, </span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">method =</span> <span class="st">"ellipse"</span>, </span>
@@ -725,17 +725,17 @@ Warning in par(usr): argument 1 does not name a graphical parameter</code></pre>
 </section>
 <section id="reorder-a-corrgram" class="level3">
 <h3 class="anchored" data-anchor-id="reorder-a-corrgram"><strong>Reorder a corrgram</strong></h3>
-<p>Matrix reorder is very important for mining the hiden structure and pattern in a corrgram. By default, the order of attributes of a corrgram is sorted according to the correlation matrix (i.e.&nbsp;"original"). The default setting can be over-write by using the <em>order</em> argument of <em>corrplot()</em>. Currently, <strong>corrplot</strong> package support four sorting methods, they are:</p>
+<p>Matrix reorder is very important for mining the hiden structure and pattern in a corrgram. By default, the order of attributes of a corrgram is sorted according to the correlation matrix (i.e.&nbsp;“original”). The default setting can be over-write by using the <em>order</em> argument of <em>corrplot()</em>. Currently, <strong>corrplot</strong> package support four sorting methods, they are:</p>
 <ul>
-<li><p>"AOE" is for the angular order of the eigenvectors. See Michael Friendly (2002) for details.</p></li>
-<li><p>"FPC" for the first principal component order.</p></li>
-<li><p>"hclust" for hierarchical clustering order, and "hclust.method" for the agglomeration method to be used.</p>
+<li><p>“AOE” is for the angular order of the eigenvectors. See Michael Friendly (2002) for details.</p></li>
+<li><p>“FPC” for the first principal component order.</p></li>
+<li><p>“hclust” for hierarchical clustering order, and “hclust.method” for the agglomeration method to be used.</p>
 <ul>
-<li>"hclust.method" should be one of "ward", "single", "complete", "average", "mcquitty", "median" or "centroid".</li>
+<li>“hclust.method” should be one of “ward”, “single”, “complete”, “average”, “mcquitty”, “median” or “centroid”.</li>
 </ul></li>
-<li><p>"alphabet" for alphabetical order.</p></li>
+<li><p>“alphabet” for alphabetical order.</p></li>
 </ul>
-<p>"AOE", "FPC", "hclust", "alphabet". More algorithms can be found in <strong>seriation</strong> package.</p>
+<p>“AOE”, “FPC”, “hclust”, “alphabet”. More algorithms can be found in <strong>seriation</strong> package.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot.mixed</span>(wine.cor, </span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>               <span class="at">lower =</span> <span class="st">"ellipse"</span>, </span>
@@ -768,8 +768,8 @@ Warning in par(usr): argument 1 does not name a graphical parameter</code></pre>
 </section>
 <section id="reference" class="level2">
 <h2 class="anchored" data-anchor-id="reference"><strong>Reference</strong></h2>
-<p>Michael Friendly (2002). "Corrgrams: Exploratory displays for correlation matrices". <em>The American Statistician</em>, 56, 316–324.</p>
-<p>D.J. Murdoch, E.D. Chow (1996). "A graphical display of large correlation matrices". <em>The American Statistician</em>, 50, 178–180.</p>
+<p>Michael Friendly (2002). “Corrgrams: Exploratory displays for correlation matrices”. <em>The American Statistician</em>, 56, 316–324.</p>
+<p>D.J. Murdoch, E.D. Chow (1996). “A graphical display of large correlation matrices”. <em>The American Statistician</em>, 50, 178–180.</p>
 <section id="r-packages" class="level3">
 <h3 class="anchored" data-anchor-id="r-packages"><strong>R packages</strong></h3>
 <ul>

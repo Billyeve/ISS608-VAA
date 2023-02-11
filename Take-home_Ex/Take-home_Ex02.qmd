@@ -58,7 +58,7 @@ pop_data <- read_csv("data/respopagesextod2022.csv")
 The CSV File contains the following columns:
 
 | COLUMN NAME            | DATA TYPE | DESCRIPTION                                                                               |
-|-------------|-------------|----------------------------------------------|
+|------------------------|-----------|-------------------------------------------------------------------------------------------|
 | Planning Area (PA)     | Character | Distinct Planning Areas in Singapore designated and mapped by the Government of Singapore |
 | Subzone (SZ)           | Character | Sub-areas within each Planning Areas                                                      |
 | Age Group (AG)         | Character | Sets of population age group by 5 (ex 0-4, 5-9, etc)                                      |
