@@ -19,6 +19,14 @@ website:
           href: Hands-on_Ex/Hands-on_Ex04.2.html
         - text: "Hands-on Exercise 4.3: Building Funnel Plot with R"
           href: Hands-on_Ex/Hands-on_Ex04.3.html
+        - text: "Hands-on Exercise 5.1: Building Ternary Plot with R"
+          href: Hands-on_Ex/Hands-on_Ex05.1.html
+        - text: "Hands-on Exercise 5.2: Visualising Correlation Matrices"
+          href: Hands-on_Ex/Hands-on_Ex05.2.html
+        - text: "Hands-on Exercise 5.3: Building Heatmap for Visualising and Analysing Multivariate Data"
+          href: Hands-on_Ex/Hands-on_Ex05.3.html
+        - text: "Hands-on Exercise 5.4: Creating Parallel Coordinates Plots with R"
+          href: Hands-on_Ex/Hands-on_Ex05.4.html
     - text: "In-Class Exercises"
       menu:
         - text: "In-Class Exercise 3"
