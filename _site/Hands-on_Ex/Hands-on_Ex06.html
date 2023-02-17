@@ -187,6 +187,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <a class="dropdown-item" href="../Hands-on_Ex/Hands-on_Ex05.4.html">
  <span class="dropdown-text">Hands-on Exercise 5.4: Creating Parallel Coordinates Plots with R</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../Hands-on_Ex/Hands-on_Ex06.html">
+ <span class="dropdown-text">Hands-on Exercise 6: Visualising and Analysing Time-oriented Data</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -305,18 +309,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="getting-started" class="level2">
 <h2 class="anchored" data-anchor-id="getting-started">Getting Started</h2>
-<p>::: callout-info ## Do It Yourself Write a code chunk to check, install and launch the following R packages: scales, viridis, lubridate, ggthemes, gridExtra, readxl, knitr, data.table and tidyverse.</p>
 <div class="cell">
-<details>
-<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(scales, viridis, lubridate, ggthemes, gridExtra, tidyverse, readxl, knitr, data.table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 </section>
 <section id="plotting-calendar-heatmap" class="level2">
 <h2 class="anchored" data-anchor-id="plotting-calendar-heatmap">Plotting Calendar Heatmap</h2>
 <p>In this section, you will learn how to plot a calender heatmap programmetically by using ggplot2 package.</p>
-<p><img src="img/image01.png" class="img-fluid"></p>
+<p><img src="images/image-480474762.png" class="img-fluid"></p>
 <p>By the end of this section, you will be able to:</p>
 <ul>
 <li>plot a calender heatmap by using ggplot2 functions and extension,</li>
@@ -402,51 +402,6 @@ dttm (1): timestamp
 </li>
 <li><em>tz</em> field stores time zone of the source IP address.</li>
 </ul>
-<div class="cell">
-<div class="cell-output-display">
-<table class="table table-sm table-striped">
-<thead>
-<tr class="header">
-<th style="text-align: left;">timestamp</th>
-<th style="text-align: left;">source_country</th>
-<th style="text-align: left;">tz</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">2015-03-12 15:59:16</td>
-<td style="text-align: left;">CN</td>
-<td style="text-align: left;">Asia/Shanghai</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">2015-03-12 16:00:48</td>
-<td style="text-align: left;">FR</td>
-<td style="text-align: left;">Europe/Paris</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">2015-03-12 16:02:26</td>
-<td style="text-align: left;">CN</td>
-<td style="text-align: left;">Asia/Shanghai</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">2015-03-12 16:02:38</td>
-<td style="text-align: left;">US</td>
-<td style="text-align: left;">America/Chicago</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">2015-03-12 16:03:22</td>
-<td style="text-align: left;">CN</td>
-<td style="text-align: left;">Asia/Shanghai</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">2015-03-12 16:03:45</td>
-<td style="text-align: left;">CN</td>
-<td style="text-align: left;">Asia/Shanghai</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
 </section>
 <section id="data-preparation" class="level3">
 <h3 class="anchored" data-anchor-id="data-preparation">Data Preparation</h3>
@@ -569,13 +524,13 @@ dttm (1): timestamp
 ℹ Please use `linewidth` instead.</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="Hands-on_Ex06_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+<p><img src="Hands-on_Ex06_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Things to learn from the code chunk: - a tibble data table called <em>grouped</em> is derived by aggregating the attack by <em>wkday</em> and <em>hour</em> fields. - a new field called <em>n</em> is derived by using <code>group_by()</code> and <code>count()</code> functions. - <code>na.omit()</code> is used to exclude missing value. - <code>geom_tile()</code> is used to plot tiles (grids) at each x and y position. <code>color</code> and <code>size</code> arguments are used to specify the border color and line size of the tiles. - <a href="https://jrnold.github.io/ggthemes/reference/theme_tufte.html"><code>theme_tufte()</code></a> of <a href="https://jrnold.github.io/ggthemes/reference/index.html"><strong>ggthemes</strong></a> package is used to remove unnecessary chart junk. To learn which visual components of default ggplot2 have been excluded, you are encouraged to comment out this line to examine the default plot. - <code>coord_equal()</code> is used to ensure the plot will have an aspect ratio of 1:1. - <code>scale_fill_gradient()</code> function is used to creates a two colour gradient (low-high).</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="Hands-on_Ex06_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+<p><img src="Hands-on_Ex06_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Then we can simply group the count by hour and wkday and plot it, since we know that we have values for every combination there’s no need to further preprocess the data.</p>
@@ -583,7 +538,7 @@ dttm (1): timestamp
 <section id="building-multiple-calendar-heatmaps" class="level3">
 <h3 class="anchored" data-anchor-id="building-multiple-calendar-heatmaps">Building Multiple Calendar Heatmaps</h3>
 <p><strong>Challenge:</strong> Building multiple heatmaps for the top four countries with the highest number of attacks.</p>
-<p><img src="img/image02.png" class="img-fluid"></p>
+<p><img src="images/image-1621751351.png" class="img-fluid"></p>
 </section>
 <section id="plotting-multiple-calendar-heatmaps" class="level3">
 <h3 class="anchored" data-anchor-id="plotting-multiple-calendar-heatmaps">Plotting Multiple Calendar Heatmaps</h3>
@@ -637,7 +592,7 @@ dttm (1): timestamp
 <span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>),</span>
 <span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">6</span>) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="Hands-on_Ex06_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="1152"></p>
+<p><img src="Hands-on_Ex06_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="1152"></p>
 </div>
 </div>
 </section>
@@ -645,7 +600,7 @@ dttm (1): timestamp
 <section id="cycle-plot" class="level2">
 <h2 class="anchored" data-anchor-id="cycle-plot">Cycle Plot</h2>
 <p>In this section, you will learn how to plot a cycle plot showing the time-series patterns and trend of visitor arrivals from Vietnam programmatically by using ggplot2 functions.</p>
-<p><img src="img/image03.png" class="img-fluid"></p>
+<p><img src="images/image-188253972.png" class="img-fluid"></p>
 <section id="data-preparation-1" class="level3">
 <h3 class="anchored" data-anchor-id="data-preparation-1">Data Preparation</h3>
 <section id="step-1-data-import" class="level4">
