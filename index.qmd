@@ -2,7 +2,7 @@
 title: "ISSS608 - Visual Analytics and Applications"
 ---
 
-Hello there,
+#### Hello there,
 
 This is my Quarto/Netify Page, documenting my academic studies in the course **ISSS608 - Visual Analytics and Applications**.
 
