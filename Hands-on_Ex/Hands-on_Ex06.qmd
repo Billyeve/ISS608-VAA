@@ -1,0 +1,43 @@
+---
+title: "Hands-on Exercise 06"
+subtitle: "Visualising and Analysing Time-oriented Data"
+---
+
+## **Learning Outcome**
+
+By the end of this hands-on exercise you will be able create the followings data visualisation by using R packages:
+
+-   plotting a calender heatmap by using ggplot2 functions,
+
+-   plotting a cycle plot by using ggplot2 function,
+
+-   plotting a horizon chart
+
+## **Getting Started**
+
+```{r}
+pacman::p_load(scales, viridis, lubridate, ggthemes, gridExtra, tidyverse, readxl, knitr, data.table)
+```
+
+## **Plotting Calendar Heatmap**
+
+In this section, you will learn how to plot a calender heatmap programmetically by using ggplot2 package.\
+![](images/image-1514423429.png)
+
+By the end of this section, you will be able to:
+
+-   plot a calender heatmap by using ggplot2 functions and extension,
+
+-   to write function using R programming,
+
+-   to derive specific date and time related field by using base R and lubridate packages
+
+-   to perform data preparation task by using tidyr and dplyr packages.
+
+### **The Data**
+
+For the purpose of this hands-on exercise, *eventlog.csv* file will be used. This data file consists of 199,999 rows of time-series cyber attack records by country.
+
+### **Importing the data**
+
+First, you will use the code chunk below to import *eventlog.csv* file into R environment and called the data frame as *attacks*.

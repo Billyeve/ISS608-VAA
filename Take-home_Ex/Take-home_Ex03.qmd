@@ -174,7 +174,7 @@ Coming from One-way ANOVA test between Type of Flat and the Resale Price, overal
 Pairwise P-Test also concluded the following:
 
 |    Relation     |      P-Value      |                     Remark                     |
-|:-----------------:|:-----------------:|:--------------------------------:|
+|:---------------:|:-----------------:|:----------------------------------------------:|
 | 3 Room - 4 Room | 3.25 e-08 \< 0.05 | Reject null hypothesis, Significant difference |
 | 3 Room - 5 Room |     0 \< 0.05     | Reject null hypothesis, Significant difference |
 | 4 Room - 5 Room |     0 \< 0.05     | Reject null hypothesis, Significant difference |
@@ -216,7 +216,7 @@ Coming from One-way ANOVA test between Type of Flat and the Floor Area, overall 
 Pairwise P-Test also concluded the following:
 
 |    Relation     |      P-Value      |                     Remark                     |
-|:-----------------:|:-----------------:|:--------------------------------:|
+|:---------------:|:-----------------:|:----------------------------------------------:|
 | 3 Room - 4 Room | 1.19 e-08 \< 0.05 | Reject null hypothesis, Significant difference |
 | 3 Room - 5 Room |     0 \< 0.05     | Reject null hypothesis, Significant difference |
 | 4 Room - 5 Room | 1.07 e-09 \< 0.05 | Reject null hypothesis, Significant difference |
@@ -234,7 +234,7 @@ ggstatsplot::ggcorrmat(
 
 Based on the correlation coefficients, there is moderate correlation between resale price and floor area and resale price and remaining lease year while weak correlation between the floor area and remaining lease year. This concludes that there is a relationship between resale price and remaining lease year and resale price and floor area though this does not mean causality between both relationship.
 
-#### Model Diagnostic 
+#### Model Diagnostic
 
 ```{r}
 #| fig-height: 36
@@ -405,7 +405,7 @@ ggstatsplot::ggcorrmat(
 
 Based on the correlation coefficients, for 5 Room Flats, the resale price, remaining lease years and floor area have weak to no correlation meaning each variable is independent of each other.
 
-## Learning and Insights 
+## Learning and Insights
 
 **Size Limitations:** due to the limitations of quarto size, visualization many variables may be difficult. Filters and selected values may be considered
 
