@@ -15,11 +15,7 @@ By the end of this hands-on exercise you will be able create the followings data
 
 ## Getting Started
 
-::: callout-info \## Do It Yourself Write a code chunk to check, install and launch the following R packages: scales, viridis, lubridate, ggthemes, gridExtra, readxl, knitr, data.table and tidyverse.
-
 ```{r}
-#| code-fold: true
-#| code-summary: "Show the code"
 pacman::p_load(scales, viridis, lubridate, ggthemes, gridExtra, tidyverse, readxl, knitr, data.table)
 ```
 
@@ -27,7 +23,7 @@ pacman::p_load(scales, viridis, lubridate, ggthemes, gridExtra, tidyverse, readx
 
 In this section, you will learn how to plot a calender heatmap programmetically by using ggplot2 package.
 
-![](img/image01.png)
+![](images/image-480474762.png)
 
 By the end of this section, you will be able to:
 
@@ -63,10 +59,6 @@ There are three columns, namely *timestamp*, *source_country* and *tz*.
 -   *timestamp* field stores date-time values in POSIXct format.
 -   *source_country* field stores the source of the attack. It is in *ISO 3166-1 alpha-2* country code.\
 -   *tz* field stores time zone of the source IP address.
-
-```{r echo=FALSE}
-kable(head(attacks))
-```
 
 ### Data Preparation
 
@@ -178,7 +170,7 @@ Then we can simply group the count by hour and wkday and plot it, since we know 
 
 **Challenge:** Building multiple heatmaps for the top four countries with the highest number of attacks.
 
-![](img/image02.png)
+![](images/image-1621751351.png)
 
 ### Plotting Multiple Calendar Heatmaps
 
@@ -242,7 +234,7 @@ ggplot(top4_attacks,
 
 In this section, you will learn how to plot a cycle plot showing the time-series patterns and trend of visitor arrivals from Vietnam programmatically by using ggplot2 functions.
 
-![](img/image03.png)
+![](images/image-188253972.png)
 
 ### Data Preparation
 
