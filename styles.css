@@ -1,8 +1,8 @@
 /* css styles */
 
 :root{
-  --primary: #77809d; 
-  --secondary: #252a55; 
+  --primary: #04348c; 
+  --secondary: #4483d4; 
   --contrast: #181c38; 
   --contrast2: #83d0ff; 
   --contrast3: #66b0f0; 
@@ -19,7 +19,7 @@ a:hover{
 }
 
 .quarto-title{
-  color: var(--secondary);
+  color: var(--primary);
 }
 
 #toc-title{
@@ -108,7 +108,7 @@ div.sourceCode{
 }
 
 .cell-output{
-  background-color: var(--primary);
+  background-color: var(--contrast2);
   border-radius: .10rem;
 }
 
