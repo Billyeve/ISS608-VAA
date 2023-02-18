@@ -286,7 +286,7 @@ hline.data <- Vietnam %>%
 
 The code chunk below is used to plot the cycle plot as shown in Slide 12/23.
 
-```{r eval=FALSE}
+```{r}
 ggplot() + 
   geom_line(data=Vietnam,
             aes(x=year, 
