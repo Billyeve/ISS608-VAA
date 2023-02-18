@@ -1,0 +1,8 @@
+---
+title: "Data Visualization Makeover 04"
+subtitle: "Putting Visual Analytics into Practical Use"
+author: "Bryant Philippe Lee"
+date: February 26, 2022
+---
+
+## Objective

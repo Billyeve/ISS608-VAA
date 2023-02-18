@@ -39,12 +39,14 @@ website:
           href: In-Class_Ex/In-Class_Ex05.html
     - text: "Take-home Exercises"
       menu:
-        - text: "Take-home Exercise 1"
+        - text: "Take-home Exercise 1: An Exploration on Singapore's 2022 Population through Age-Sex Pyramid"
           href: Take-home_Ex/Take-home_Ex01.html
-        - text: "Take-home Exercise 2"
+        - text: "Take-home Exercise 2: Critique of Singapore Age-Sex Pyramid"
           href: Take-home_Ex/Take-home_Ex02.html
-        - text: "Take-home Exercise 3"
+        - text: "Take-home Exercise 3: Putting Visual Analytics into Practical Use"
           href: Take-home_Ex/Take-home_Ex03.html
+        - text: "Take-home Exercise 4: Putting Visual Analytics into Practical Use"
+          href: Take-home_Ex/Take-home_Ex04.html
     right:
       - href: index.qmd
         text: Home
