@@ -37,6 +37,8 @@ website:
           href: In-Class_Ex/In-Class_Ex04.html
         - text: "In-Class Exercise 5"
           href: In-Class_Ex/In-Class_Ex05.html
+        - text: "In-Class Exercise 6"
+          href: In-Class_Ex/In-Class_Ex06.html
     - text: "Take-home Exercises"
       menu:
         - text: "Take-home Exercise 1: An Exploration on Singapore's 2022 Population through Age-Sex Pyramid"
