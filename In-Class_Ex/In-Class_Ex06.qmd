@@ -1,0 +1,19 @@
+---
+title: "In-Class Exercise 05"
+author: "Bryant Philippe Lee"
+date: February 18, 2023
+date-modified: "`r Sys.Date()`"
+fontsize: smaller
+execute: 
+  echo: true
+  eval: true
+  warning: false
+format: html
+editor: visual
+---
+
+## **Overview**
+
+This document serves as my In-class Exercise 5 requirement.
+
+Being able to look at the patterns in data over time is an important aspect of analytics, however, time-series data is often not very visually friendly. For this week\'s exercise, we explore ways of graphing time, visualization of time-series patterns, and adding interactive techniques.
