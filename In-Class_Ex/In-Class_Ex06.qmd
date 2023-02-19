@@ -12,7 +12,7 @@ format: html
 editor: visual
 ---
 
-## **Overview**
+## Overview
 
 This document serves as my In-class Exercise 5 requirement.
 
