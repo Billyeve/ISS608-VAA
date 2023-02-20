@@ -6,3 +6,43 @@ date: February 26, 2022
 ---
 
 ## Objective
+
+The objective is to uncover the impact of COVID-19 as well as the global economic and political dynamic in 2022 on Singapore bi-lateral trade (i.e. Import, Export and Trade Balance) by using appropriate analytical visualisation techniques to enhance user and data discovery experiences.
+
+The visualization is created using the **Merchandise Trade** provided by **Department of Statistics, Singapore (DOS)*.***\
+
+## Getting Started - Data Loading and Processing
+
+### Installing and loading the required libraries
+
+```{r}
+pacman::p_load(scales, viridis, lubridate, ggthemes, gridExtra, tidyverse, readxl, knitr, data.table, readxl)
+```
+
+### Importing Data
+
+This code chunk is to import the data from Merchandise Trade Excel File. The following sheets are within the file:
+
+-   T1 = Import Data
+
+-   T2 = Export Data
+
+The data shows the import export relationship between Singapore and the other nations in terms of Million Dollar or Thousand Dollar
+
+```{r}
+import_data <- read_excel("data/Merchandise_Trade.xlsx", sheet = "T1")
+import_data
+```
+
+```{r}
+export_data <- read_excel("data/Merchandise_Trade.xlsx", sheet = "T2")
+export_data
+```
+
+::: callout-note
+It is observed that the dataset is presented by the following:
+
+-   columns are listed per month-year, as such must be converted to date time format to ensure order
+
+-   each nation (row) is listed either Thousand Dollars or Million Dollars, as such dataset must be corrected to ensure scale
+:::
