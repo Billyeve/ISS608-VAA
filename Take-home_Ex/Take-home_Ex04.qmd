@@ -16,7 +16,7 @@ The visualization is created using the **Merchandise Trade** provided by **Depar
 ### Installing and loading the required libraries
 
 ```{r}
-pacman::p_load(scales, viridis, lubridate, ggthemes, gridExtra, tidyverse, readxl, knitr, data.table, readxl)
+pacman::p_load(scales, viridis, lubridate, ggthemes, gridExtra, tidyverse, readxl, knitr, data.table, readxl, lubridate, stringr, dplyr)
 ```
 
 ### Importing Data
@@ -29,20 +29,208 @@ This code chunk is to import the data from Merchandise Trade Excel File. The fol
 
 The data shows the import export relationship between Singapore and the other nations in terms of Million Dollar or Thousand Dollar
 
-```{r}
-import_data <- read_excel("data/Merchandise_Trade.xlsx", sheet = "T1")
-import_data
-```
+::: callout-important
+#### Data Structure
 
-```{r}
-export_data <- read_excel("data/Merchandise_Trade.xlsx", sheet = "T2")
-export_data
-```
+The Merchandise Trade data set is labeled with Thousand Dollars and Million Dollars. Further examination shows the following:
 
-::: callout-note
-It is observed that the dataset is presented by the following:
+**Million Dollars - Continent:**
 
--   columns are listed per month-year, as such must be converted to date time format to ensure order
+-   Listed under this category are continental data and values, as such are the summation of nations within these continents.
 
--   each nation (row) is listed either Thousand Dollars or Million Dollars, as such dataset must be corrected to ensure scale
+-   The summation of this continents (except for European Union) is = Total Merchandise Exports
+
+**Thousand Dollars - Nations:**
+
+-   Nation specific data and values
 :::
+
+```{r}
+import_continent <- read_excel("data/Merchandise_Trade.xlsx", 
+                          sheet = "T1",
+                          range = cell_rows(10:16))%>%
+  select(`Data Series`, contains(c("2019","2020", "2021", "2022"))) %>%
+  slice(-1) %>%
+  set_names(if_else(names(.) == "Data Series", "Country", names(.)))
+
+import_continent$Country <- str_replace_all(import_continent$Country, "\\s*\\(.*?\\)", "")
+
+import_continent
+```
+
+```{r}
+export_continent <- read_excel("data/Merchandise_Trade.xlsx", 
+                          sheet = "T2",
+                          range = cell_rows(10:16))%>%
+  select(`Data Series`, contains(c("2019","2020", "2021", "2022"))) %>%
+  slice(-1) %>%
+  set_names(if_else(names(.) == "Data Series", "Country", names(.)))
+
+export_continent$Country <- str_replace_all(export_continent$Country, "\\s*\\(.*?\\)", "")
+
+export_continent
+```
+
+```{r}
+import_nation <- read_excel("data/Merchandise_Trade.xlsx", 
+                          sheet = "T1",
+                          range = cell_rows(10:129))%>%
+  select(`Data Series`, contains(c("2019","2020", "2021", "2022"))) %>%
+  slice(-c(1:7))%>%
+  set_names(if_else(names(.) == "Data Series", "Country", names(.)))
+
+import_nation$Country <- str_replace_all(import_nation$Country, "\\s*\\(.*?\\)", "")
+
+import_nation
+```
+
+```{r}
+export_nation <- read_excel("data/Merchandise_Trade.xlsx", 
+                          sheet = "T2",
+                          range = cell_rows(10:101))%>%
+  select(`Data Series`, contains(c("2019","2020", "2021", "2022"))) %>%
+  slice(-c(1:7)) %>%
+  set_names(if_else(names(.) == "Data Series", "Country", names(.)))
+
+export_nation$Country <- str_replace_all(export_nation$Country, "\\s*\\(.*?\\)", "")
+
+export_nation
+```
+
+### Exploring and Cleaning the Data
+
+#### Pivoting Dataset
+
+This section ensures that the datetime column labels are represented correctly. The dataset must be pivoted to reflect that.
+
+```{r}
+imports_C_pivot <- import_continent %>%
+  pivot_longer(
+    cols = !"Country",
+    names_to = "Month-Year",
+    values_to = "Amount",
+    values_drop_na = TRUE
+  )
+
+imports_C_pivot
+```
+
+```{r}
+imports_N_pivot <- import_nation %>%
+  pivot_longer(
+    cols = !"Country",
+    names_to = "Month-Year",
+    values_to = "Amount",
+    values_drop_na = TRUE
+  )
+
+imports_N_pivot
+```
+
+```{r}
+exports_C_pivot <- export_continent %>%
+  pivot_longer(
+    cols = !"Country",
+    names_to = "Month-Year",
+    values_to = "Amount",
+    values_drop_na = TRUE
+  )
+
+exports_C_pivot
+```
+
+```{r}
+exports_N_pivot <- export_nation %>%
+  pivot_longer(
+    cols = !"Country",
+    names_to = "Month-Year",
+    values_to = "Amount",
+    values_drop_na = TRUE
+  )
+
+exports_N_pivot
+```
+
+#### Organizing Month-Year
+
+This Section converts the "Month-Year" column to datetime.
+
+```{r}
+imports_C_pivot$`Month-Year` <- as.Date(paste(imports_C_pivot$`Month-Year`, "01"), format = "%Y %b %d")
+
+imports_C_pivot
+```
+
+```{r}
+imports_N_pivot$`Month-Year` <- as.Date(paste(imports_N_pivot$`Month-Year`, "01"), format = "%Y %b %d")
+
+imports_N_pivot
+```
+
+```{r}
+exports_C_pivot$`Month-Year` <- as.Date(paste(exports_C_pivot$`Month-Year`, "01"), format = "%Y %b %d")
+
+exports_C_pivot
+```
+
+```{r}
+exports_N_pivot$`Month-Year` <- as.Date(paste(exports_N_pivot$`Month-Year`, "01"), format = "%Y %b %d")
+
+exports_N_pivot
+```
+
+#### Merge Dataset for both Continental and National Values
+
+This section creates the consolidated dataset for both continental and national datasets with the following improvements:
+
+-   Net Trade = Exports - Imports
+
+-   Omit of all NA values
+
+```{r}
+continent <- merge(x=imports_C_pivot , y=exports_C_pivot, by= c("Country", "Month-Year"), all.x = TRUE, all.y = TRUE)
+
+Net_Trade = continent$Amount.y - continent$Amount.x
+
+continent$Net_Trade <- Net_Trade
+
+na.omit(continent) %>%
+  rename(
+    Continent = Country,
+    Date = `Month-Year`,
+    Imports = Amount.x,
+    Exports = Amount.y
+  )
+```
+
+```{r}
+nation <- merge(x=imports_N_pivot , y=exports_N_pivot, by= c("Country", "Month-Year"), all.x = TRUE, all.y = TRUE)
+
+Net_Trade = nation$Amount.y - nation$Amount.x
+
+nation$Net_Trade <- Net_Trade
+
+na.omit(nation) %>%
+  rename(
+    Date = `Month-Year`,
+    Imports = Amount.x,
+    Exports = Amount.y
+  )
+```
+
+## Continental Trade Analysis - Visual Exploration
+
+This section explores macro trade relationship of Singapore on the continental level.
+
+```{r}
+#| fig-height: 12
+#| fig-width: 12
+
+ggplot(continent,
+       aes(x = continent$`Month-Year`, y = continent$Amount.x, color = continent$Country)) +
+  geom_line()+
+  ggtitle("Import in Million Dollars by Continent") +
+  xlab("Date") +
+  ylab("Import in Million Dollars") +
+  scale_x_date(date_labels = "%b-%y")
+```
