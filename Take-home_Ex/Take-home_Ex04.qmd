@@ -323,7 +323,7 @@ nation <- na.omit(nation)
 nation
 ```
 
-```{r}
+```{r, results='hide'}
 nation_asia <- nation %>%
   filter(str_detect(Continent, "Asia")) %>%
   select(-(Continent))
@@ -331,7 +331,7 @@ nation_asia <- nation %>%
 nation_asia
 ```
 
-```{r}
+```{r, results='hide'}
 nation_eu <- nation %>%
   filter(str_detect(Continent, "Europe")) %>%
   select(-(Continent))
