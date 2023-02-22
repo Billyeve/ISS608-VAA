@@ -16,7 +16,7 @@ The visualization is created using the **Merchandise Trade** provided by **Depar
 ### Installing and loading the required libraries
 
 ```{r}
-pacman::p_load(scales, viridis, lubridate, ggthemes, gridExtra, tidyverse, readxl, knitr, data.table, readxl, lubridate, stringr, dplyr, gganimate, transformr, patchwork)
+pacman::p_load(scales, viridis, lubridate, ggthemes, gridExtra, tidyverse, readxl, knitr, data.table, readxl, lubridate, stringr, dplyr, gganimate, transformr, patchwork, countrycode)
 ```
 
 ### Importing Data
@@ -38,7 +38,7 @@ The Merchandise Trade data set is labeled with Thousand Dollars and Million Doll
 
 -   Listed under this category are continental data and values, as such are the summation of nations within these continents.
 
--   The summation of this continents (except for European Union) is = Total Merchandise Exports
+-   The summation of this continents (except for European Union as it is part of Europe) is = Total Merchandise Exports
 
 **Thousand Dollars - Nations:**
 
@@ -187,7 +187,7 @@ This section creates the consolidated dataset for both continental and national 
 
 -   Omit of all NA values
 
-```{r}
+```{r, results='hide'}
 continent <- merge(x=imports_C_pivot , y=exports_C_pivot, by= c("Country", "Month-Year"), all.x = TRUE, all.y = TRUE)
 
 Net_Trade = continent$Amount.y - continent$Amount.x
@@ -203,7 +203,7 @@ na.omit(continent) %>%
   )
 ```
 
-```{r}
+```{r, results='hide'}
 nation <- merge(x=imports_N_pivot , y=exports_N_pivot, by= c("Country", "Month-Year"), all.x = TRUE, all.y = TRUE)
 
 Net_Trade = nation$Amount.y - nation$Amount.x
@@ -221,6 +221,8 @@ na.omit(nation) %>%
 ## Continental Trade Analysis - Visual Exploration
 
 This section explores macro trade relationship of Singapore on the continental level.
+
+### Line Graph Visualization for Imports and Exports
 
 ```{r}
 #| fig-height: 20
@@ -251,12 +253,20 @@ patchwork <- (continent_import / continent_export)
 patchwork
 ```
 
+A simple beginning in visual analysis is a line chart to see the time series impact on both imports and exports. Here is the following insights:
+
+-   **Asia remains as the highest import export partner for Singapore.** Consistently, from 2019 to 2022, Asia remains as the top import export partner of Singapore due to proximity. America and Europe follows as close 2nd and 3rd.
+
+-   **COVID 19 had none to minimal impact to Singapore's Macro Trade Relationship.** Year 2019 and 2020 - 2021 show no distinct drop in import and export amount (drop = significant change in numbers as minimal up and downs are expected).
+
+### Animated Time Series Scatter Plot 
+
 ```{r}
 #| fig-height: 20
 #| fig-width: 16
 #| code-fold: true
 
-a1 <- ggplot(continent, aes(x = Amount.x, y = Amount.y, size = Net_Trade, color = Country)) + 
+ggplot(continent, aes(x = Amount.x, y = Amount.y, size = Net_Trade, color = Country)) + 
   geom_point(show.legend = FALSE, alpha = 0.7) +
   scale_color_viridis_d() +
   scale_size(range = c(2, 12)) +
@@ -265,6 +275,327 @@ a1 <- ggplot(continent, aes(x = Amount.x, y = Amount.y, size = Net_Trade, color 
   theme(legend.position = "bottom") + 
   theme_bw() + 
   facet_wrap(~Country)
-
-a1 + scale_x_log10()
 ```
+
+The Animated Scatter plot refocuses that Asia is the highest import export trade partner for Singapore, though there is an additional insight
+
+-   Asia remains as the highest import export partner and moving to 2022, both import and export increases as it reaches 2022 as the other continent remained constant.
+
+-   Europe shows periods of fluctuations in the index (export/import) as compared to the more stable continents.
+
+### Next Step
+
+-   Visualize and Analyze nations within Asia and Europe separately to check and describe the time series progress of the import export trade amount.
+
+## Asian Trade Analysis - Visual Exploration
+
+This section explores the macro economic trade relation of Singapore to its Asian Trade partners.
+
+### Identifying Country - Continent Labels 
+
+This section adds a continent label to the nation database identifying which continent a country belongs to.
+
+::: callout-note
+#### countrycode() Package
+
+You can use the countrycode() package to identify the continent and region of the country
+
+-   **continent** = Continent as defined in the World Bank Development Indicators
+
+-   **un.regionsub.name**: United Nations sub-region name
+:::
+
+```{r}
+nation$Continent <- countrycode(sourcevar = nation$Country,
+                            origin = "country.name",
+                            destination = "continent")
+
+nation$Continent[nation$Country == "Other Country"] <- "Unknown"
+
+nation$Region <- countrycode(sourcevar = nation$Country,
+                            origin = "country.name",
+                            destination = "un.regionsub.name")
+
+nation$Region[nation$Country == "Other Country"] <- "Unknown"
+
+nation <- na.omit(nation)
+
+nation
+```
+
+```{r}
+nation_asia <- nation %>%
+  filter(str_detect(Continent, "Asia")) %>%
+  select(-(Continent))
+
+nation_asia
+```
+
+```{r}
+nation_eu <- nation %>%
+  filter(str_detect(Continent, "Europe")) %>%
+  select(-(Continent))
+
+nation_eu
+```
+
+### Asia Sub Region Visualization 
+
+```{r}
+#| fig-height: 20
+#| fig-width: 16
+#| code-fold: true
+
+ggplot(nation_asia, aes(x = Amount.x, y = Amount.y, size = Net_Trade, color = Country)) + 
+  geom_point(show.legend = FALSE, alpha = 0.7) +
+  scale_color_viridis_d() +
+  scale_size(range = c(2, 12)) +
+  transition_time(nation_asia$`Month-Year`) +
+  labs(title = "Animated Scatterplot per Asian Region per Year: {frame_time}", x = "Imports", y = "Exports", fill = "Region") +
+  theme(legend.position = "bottom") + 
+  theme_bw() + 
+  facet_wrap(~Region)
+```
+
+Based on the Animated Scatter Plot, the following insights are:
+
+-   East Asia shows high import and export contribution. It is noted that there is a nation that have seen fluctuations in positioning in 2021 - 2022
+
+-   Southeast Asia shows a more stable amount, thoigh there is a nation with more fluctuating position
+
+### East Asian Import Export Visualization 
+
+This section shows the trade relation in East Asia.
+
+```{r}
+#| fig-height: 20
+#| fig-width: 16
+#| code-fold: true
+
+nation_asia_ea <- nation_asia %>%
+  filter(str_detect(Region, "Eastern Asia")) %>%
+  select(-(Region))
+
+
+asia_ea_import <- ggplot(nation_asia_ea,
+       aes(x = `Month-Year`, y = Amount.x, color = Country)) +
+  geom_line()+
+  labs (x = "Date",
+        y = "Import in Thousand Dollars",
+        fill = "Country",
+        title = "Import in Thousand Dollars by east Asian Country") +
+  scale_x_date(date_labels = "%b-%y")+
+  theme_bw() 
+
+asia_ea_export <- ggplot(nation_asia_ea,
+       aes(x = `Month-Year`, y = Amount.y, color = Country)) +
+  geom_line()+
+  labs (x = "Date",
+        y = "Export in Thousand Dollars",
+        fill = "Country",
+        title = "Export in Thousand Dollars by East Asian Country") +
+  scale_x_date(date_labels = "%b-%y")+
+  theme_bw() 
+
+patchwork <- (asia_ea_import / asia_ea_export)
+patchwork
+```
+
+```{r}
+#| fig-height: 20
+#| fig-width: 16
+#| code-fold: true
+
+ggplot(nation_asia_ea,
+  aes(x = `Month-Year`, y = Amount.x, color = Country)) +
+  geom_line() +
+  scale_color_viridis_d() +
+  labs(x = "Date",
+       y = "Net Trade",
+       fill = "Country",
+       title = "Net Trade by East Asian Country") +
+  theme(legend.position = "top") +
+  theme_bw() +
+  geom_point() +
+  transition_reveal(nation_asia_ea$`Month-Year`)
+```
+
+#### Insights on the East Asian Region 
+
+**Singapore has the highest Import and Export Trade relationship with Mainland China.** This is due to being supported by the updated bilateral agreement made in 2019. Given Singapore is one of the biggest trade hubs and China as a manufacturing hub, Merchandise Trade between these nations are part of the supply chain such as electronic equipment, machinery and minerals.
+
+**Singapore - China Net Trade is higher in favor of Singapore (higher export).** This is due to Singapore exporting more variety of goods from consumer to manufacturing requirements to China.
+
+::: callout-note
+##### Singapore - China Trade Relationship
+
+**SINGAPORE-CHINA**
+
+In 2020, [Singapore](https://oec.world/en/profile/country/sgp) exported \$42.9B to [China](https://oec.world/en/profile/country/chn). The main products that [Singapore](https://oec.world/en/profile/country/sgp) exported to [China](https://oec.world/en/profile/country/chn) are [Integrated Circuits](https://oec.world/en/profile/hs/integrated-circuits) (\$10.6B), [Ethylene Polymers](https://oec.world/en/profile/hs/ethylene-polymers) (\$2.25B), and [Machinery Having Individual Functions](https://oec.world/en/profile/hs/machinery-having-individual-functions) (\$1.86B).**Singapore also have a high export low import relationship with Hong Kong.** This is due to Hong Kong primarily acting as Financial Services Sector with minimal merchandise export on its own and rely on imports for consumer goods.
+
+**CHINA-SINGAPORE**
+
+In 2020, [China](https://oec.world/en/profile/country/chn) exported \$54B to [Singapore](https://oec.world/en/profile/country/sgp). The main products that [China](https://oec.world/en/profile/country/chn) exported to [Singapore](https://oec.world/en/profile/country/sgp) were [Integrated Circuits](https://oec.world/en/profile/hs/integrated-circuits) (\$5.55B), [Refined Petroleum](https://oec.world/en/profile/hs/refined-petroleum) (\$4.88B), and [Broadcasting Equipment](https://oec.world/en/profile/hs/broadcasting-equipment) (\$3.97B). South East Asian Import Export Visualization
+:::
+
+**Singapore also have a high export low import relationship with Hong Kong.** This is due to Hong Kong primarily acting as Financial Services Sector with minimal merchandise export on its own and rely on imports for consumer goods.
+
+### South East Asian Import Export Visualization 
+
+This section shows the trade relation in South East Asia.
+
+```{r}
+#| fig-height: 20
+#| fig-width: 16
+#| code-fold: true
+
+nation_asia_sea <- nation_asia %>%
+  filter(str_detect(Region, "South-eastern Asia")) %>%
+  select(-(Region))
+
+
+asia_sea_import <- ggplot(nation_asia_sea,
+       aes(x = `Month-Year`, y = Amount.x, color = Country)) +
+  geom_line()+
+  labs (x = "Date",
+        y = "Import in Thousand Dollars",
+        fill = "Country",
+        title = "Import in Thousand Dollars by Southeast Asian Country") +
+  scale_x_date(date_labels = "%b-%y")+
+  theme_bw() 
+
+asia_sea_export <- ggplot(nation_asia_sea,
+       aes(x = `Month-Year`, y = Amount.y, color = Country)) +
+  geom_line()+
+  labs (x = "Date",
+        y = "Export in Thousand Dollars",
+        fill = "Country",
+        title = "Export in Thousand Dollars by Southeast Asian Country") +
+  scale_x_date(date_labels = "%b-%y")+
+  theme_bw() 
+
+patchwork <- (asia_sea_import / asia_sea_export)
+patchwork
+```
+
+```{r}
+#| fig-height: 20
+#| fig-width: 16
+#| code-fold: true
+
+ggplot(nation_asia_sea,
+  aes(x = `Month-Year`, y = Amount.x, color = Country)) +
+  geom_line() +
+  scale_color_viridis_d() +
+  labs(x = "Date",
+       y = "Net Trade",
+       fill = "Country",
+       title = "Net Trade by Southeast Asian Country") +
+  theme(legend.position = "top") +
+  theme_bw() +
+  geom_point() +
+  transition_reveal(nation_asia_sea$`Month-Year`)
+```
+
+#### Insights on the South East Asian Region 
+
+**Malaysia is the top import and export trade partner with Singapore.** This is due to proximity between the nations. Furthermore. Net Trade has higher export with Singapore
+
+::: callout-note
+##### Singapore - Malaysia Trade Relationship
+
+**MALAYSIA-SINGAPORE**
+
+In 2020, [Malaysia](https://oec.world/en/profile/country/mys) exported \$36.5B to [Singapore](https://oec.world/en/profile/country/sgp). The main products that [Malaysia](https://oec.world/en/profile/country/mys) exported to [Singapore](https://oec.world/en/profile/country/sgp) are [Integrated Circuits](https://oec.world/en/profile/hs/integrated-circuits) (\$11.1B), [Refined Petroleum](https://oec.world/en/profile/hs/refined-petroleum) (\$5.63B), and [Office Machine Parts](https://oec.world/en/profile/hs/office-machine-parts) (\$1.24B).
+
+**SINGAPORE-MALAYSIA**
+
+In 2020, [Singapore](https://oec.world/en/profile/country/sgp) exported \$22.9B to [Malaysia](https://oec.world/en/profile/country/mys). The main products that [Singapore](https://oec.world/en/profile/country/sgp) exported to [Malaysia](https://oec.world/en/profile/country/mys) were [Integrated Circuits](https://oec.world/en/profile/hs/integrated-circuits) (\$5.7B), [Refined Petroleum](https://oec.world/en/profile/hs/refined-petroleum) (\$4.33B), and [Gold](https://oec.world/en/profile/hs/gold) (\$894M).
+:::
+
+**Singapore has a high export to Indonesia due to the high amounts of Gold and manufacturing parts sent over.** Similar to nations that Singapore does bilateral trades of similar good, higher exports are primarily due to higher variety of goods.
+
+## European Trade Analysis - Visual Exploration
+
+This section explores the macro economic trade relation of Singapore to its European Trade partners.
+
+### Europe Sub Region Visualization 
+
+```{r}
+#| fig-height: 20
+#| fig-width: 16
+#| code-fold: true
+
+ggplot(nation_eu, aes(x = Amount.x, y = Amount.y, size = Net_Trade, color = Country)) + 
+  geom_point(show.legend = FALSE, alpha = 0.7) +
+  scale_color_viridis_d() +
+  scale_size(range = c(2, 12)) +
+  transition_time(nation_eu$`Month-Year`) +
+  labs(title = "Animated Scatterplot per European Region per Year: {frame_time}", x = "Imports", y = "Exports", fill = "Region") +
+  theme(legend.position = "bottom") + 
+  theme_bw() + 
+  facet_wrap(~Region)
+```
+
+Based on the animated scatter plot, Western European nations have more dynamic trade relations as compared to others
+
+### Western European Import Export Visualization 
+
+This section shows the trade relation in West Europe.
+
+```{r}
+#| fig-height: 20
+#| fig-width: 16
+#| code-fold: true
+
+nation_eu_west <- nation_eu %>%
+  filter(str_detect(Region, "Western Europe")) %>%
+  select(-(Region))
+
+
+eu_west_import <- ggplot(nation_eu_west,
+       aes(x = `Month-Year`, y = Amount.x, color = Country)) +
+  geom_line()+
+  labs (x = "Date",
+        y = "Import in Thousand Dollars",
+        fill = "Country",
+        title = "Import in Thousand Dollars by West Euro Country") +
+  scale_x_date(date_labels = "%b-%y")+
+  theme_bw() 
+
+eu_west_export <- ggplot(nation_eu_west,
+       aes(x = `Month-Year`, y = Amount.y, color = Country)) +
+  geom_line()+
+  labs (x = "Date",
+        y = "Export in Thousand Dollars",
+        fill = "Country",
+        title = "Export in Thousand Dollars by West Euro Country") +
+  scale_x_date(date_labels = "%b-%y")+
+  theme_bw() 
+
+patchwork <- (eu_west_import / eu_west_export)
+patchwork
+```
+
+```{r}
+#| fig-height: 20
+#| fig-width: 16
+#| code-fold: true
+
+ggplot(nation_eu_west,
+  aes(x = `Month-Year`, y = Amount.x, color = Country)) +
+  geom_line() +
+  scale_color_viridis_d() +
+  labs(x = "Date",
+       y = "Net Trade",
+       fill = "Country",
+       title = "Net Trade by West Euro Country") +
+  theme(legend.position = "top") +
+  theme_bw() +
+  geom_point() +
+  transition_reveal(nation_eu_west$`Month-Year`)
+```
+
+#### Insights on the Western European Region 
+
+As compared to Asian Trade partners, Western Europe experience high levels of fluctuation, presenting no clear front runner in trade relations with Singapore. **This may be due to West Europe being majority part of the European Union and its 'Single Market'.** The 'Single Market' allows companies in Europe to operate in all nation states and be able to cooperatively export their products as a block while import products outside in bulk as well.
