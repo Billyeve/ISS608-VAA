@@ -402,7 +402,7 @@ patchwork
 ```
 
 ```{r}
-#| fig-height: 20
+#| fig-height: 12
 #| fig-width: 16
 #| code-fold: true
 
@@ -479,7 +479,7 @@ patchwork
 ```
 
 ```{r}
-#| fig-height: 20
+#| fig-height: 12
 #| fig-width: 16
 #| code-fold: true
 
@@ -578,7 +578,7 @@ patchwork
 ```
 
 ```{r}
-#| fig-height: 20
+#| fig-height: 12
 #| fig-width: 16
 #| code-fold: true
 
