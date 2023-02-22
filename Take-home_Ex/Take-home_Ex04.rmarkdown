@@ -272,7 +272,7 @@ A simple beginning in visual analysis is a line chart to see the time series imp
 
 -   **COVID 19 had none to minimal impact to Singapore's Macro Trade Relationship.** Year 2019 and 2020 - 2021 show no distinct drop in import and export amount (drop = significant change in numbers as minimal up and downs are expected).
 
-### Animated Time Series Scatter Plot 
+### Animated Time Series Scatter Plot
 
 
 ```{r}
@@ -306,7 +306,7 @@ The Animated Scatter plot refocuses that Asia is the highest import export trade
 
 This section explores the macro economic trade relation of Singapore to its Asian Trade partners.
 
-### Identifying Country - Continent Labels 
+### Identifying Country - Continent Labels
 
 This section adds a continent label to the nation database identifying which continent a country belongs to.
 
@@ -356,7 +356,7 @@ nation_eu
 ```
 
 
-### Asia Sub Region Visualization 
+### Asia Sub Region Visualization
 
 
 ```{r}
@@ -382,7 +382,7 @@ Based on the Animated Scatter Plot, the following insights are:
 
 -   Southeast Asia shows a more stable amount, thoigh there is a nation with more fluctuating position
 
-### East Asian Import Export Visualization 
+### East Asian Import Export Visualization
 
 This section shows the trade relation in East Asia.
 
@@ -441,7 +441,7 @@ ggplot(nation_asia_ea,
 ```
 
 
-#### Insights on the East Asian Region 
+#### Insights on the East Asian Region
 
 **Singapore has the highest Import and Export Trade relationship with Mainland China.** This is due to being supported by the updated bilateral agreement made in 2019. Given Singapore is one of the biggest trade hubs and China as a manufacturing hub, Merchandise Trade between these nations are part of the supply chain such as electronic equipment, machinery and minerals.
 
@@ -461,7 +461,7 @@ In 2020, [China](https://oec.world/en/profile/country/chn) exported \$54B to [Si
 
 **Singapore also have a high export low import relationship with Hong Kong.** This is due to Hong Kong primarily acting as Financial Services Sector with minimal merchandise export on its own and rely on imports for consumer goods.
 
-### South East Asian Import Export Visualization 
+### South East Asian Import Export Visualization
 
 This section shows the trade relation in South East Asia.
 
@@ -520,7 +520,7 @@ ggplot(nation_asia_sea,
 ```
 
 
-#### Insights on the South East Asian Region 
+#### Insights on the South East Asian Region
 
 **Malaysia is the top import and export trade partner with Singapore.** This is due to proximity between the nations. Furthermore. Net Trade has higher export with Singapore
 
@@ -542,7 +542,7 @@ In 2020, [Singapore](https://oec.world/en/profile/country/sgp) exported \$22.9B 
 
 This section explores the macro economic trade relation of Singapore to its European Trade partners.
 
-### Europe Sub Region Visualization 
+### Europe Sub Region Visualization
 
 
 ```{r}
@@ -564,7 +564,7 @@ ggplot(nation_eu, aes(x = Amount.x, y = Amount.y, size = Net_Trade, color = Coun
 
 Based on the animated scatter plot, Western European nations have more dynamic trade relations as compared to others
 
-### Western European Import Export Visualization 
+### Western European Import Export Visualization
 
 This section shows the trade relation in West Europe.
 
@@ -623,7 +623,7 @@ ggplot(nation_eu_west,
 ```
 
 
-#### Insights on the Western European Region 
+#### Insights on the Western European Region
 
 As compared to Asian Trade partners, Western Europe experience high levels of fluctuation, presenting no clear front runner in trade relations with Singapore. **This may be due to West Europe being majority part of the European Union and its 'Single Market'.** The 'Single Market' allows companies in Europe to operate in all nation states and be able to cooperatively export their products as a block while import products outside in bulk as well.
 

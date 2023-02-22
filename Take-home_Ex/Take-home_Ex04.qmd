@@ -225,8 +225,8 @@ This section explores macro trade relationship of Singapore on the continental l
 ### Line Graph Visualization for Imports and Exports
 
 ```{r}
-#| fig-height: 20
-#| fig-width: 16
+#| fig-height: 16
+#| fig-width: 14
 #| code-fold: true
 
 continent_import <- ggplot(continent,
@@ -262,8 +262,8 @@ A simple beginning in visual analysis is a line chart to see the time series imp
 ### Animated Time Series Scatter Plot
 
 ```{r}
-#| fig-height: 20
-#| fig-width: 16
+#| fig-height: 16
+#| fig-width: 14
 #| code-fold: true
 
 ggplot(continent, aes(x = Amount.x, y = Amount.y, size = Net_Trade, color = Country)) + 
