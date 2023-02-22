@@ -431,7 +431,7 @@ ggplot(nation_asia_ea,
 
 **SINGAPORE-CHINA**
 
-In 2020, [Singapore](https://oec.world/en/profile/country/sgp) exported \$42.9B to [China](https://oec.world/en/profile/country/chn). The main products that [Singapore](https://oec.world/en/profile/country/sgp) exported to [China](https://oec.world/en/profile/country/chn) are [Integrated Circuits](https://oec.world/en/profile/hs/integrated-circuits) (\$10.6B), [Ethylene Polymers](https://oec.world/en/profile/hs/ethylene-polymers) (\$2.25B), and [Machinery Having Individual Functions](https://oec.world/en/profile/hs/machinery-having-individual-functions) (\$1.86B).**Singapore also have a high export low import relationship with Hong Kong.** This is due to Hong Kong primarily acting as Financial Services Sector with minimal merchandise export on its own and rely on imports for consumer goods.
+In 2020, [Singapore](https://oec.world/en/profile/country/sgp) exported \$42.9B to [China](https://oec.world/en/profile/country/chn). The main products that [Singapore](https://oec.world/en/profile/country/sgp) exported to [China](https://oec.world/en/profile/country/chn) are [Integrated Circuits](https://oec.world/en/profile/hs/integrated-circuits) (\$10.6B), [Ethylene Polymers](https://oec.world/en/profile/hs/ethylene-polymers) (\$2.25B), and [Machinery Having Individual Functions](https://oec.world/en/profile/hs/machinery-having-individual-functions) (\$1.86B).
 
 **CHINA-SINGAPORE**
 
