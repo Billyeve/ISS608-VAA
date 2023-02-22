@@ -305,7 +305,7 @@ You can use the countrycode() package to identify the continent and region of th
 -   **un.regionsub.name**: United Nations sub-region name
 :::
 
-```{r}
+```{r, results='hide'}
 nation$Continent <- countrycode(sourcevar = nation$Country,
                             origin = "country.name",
                             destination = "continent")
