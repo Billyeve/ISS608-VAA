@@ -11,3 +11,38 @@ execute:
 format: html
 editor: visual
 ---
+
+## Overview
+
+This document serves as my In-class Exercise 7 requirement.
+
+In this in-class exercise, you will gain hands-on experience on using appropriate R methods to plot analytical maps.
+
+## Tableau 
+
+### Proportional Symbol Map - Branch Shop Data 
+
+```{=html}
+<div class='tableauPlaceholder' id='viz1677308606710' style='position: relative'><noscript><a href='#'><img alt='Proportional Symbol Map ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ge&#47;GeospacialSymbolMaps&#47;PropSymbolMap&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='GeospacialSymbolMaps&#47;PropSymbolMap' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ge&#47;GeospacialSymbolMaps&#47;PropSymbolMap&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1677308606710');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+```
+To be able to render the distinct coloration, a new calculated field is to be created named "Channel" with the following equation (see image below)
+
+![](images/image-1218783160.png){fig-align="center" width="590"}
+
+### Proportional Symbol Map - Residential Housing Data
+
+```{=html}
+<div class='tableauPlaceholder' id='viz1677309285483' style='position: relative'><noscript><a href='#'><img alt='Proportional Symbol Map ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ge&#47;GeospacialSymbolMaps-ResidentialPropertyType&#47;ProportionalSymbolMap&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='GeospacialSymbolMaps-ResidentialPropertyType&#47;ProportionalSymbolMap' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ge&#47;GeospacialSymbolMaps-ResidentialPropertyType&#47;ProportionalSymbolMap&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1677309285483');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+```
+Aggregreate all data found in separate sheets, highlight all datasets needed in the list and drag to the dashboards to be joined to a single dataset.
+
+![](images/image-1389820563.png){fig-align="center" width="593"}
+
+### Proportional Symbol Map - Population Data 
+
+```{=html}
+<div class='tableauPlaceholder' id='viz1677309458461' style='position: relative'><noscript><a href='#'><img alt='Proportional Symbol Map ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ge&#47;GeospacialSymbolMapsPopulation&#47;ProportionalSymbolMap&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='GeospacialSymbolMapsPopulation&#47;ProportionalSymbolMap' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ge&#47;GeospacialSymbolMapsPopulation&#47;ProportionalSymbolMap&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1677309458461');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+```
+When using two distinct datasets with different format of the same column variable, ensure to convert one of the relationships to match and join both datasets.
+
+![](images/image-163357223.png){fig-align="center" width="600"}
