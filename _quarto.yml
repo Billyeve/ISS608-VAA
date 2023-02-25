@@ -29,6 +29,12 @@ website:
           href: Hands-on_Ex/Hands-on_Ex05.4.html
         - text: "Hands-on Exercise 6: Visualising and Analysing Time-oriented Data"
           href: Hands-on_Ex/Hands-on_Ex06.html
+        - text: "Hands-on Exercise 7.1: Choropleth Mapping with R"
+          href: Hands-on_Ex/Hands-on_Ex07.1.html
+        - text: "Hands-on Exercise 7.2: Visualising Geospatial Point Data"
+          href: Hands-on_Ex/Hands-on_Ex07.2.html
+        - text: "Hands-on Exercise 7.3: Analytical Mapping"
+          href: Hands-on_Ex/Hands-on_Ex07.3.html
     - text: "In-Class Exercises"
       menu:
         - text: "In-Class Exercise 3"
@@ -39,6 +45,8 @@ website:
           href: In-Class_Ex/In-Class_Ex05.html
         - text: "In-Class Exercise 6"
           href: In-Class_Ex/In-Class_Ex06.html
+        - text: "In-Class Exercise 7"
+          href: In-Class_Ex/In-Class_Ex07.html
     - text: "Take-home Exercises"
       menu:
         - text: "Take-home Exercise 1: An Exploration on Singapore's 2022 Population through Age-Sex Pyramid"
