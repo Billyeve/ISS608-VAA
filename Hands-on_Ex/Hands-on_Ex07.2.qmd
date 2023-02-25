@@ -1,0 +1,26 @@
+---
+title: "Hands-on Exercise 07.2"
+subtitle: "Visualising Geospatial Point Data"
+---
+
+## **Overview**
+
+Proportional symbol maps (also known as graduate symbol maps) are a class of maps that use the visual variable of size to represent differences in the magnitude of a discrete, abruptly changing phenomenon, e.g. counts of people. Like choropleth maps, you can create classed or unclassed versions of these maps. The classed ones are known as range-graded or graduated symbols, and the unclassed are called proportional symbols, where the area of the symbols are proportional to the values of the attribute being mapped. In this hands-on exercise, you will learn how to create a proportional symbol map showing the number of wins by Singapore Pools\' outlets using an R package called **tmap**.
+
+### **Learning outcome**
+
+By the end of this hands-on exercise, you will acquire the following skills by using appropriate R packages:
+
+-   To import an aspatial data file into R.
+
+-   To convert it into simple point feature data frame and at the same time, to assign an appropriate projection reference to the newly create simple point feature data frame.
+
+-   To plot interactive proportional symbol maps.
+
+## **Getting Started**
+
+Before we get started, we need to ensure that **tmap** package of R and other related R packages have been installed and loaded into R.
+
+```{r}
+pacman::p_load(sf, tmap, tidyverse)
+```
