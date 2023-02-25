@@ -225,8 +225,6 @@ This section explores macro trade relationship of Singapore on the continental l
 ### Line Graph Visualization for Imports and Exports
 
 ```{r}
-#| fig-height: 16
-#| fig-width: 14
 #| code-fold: true
 
 continent_import <- ggplot(continent,
@@ -262,8 +260,6 @@ A simple beginning in visual analysis is a line chart to see the time series imp
 ### Animated Time Series Scatter Plot
 
 ```{r}
-#| fig-height: 16
-#| fig-width: 14
 #| code-fold: true
 
 ggplot(continent, aes(x = Amount.x, y = Amount.y, size = Net_Trade, color = Country)) + 
@@ -342,8 +338,6 @@ nation_eu
 ### Asia Sub Region Visualization
 
 ```{r}
-#| fig-height: 16
-#| fig-width: 14
 #| code-fold: true
 
 ggplot(nation_asia, aes(x = Amount.x, y = Amount.y, size = Net_Trade, color = Country)) + 
@@ -368,8 +362,6 @@ Based on the Animated Scatter Plot, the following insights are:
 This section shows the trade relation in East Asia.
 
 ```{r}
-#| fig-height: 12
-#| fig-width: 14
 #| code-fold: true
 
 nation_asia_ea <- nation_asia %>%
@@ -402,8 +394,6 @@ patchwork
 ```
 
 ```{r}
-#| fig-height: 12
-#| fig-width: 14
 #| code-fold: true
 
 ggplot(nation_asia_ea,
@@ -445,8 +435,6 @@ In 2020, [China](https://oec.world/en/profile/country/chn) exported \$54B to [Si
 This section shows the trade relation in South East Asia.
 
 ```{r}
-#| fig-height: 16
-#| fig-width: 14
 #| code-fold: true
 
 nation_asia_sea <- nation_asia %>%
@@ -479,8 +467,6 @@ patchwork
 ```
 
 ```{r}
-#| fig-height: 12
-#| fig-width: 14
 #| code-fold: true
 
 ggplot(nation_asia_sea,
@@ -522,8 +508,6 @@ This section explores the macro economic trade relation of Singapore to its Euro
 ### Europe Sub Region Visualization
 
 ```{r}
-#| fig-height: 16
-#| fig-width: 14
 #| code-fold: true
 
 ggplot(nation_eu, aes(x = Amount.x, y = Amount.y, size = Net_Trade, color = Country)) + 
@@ -544,8 +528,6 @@ Based on the animated scatter plot, Western European nations have more dynamic t
 This section shows the trade relation in West Europe.
 
 ```{r}
-#| fig-height: 16
-#| fig-width: 14
 #| code-fold: true
 
 nation_eu_west <- nation_eu %>%
@@ -578,8 +560,6 @@ patchwork
 ```
 
 ```{r}
-#| fig-height: 12
-#| fig-width: 14
 #| code-fold: true
 
 ggplot(nation_eu_west,
