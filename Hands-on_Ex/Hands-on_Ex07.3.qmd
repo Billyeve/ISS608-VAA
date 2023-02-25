@@ -1,0 +1,24 @@
+---
+title: "Hands-on Exercise 07.2"
+subtitle: "Analytical Mapping"
+---
+
+## **Overview**
+
+### **Objectives**
+
+In this in-class exercise, you will gain hands-on experience on using appropriate R methods to plot analytical maps.
+
+### **Learning outcome**
+
+By the end of this in-class exercise, you will be able to use appropriate functions of tmap and tidyverse to perform the following tasks:
+
+-   Importing geospatial data in rds format into R environment.
+
+-   Creating cartographic quality choropleth maps by using appropriate tmap functions.
+
+-   Creating rate map
+
+-   Creating percentile map
+
+-   Creating boxmap
