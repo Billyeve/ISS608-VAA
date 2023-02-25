@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Bryant Philippe Lee">
-<meta name="dcterms.date" content="2023-02-18">
+<meta name="dcterms.date" content="2023-02-25">
 
-<title>ISSS608-VAA - In-Class Exercise 06</title>
+<title>ISSS608-VAA - In-Class Exercise 07</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -222,10 +222,9 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
   <li><a href="#tableau" id="toc-tableau" class="nav-link" data-scroll-target="#tableau">Tableau</a>
   <ul class="collapse">
-  <li><a href="#time-series-arrival-dashboard" id="toc-time-series-arrival-dashboard" class="nav-link" data-scroll-target="#time-series-arrival-dashboard">Time Series Arrival Dashboard</a></li>
-  <li><a href="#calendar-heatmap" id="toc-calendar-heatmap" class="nav-link" data-scroll-target="#calendar-heatmap">Calendar Heatmap</a></li>
-  <li><a href="#slope-graph" id="toc-slope-graph" class="nav-link" data-scroll-target="#slope-graph">Slope Graph</a></li>
-  <li><a href="#animated-time-series-scatter-plot" id="toc-animated-time-series-scatter-plot" class="nav-link" data-scroll-target="#animated-time-series-scatter-plot"><strong>Animated Time Series Scatter Plot</strong></a></li>
+  <li><a href="#proportional-symbol-map---branch-shop-data" id="toc-proportional-symbol-map---branch-shop-data" class="nav-link" data-scroll-target="#proportional-symbol-map---branch-shop-data">Proportional Symbol Map - Branch Shop Data</a></li>
+  <li><a href="#proportional-symbol-map---residential-housing-data" id="toc-proportional-symbol-map---residential-housing-data" class="nav-link" data-scroll-target="#proportional-symbol-map---residential-housing-data">Proportional Symbol Map - Residential Housing Data</a></li>
+  <li><a href="#proportional-symbol-map---population-data" id="toc-proportional-symbol-map---population-data" class="nav-link" data-scroll-target="#proportional-symbol-map---population-data">Proportional Symbol Map - Population Data</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -235,7 +234,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">In-Class Exercise 06</h1>
+<h1 class="title">In-Class Exercise 07</h1>
 </div>
 
 
@@ -252,7 +251,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 18, 2023</p>
+      <p class="date">February 25, 2023</p>
     </div>
   </div>
   
@@ -270,61 +269,43 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>This document serves as my In-class Exercise 6 requirement.</p>
-<p>Being able to look at the patterns in data over time is an important aspect of analytics, however, time-series data is often not very visually friendly. For this week’s exercise, we explore ways of graphing time, visualization of time-series patterns, and adding interactive techniques.</p>
+<p>This document serves as my In-class Exercise 7 requirement.</p>
+<p>In this in-class exercise, you will gain hands-on experience on using appropriate R methods to plot analytical maps.</p>
 </section>
 <section id="tableau" class="level2">
 <h2 class="anchored" data-anchor-id="tableau">Tableau</h2>
-<section id="time-series-arrival-dashboard" class="level3">
-<h3 class="anchored" data-anchor-id="time-series-arrival-dashboard">Time Series Arrival Dashboard</h3>
-<p>This is a time series dashboard showing the arrivals per country with 2 time series charts</p>
-<ul>
-<li><p>Yearly arrivals</p></li>
-<li><p>Monthly arrivals per year</p></li>
-</ul>
+<section id="proportional-symbol-map---branch-shop-data" class="level3">
+<h3 class="anchored" data-anchor-id="proportional-symbol-map---branch-shop-data">Proportional Symbol Map - Branch Shop Data</h3>
 
-<div class="tableauPlaceholder" id="viz1676812144331" style="position: relative"><noscript><a href="#"><img alt="Dashboard 1 " src="https://public.tableau.com/static/images/In/In-ClassEx6Tableau/Dashboard1/1_rss.png" style="border: none"></a></noscript><object class="tableauViz" style="display:none;"><param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F"> <param name="embed_code_version" value="3"> <param name="site_root" value=""><param name="name" value="In-ClassEx6Tableau/Dashboard1"><param name="tabs" value="no"><param name="toolbar" value="yes"><param name="static_image" value="https://public.tableau.com/static/images/In/In-ClassEx6Tableau/Dashboard1/1.png"> <param name="animate_transition" value="yes"><param name="display_static_image" value="yes"><param name="display_spinner" value="yes"><param name="display_overlay" value="yes"><param name="display_count" value="yes"><param name="language" value="en-US"></object></div>                <script type="text/javascript">                    var divElement = document.getElementById('viz1676812144331');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} else { vizElement.style.width='100%';vizElement.style.height='727px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
-<div class="callout-html callout callout-style-default no-icon callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Html
-</div>
-</div>
-<div class="callout-body-container callout-body">
-
-</div>
-</div>
-<div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>For unclean datasets such as the arrivals data which each nation arrival is listed per column, it is best to transpose and summarize all the nation columns to 2 columns which lists the nation and aggregated arrivals per date.</p>
-</div>
+<div class="tableauPlaceholder" id="viz1677308606710" style="position: relative"><noscript><a href="#"><img alt="Proportional Symbol Map " src="https://public.tableau.com/static/images/Ge/GeospacialSymbolMaps/PropSymbolMap/1_rss.png" style="border: none"></a></noscript><object class="tableauViz" style="display:none;"><param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F"> <param name="embed_code_version" value="3"> <param name="site_root" value=""><param name="name" value="GeospacialSymbolMaps/PropSymbolMap"><param name="tabs" value="no"><param name="toolbar" value="yes"><param name="static_image" value="https://public.tableau.com/static/images/Ge/GeospacialSymbolMaps/PropSymbolMap/1.png"> <param name="animate_transition" value="yes"><param name="display_static_image" value="yes"><param name="display_spinner" value="yes"><param name="display_overlay" value="yes"><param name="display_count" value="yes"><param name="language" value="en-US"><param name="filter" value="publish=yes"></object></div>                <script type="text/javascript">                    var divElement = document.getElementById('viz1677308606710');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+<p>To be able to render the distinct coloration, a new calculated field is to be created named “Channel” with the following equation (see image below)</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/image-1218783160.png" class="img-fluid figure-img" width="590"></p>
+</figure>
 </div>
 </section>
-<section id="calendar-heatmap" class="level3">
-<h3 class="anchored" data-anchor-id="calendar-heatmap">Calendar Heatmap</h3>
+<section id="proportional-symbol-map---residential-housing-data" class="level3">
+<h3 class="anchored" data-anchor-id="proportional-symbol-map---residential-housing-data">Proportional Symbol Map - Residential Housing Data</h3>
 
-<div class="tableauPlaceholder" id="viz1676812582099" style="position: relative"><noscript><a href="#"><img alt="Calendar Heatmap " src="https://public.tableau.com/static/images/In/In-ClassEx6_1EventTableau/Sheet1/1_rss.png" style="border: none"></a></noscript><object class="tableauViz" style="display:none;"><param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F"> <param name="embed_code_version" value="3"> <param name="site_root" value=""><param name="name" value="In-ClassEx6_1EventTableau/Sheet1"><param name="tabs" value="no"><param name="toolbar" value="yes"><param name="static_image" value="https://public.tableau.com/static/images/In/In-ClassEx6_1EventTableau/Sheet1/1.png"> <param name="animate_transition" value="yes"><param name="display_static_image" value="yes"><param name="display_spinner" value="yes"><param name="display_overlay" value="yes"><param name="display_count" value="yes"><param name="language" value="en-US"></object></div>                <script type="text/javascript">                    var divElement = document.getElementById('viz1676812582099');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+<div class="tableauPlaceholder" id="viz1677309285483" style="position: relative"><noscript><a href="#"><img alt="Proportional Symbol Map " src="https://public.tableau.com/static/images/Ge/GeospacialSymbolMaps-ResidentialPropertyType/ProportionalSymbolMap/1_rss.png" style="border: none"></a></noscript><object class="tableauViz" style="display:none;"><param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F"> <param name="embed_code_version" value="3"> <param name="site_root" value=""><param name="name" value="GeospacialSymbolMaps-ResidentialPropertyType/ProportionalSymbolMap"><param name="tabs" value="no"><param name="toolbar" value="yes"><param name="static_image" value="https://public.tableau.com/static/images/Ge/GeospacialSymbolMaps-ResidentialPropertyType/ProportionalSymbolMap/1.png"> <param name="animate_transition" value="yes"><param name="display_static_image" value="yes"><param name="display_spinner" value="yes"><param name="display_overlay" value="yes"><param name="display_count" value="yes"><param name="language" value="en-US"><param name="filter" value="publish=yes"></object></div>                <script type="text/javascript">                    var divElement = document.getElementById('viz1677309285483');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+<p>Aggregreate all data found in separate sheets, highlight all datasets needed in the list and drag to the dashboards to be joined to a single dataset.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/image-1389820563.png" class="img-fluid figure-img" width="593"></p>
+</figure>
+</div>
 </section>
-<section id="slope-graph" class="level3">
-<h3 class="anchored" data-anchor-id="slope-graph">Slope Graph</h3>
+<section id="proportional-symbol-map---population-data" class="level3">
+<h3 class="anchored" data-anchor-id="proportional-symbol-map---population-data">Proportional Symbol Map - Population Data</h3>
 
-<div class="tableauPlaceholder" id="viz1676812681402" style="position: relative"><noscript><a href="#"><img alt="Sheet 1 " src="https://public.tableau.com/static/images/In/In-ClassEx6_2EventTableau/Sheet1/1_rss.png" style="border: none"></a></noscript><object class="tableauViz" style="display:none;"><param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F"> <param name="embed_code_version" value="3"> <param name="site_root" value=""><param name="name" value="In-ClassEx6_2EventTableau/Sheet1"><param name="tabs" value="no"><param name="toolbar" value="yes"><param name="static_image" value="https://public.tableau.com/static/images/In/In-ClassEx6_2EventTableau/Sheet1/1.png"> <param name="animate_transition" value="yes"><param name="display_static_image" value="yes"><param name="display_spinner" value="yes"><param name="display_overlay" value="yes"><param name="display_count" value="yes"><param name="language" value="en-US"><param name="filter" value="publish=yes"></object></div>                <script type="text/javascript">                    var divElement = document.getElementById('viz1676812681402');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
-</section>
-<section id="animated-time-series-scatter-plot" class="level3">
-<h3 class="anchored" data-anchor-id="animated-time-series-scatter-plot"><strong>Animated Time Series Scatter Plot</strong></h3>
-
-<div class="tableauPlaceholder" id="viz1676812759193" style="position: relative"><noscript><a href="#"><img alt="Interactive Scatter Plot  " src="https://public.tableau.com/static/images/In/In-ClassEx6_3EventTableau/InteractiveScatterPlot/1_rss.png" style="border: none"></a></noscript><object class="tableauViz" style="display:none;"><param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F"> <param name="embed_code_version" value="3"> <param name="site_root" value=""><param name="name" value="In-ClassEx6_3EventTableau/InteractiveScatterPlot"><param name="tabs" value="no"><param name="toolbar" value="yes"><param name="static_image" value="https://public.tableau.com/static/images/In/In-ClassEx6_3EventTableau/InteractiveScatterPlot/1.png"> <param name="animate_transition" value="yes"><param name="display_static_image" value="yes"><param name="display_spinner" value="yes"><param name="display_overlay" value="yes"><param name="display_count" value="yes"><param name="language" value="en-US"><param name="filter" value="publish=yes"></object></div>                <script type="text/javascript">                    var divElement = document.getElementById('viz1676812759193');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+<div class="tableauPlaceholder" id="viz1677309458461" style="position: relative"><noscript><a href="#"><img alt="Proportional Symbol Map " src="https://public.tableau.com/static/images/Ge/GeospacialSymbolMapsPopulation/ProportionalSymbolMap/1_rss.png" style="border: none"></a></noscript><object class="tableauViz" style="display:none;"><param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F"> <param name="embed_code_version" value="3"> <param name="site_root" value=""><param name="name" value="GeospacialSymbolMapsPopulation/ProportionalSymbolMap"><param name="tabs" value="no"><param name="toolbar" value="yes"><param name="static_image" value="https://public.tableau.com/static/images/Ge/GeospacialSymbolMapsPopulation/ProportionalSymbolMap/1.png"> <param name="animate_transition" value="yes"><param name="display_static_image" value="yes"><param name="display_spinner" value="yes"><param name="display_overlay" value="yes"><param name="display_count" value="yes"><param name="language" value="en-US"><param name="filter" value="publish=yes"></object></div>                <script type="text/javascript">                    var divElement = document.getElementById('viz1677309458461');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+<p>When using two distinct datasets with different format of the same column variable, ensure to convert one of the relationships to match and join both datasets.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/image-163357223.png" class="img-fluid figure-img" width="600"></p>
+</figure>
+</div>
 
 
 </section>
