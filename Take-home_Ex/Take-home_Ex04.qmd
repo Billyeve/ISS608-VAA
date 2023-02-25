@@ -246,9 +246,15 @@ continent_export <- ggplot(continent,
         title = "Export in Million Dollars by Continent") +
   scale_x_date(date_labels = "%b-%y")+
   theme_bw() 
+```
 
-patchwork <- (continent_import / continent_export)
-patchwork
+```{r}
+continent_import 
+```
+
+```{r}
+
+continent_export
 ```
 
 A simple beginning in visual analysis is a line chart to see the time series impact on both imports and exports. Here is the following insights:
@@ -389,8 +395,16 @@ asia_ea_export <- ggplot(nation_asia_ea,
   scale_x_date(date_labels = "%b-%y")+
   theme_bw() 
 
-patchwork <- (asia_ea_import / asia_ea_export)
-patchwork
+```
+
+```{r}
+#| code-fold: true
+asia_ea_import 
+```
+
+```{r}
+#| code-fold: true
+asia_ea_export
 ```
 
 ```{r}
@@ -462,8 +476,14 @@ asia_sea_export <- ggplot(nation_asia_sea,
   scale_x_date(date_labels = "%b-%y")+
   theme_bw() 
 
-patchwork <- (asia_sea_import / asia_sea_export)
-patchwork
+```
+
+```{r}
+asia_sea_import
+```
+
+```{r}
+asia_sea_export
 ```
 
 ```{r}
@@ -554,9 +574,14 @@ eu_west_export <- ggplot(nation_eu_west,
         title = "Export in Thousand Dollars by West Euro Country") +
   scale_x_date(date_labels = "%b-%y")+
   theme_bw() 
+```
 
-patchwork <- (eu_west_import / eu_west_export)
-patchwork
+```{r}
+eu_west_import
+```
+
+```{r}
+eu_west_import
 ```
 
 ```{r}
