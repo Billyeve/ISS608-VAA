@@ -279,7 +279,7 @@ get.var <- function(vname,df) {
 
 #### **Test drive the newly created function**
 
-Let\'s test the newly created function
+Let's test the newly created function
 
 ```{r}
 var <- get.var("wp_nonfunctional", NGA_wp) 

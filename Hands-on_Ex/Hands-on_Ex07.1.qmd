@@ -43,7 +43,7 @@ Two data set will be used to create the choropleth map. They are:
 
 -   Master Plan 2014 Subzone Boundary (Web) (i.e. `MP14_SUBZONE_WEB_PL`) in ESRI shapefile format. It can be downloaded at [data.gov.sg](https://data.gov.sg/) This is a geospatial data. It consists of the geographical boundary of Singapore at the planning subzone level. The data is based on URA Master Plan 2014.
 
--   Singapore Residents by Planning Area / Subzone, Age Group, Sex and Type of Dwelling, June 2011-2020 in csv format (i.e. `respopagesextod2011to2020.csv`). This is an aspatial data fie. It can be downloaded at [Department of Statistics, Singapore](https://www.singstat.gov.sg/) Although it does not contain any coordinates values, but it\'s PA and SZ fields can be used as unique identifiers to geocode to `MP14_SUBZONE_WEB_PL` shapefile.
+-   Singapore Residents by Planning Area / Subzone, Age Group, Sex and Type of Dwelling, June 2011-2020 in csv format (i.e. `respopagesextod2011to2020.csv`). This is an aspatial data fie. It can be downloaded at [Department of Statistics, Singapore](https://www.singstat.gov.sg/) Although it does not contain any coordinates values, but it's PA and SZ fields can be used as unique identifiers to geocode to `MP14_SUBZONE_WEB_PL` shapefile.
 
 ### **Importing Geospatial Data into R**
 
@@ -163,13 +163,13 @@ qtm(mpsz_pop2020,
 
 Things to learn from the code chunk above:
 
--   *tmap_mode()* with \"plot\" option is used to produce a static map. For interactive mode, \"view\" option should be used.
+-   *tmap_mode()* with "plot" option is used to produce a static map. For interactive mode, "view" option should be used.
 
 -   *fill* argument is used to map the attribute (i.e. DEPENDENCY)
 
-### **Creating a choropleth map by using *tmap*\'s elements**
+### **Creating a choropleth map by using *tmap*'s elements**
 
-Despite its usefulness of drawing a choropleth map quickly and easily, the disadvantge of *qtm()* is that it makes aesthetics of individual layers harder to control. To draw a high quality cartographic choropleth map as shown in the figure below, **tmap**\'s drawing elements should be used.
+Despite its usefulness of drawing a choropleth map quickly and easily, the disadvantge of *qtm()* is that it makes aesthetics of individual layers harder to control. To draw a high quality cartographic choropleth map as shown in the figure below, **tmap**'s drawing elements should be used.
 
 ```{r}
 tm_shape(mpsz_pop2020)+
@@ -215,7 +215,7 @@ tm_shape(mpsz_pop2020)+
 
 Things to learn from *tm_polygons()*:
 
--   The default interval binning used to draw the choropleth map is called \"pretty\". A detailed discussion of the data classification methods supported by **tmap** will be provided in sub-section 4.3.
+-   The default interval binning used to draw the choropleth map is called "pretty". A detailed discussion of the data classification methods supported by **tmap** will be provided in sub-section 4.3.
 
 -   The default colour scheme used is `YlOrRd` of ColorBrewer. You will learn more about the color scheme in sub-section 4.4.
 
@@ -252,7 +252,7 @@ Beside *alpha* argument, there are three other arguments for *tm_borders()*, the
 
 -   *lwd* = border line width. The default is 1, and
 
--   *lty* = border line type. The default is \"solid\".
+-   *lty* = border line type. The default is "solid".
 
 ### **Data classification methods of tmap**
 
@@ -332,7 +332,7 @@ tm_shape(mpsz_pop2020)+
 
 Notice that the choropleth map is shaded in green.
 
-To reverse the colour shading, add a \"-\" prefix.
+To reverse the colour shading, add a "-" prefix.
 
 ```{r}
 tm_shape(mpsz_pop2020)+
@@ -541,4 +541,4 @@ tm_shape(mpsz_pop2020[mpsz_pop2020$REGION_N=="CENTRAL REGION", ])+
 
 -   [Tidy data](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html)
 
--   [tidyr: Easily Tidy Data with \'spread()\' and \'gather()\' Functions](https://cran.r-project.org/web/packages/tidyr/tidyr.pdf)
+-   [tidyr: Easily Tidy Data with 'spread()' and 'gather()' Functions](https://cran.r-project.org/web/packages/tidyr/tidyr.pdf)
