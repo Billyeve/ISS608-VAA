@@ -41,18 +41,20 @@ website:
           href: Hands-on_Ex/Hands-on_Ex09.html
     - text: "In-Class Exercises"
       menu:
-        - text: "In-Class Exercise 3"
+        - text: "In-Class Exercise 3: Programming Interactive Data Visualisation with R"
           href: In-Class_Ex/In-Class_Ex03.html
-        - text: "In-Class Exercise 4"
+        - text: "In-Class Exercise 4: Visual Statistical Analysis"
           href: In-Class_Ex/In-Class_Ex04.html
-        - text: "In-Class Exercise 5"
+        - text: "In-Class Exercise 5: Creating Parallel Coordinates Plots with R"
           href: In-Class_Ex/In-Class_Ex05.html
-        - text: "In-Class Exercise 6"
+        - text: "In-Class Exercise 6: Visualising and Analysing Time-oriented Data"
           href: In-Class_Ex/In-Class_Ex06.html
-        - text: "In-Class Exercise 7"
+        - text: "In-Class Exercise 7: Analytical Mapping"
           href: In-Class_Ex/In-Class_Ex07.html
-        - text: "In-Class Exercise 8"
+        - text: "In-Class Exercise 8: Modelling, Visualising and Analysing Network Data with R"
           href: In-Class_Ex/In-Class_Ex08.html
+        - text: "In-Class Exercise 9: Information Dashboard Design: R methods"
+          href: In-Class_Ex/In-Class_Ex09.html
     - text: "Take-home Exercises"
       menu:
         - text: "Take-home Exercise 1: An Exploration on Singapore's 2022 Population through Age-Sex Pyramid"
