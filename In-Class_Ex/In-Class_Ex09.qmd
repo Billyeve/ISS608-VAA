@@ -24,7 +24,7 @@ By the end of this In-Class exercise, you will be able to:
 
 -   build industry standard dashboard by using R Shiny.
 
-## Tableau 
+## **Tableau** 
 
 ### **Importing the Dataset**
 
