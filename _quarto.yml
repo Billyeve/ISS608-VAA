@@ -72,7 +72,8 @@ website:
     right:
       - href: index.qmd
         text: Home
-      - about.qmd
+      - href: project.qmd
+        text: Project
 
 format:
   html:
