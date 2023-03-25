@@ -32,9 +32,9 @@ pacman::p_load(lubridate, tidyquant, ggHoriPlot,
 
 -   [lubridate](https://isss608-ay2022-23jan.netlify.app/hands-on_ex/hands-on_ex10/hands-on_ex10-finvis) provides functions to work with dates and times more efficiently.
 
--   [tidyquant](https://business-science.github.io/tidyquant/) bringing business and financial analysis to the \'tidyverse\'. It provides a convenient wrapper to various \'xts\', \'zoo\', \'quantmod\', \'TTR\' and \'PerformanceAnalytics\' package functions and returns the objects in the tidy \'tibble\' format.
+-   [tidyquant](https://business-science.github.io/tidyquant/) bringing business and financial analysis to the 'tidyverse'. It provides a convenient wrapper to various 'xts', 'zoo', 'quantmod', 'TTR' and 'PerformanceAnalytics' package functions and returns the objects in the tidy 'tibble' format.
 
--   [ggHoriPlot](https://rivasiker.github.io/ggHoriPlot/): A user-friendly, highly customisable R package for building horizon plots in the \'ggplot2\' environment.
+-   [ggHoriPlot](https://rivasiker.github.io/ggHoriPlot/): A user-friendly, highly customisable R package for building horizon plots in the 'ggplot2' environment.
 
 ## **Data Extraction with tidyquant**
 
